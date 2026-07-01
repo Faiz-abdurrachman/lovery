@@ -72,17 +72,28 @@ export function StepFiveFinal({ selectedPackage, selectedAddOns, totalPrice, dpA
         </div>
 
         <div className="space-y-2">
-          <label className="flex items-start gap-3 cursor-pointer">
-            <input type="checkbox" {...register("agreedTerms")} className="mt-1 accent-lovery-pink" />
-            <span>
-              <span className="text-sm text-gray-600">
-                Saya telah membaca dan menyetujui{" "}
-                <a href="/syarat-ketentuan" className="text-lovery-pink underline" target="_blank" rel="noopener noreferrer">Syarat & Ketentuan</a>{" "}
-                Lovery Photography.
-              </span>
-              {errors.agreedTerms && <p className="text-xs text-error mt-1">{errors.agreedTerms.message}</p>}
-            </span>
-          </label>
+          <Controller
+            name="agreedTerms"
+            control={control}
+            render={({ field }) => (
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={field.value === true}
+                  onChange={(e) => field.onChange(e.target.checked)}
+                  className="mt-1 accent-lovery-pink"
+                />
+                <span>
+                  <span className="text-sm text-gray-600">
+                    Saya telah membaca dan menyetujui{" "}
+                    <a href="/syarat-ketentuan" className="text-lovery-pink underline" target="_blank" rel="noopener noreferrer">Syarat & Ketentuan</a>{" "}
+                    Lovery Photography.
+                  </span>
+                  {errors.agreedTerms && <p className="text-xs text-error mt-1">{String(errors.agreedTerms?.message)}</p>}
+                </span>
+              </label>
+            )}
+          />
         </div>
       </div>
     </div>

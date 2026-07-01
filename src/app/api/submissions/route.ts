@@ -23,6 +23,17 @@ export async function POST(request: NextRequest) {
     }
 
     const data = parsed.data
+
+    if (!data.agreedTerms) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Anda harus menyetujui Syarat & Ketentuan",
+        },
+        { status: 400 }
+      )
+    }
+
     const year = new Date().getFullYear()
 
     // Upsert client

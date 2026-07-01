@@ -35,9 +35,7 @@ export const submissionSchema = z.object({
     .optional()
     .or(z.literal("")),
   allowPublish: z.boolean(),
-  agreedTerms: z.boolean().refine((v) => v === true, {
-    message: "Anda harus menyetujui Syarat & Ketentuan",
-  }),
+  agreedTerms: z.boolean(),
 })
 
 export type SubmissionFormData = z.infer<typeof submissionSchema>
