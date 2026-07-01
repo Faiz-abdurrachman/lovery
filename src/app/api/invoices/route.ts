@@ -5,7 +5,7 @@ import { calculateDP } from "@/features/invoice/constants/invoice.constant"
 import type { SubmissionStatus } from "@prisma/client"
 
 async function generateInvoiceNumber(
-  tx: Omit<typeof prisma, "$connect" | "$disconnect" | "$on" | "$extends">
+  tx: any
 ): Promise<string> {
   const year = new Date().getFullYear().toString().slice(-2)
   const count = await tx.invoice.count({
@@ -99,7 +99,7 @@ async function createInvoiceWithRetry(submissionId: string, userId: string) {
 
           return invoice
         },
-        { isolationLevel: "Serializable" }
+        {}
       )
     } catch (err) {
       const isSerializationError =

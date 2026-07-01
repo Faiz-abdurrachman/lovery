@@ -3,9 +3,9 @@ import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 import { NEXT_ALLOWED_STATUSES } from "@/features/submission/constants/submission.constant"
 import { calculateDP } from "@/features/invoice/constants/invoice.constant"
-import type { SubmissionStatus, Prisma } from "@prisma/client"
+import type { SubmissionStatus } from "@prisma/client"
 
-async function generateInvNumber(tx: Prisma.TransactionClient): Promise<string> {
+async function generateInvNumber(tx: any): Promise<string> {
   const year = new Date().getFullYear().toString().slice(-2)
   const count = await tx.invoice.count({
     where: { createdAt: { gte: new Date(`${new Date().getFullYear()}-01-01`) } },
@@ -141,7 +141,7 @@ export async function PATCH(
 
         return { submission: { id, status: newStatus }, invoice }
       },
-      { isolationLevel: "Serializable" }
+      {}
     )
 
     if (newStatus === "WAITING_DP") {

@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
           },
         })
       },
-      { isolationLevel: "Serializable" }
+      {}
     )
 
     return NextResponse.json(

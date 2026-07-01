@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 
     const submissionNumber = await generateSubmissionNumber()
 
-    const result = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
+    const result = await prisma.$transaction(async (tx: any) => {
       const client = await tx.client.upsert({
         where: { phone: data.phone },
         update: {
