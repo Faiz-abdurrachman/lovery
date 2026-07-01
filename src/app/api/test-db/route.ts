@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server"
+import { Pool } from "pg"
 
 export async function GET() {
   try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { Pool } = require("pg") as typeof import("pg")
     const pool = new Pool({
       connectionString: process.env.DATABASE_URL,
       max: 1,
@@ -14,6 +13,6 @@ export async function GET() {
     return NextResponse.json({ success: true, driver: "pg", data: result.rows })
   } catch (e: unknown) {
     const err = e as Error
-    return NextResponse.json({ success: false, driver: "pg", error: err.message }, { status: 500 })
+    return NextResponse.json({ success: false, driver: "pg", error: err.message })
   }
 }
