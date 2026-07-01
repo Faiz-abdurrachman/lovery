@@ -56,8 +56,7 @@ export function Services({ packages }: ServiceProps) {
                 ))}
               </div>
             </div>
-          )
-        })}
+          })
         )}
       </div>
     </section>
