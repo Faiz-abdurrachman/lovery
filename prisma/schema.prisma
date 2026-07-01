@@ -1,0 +1,255 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── ENUMS ──────────────────────────────────────────────
+
+enum SubmissionStatus {
+  PENDING_REVIEW
+  WAITING_DP
+  DP_PAID
+  PAID
+  ON_SESSION
+  EDITING
+  DELIVERED
+  COMPLETED
+  REJECTED
+  RESCHEDULE
+  CANCELLED
+}
+
+enum InvoiceStatus {
+  ACTIVE
+  REVISED
+  VOID
+}
+
+enum PaymentType {
+  DP
+  PELUNASAN
+  REFUND
+}
+
+enum PaymentMethod {
+  TRANSFER
+  QRIS
+}
+
+enum ReminderType {
+  PAYMENT
+  SESSION
+  DELIVERY
+}
+
+enum ReminderStatus {
+  PENDING
+  COMPLETED
+}
+
+enum AdminRole {
+  OWNER
+  ADMIN
+}
+
+// ─── MODELS ─────────────────────────────────────────────
+
+model Admin {
+  id           String     @id @default(cuid())
+  name         String
+  email        String     @unique
+  passwordHash String
+  role         AdminRole  @default(ADMIN)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  verifiedPayments Payment[]   @relation("PaymentVerifier")
+  timelineEntries  Timeline[]  @relation("TimelinePerformer")
+
+  @@map("admins")
+}
+
+model Client {
+  id           String    @id @default(cuid())
+  clientNumber String    @unique
+  name         String
+  phone        String    @unique
+  instagram    String?
+  allowPublish Boolean   @default(true)
+  notes        String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+
+  submissions Submission[]
+
+  @@map("clients")
+}
+
+model Package {
+  id          String   @id @default(cuid())
+  name        String
+  category    String
+  description String?
+  price       Int
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  submissions Submission[]
+
+  @@map("packages")
+}
+
+model AddOn {
+  id          String   @id @default(cuid())
+  name        String
+  price       Int
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  submissionAddOns SubmissionAddOn[]
+
+  @@map("add_ons")
+}
+
+model Submission {
+  id               String           @id @default(cuid())
+  submissionNumber String           @unique
+  clientId         String
+  packageId        String
+  status           SubmissionStatus @default(PENDING_REVIEW)
+  eventName        String
+  eventDate        DateTime         @db.Date
+  eventTime        String
+  location         String
+  specialRequest   String?
+  adminNote        String?
+  rescheduleCount  Int              @default(0)
+  googleEventId    String?
+  googleDriveLink  String?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  deletedAt        DateTime?
+
+  client            Client             @relation(fields: [clientId], references: [id])
+  package           Package            @relation(fields: [packageId], references: [id])
+  submissionAddOns  SubmissionAddOn[]
+  invoices          Invoice[]
+  timelines         Timeline[]
+  reminders         Reminder[]
+
+  @@index([status])
+  @@index([eventDate])
+  @@index([submissionNumber])
+  @@index([clientId])
+  @@map("submissions")
+}
+
+model SubmissionAddOn {
+  submissionId  String
+  addonId       String
+  priceSnapshot Int
+
+  submission Submission @relation(fields: [submissionId], references: [id])
+  addOn      AddOn      @relation(fields: [addonId], references: [id])
+
+  @@id([submissionId, addonId])
+  @@map("submission_add_ons")
+}
+
+model Invoice {
+  id              String       @id @default(cuid())
+  invoiceNumber   String       @unique
+  submissionId    String
+  subtotal        Int
+  addonTotal      Int
+  grandTotal      Int
+  dpAmount        Int
+  remainingAmount Int
+  status          InvoiceStatus @default(ACTIVE)
+  revision        Int           @default(1)
+  issuedAt        DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  submission Submission @relation(fields: [submissionId], references: [id])
+  payments   Payment[]
+
+  @@index([invoiceNumber])
+  @@index([submissionId])
+  @@map("invoices")
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  paymentNumber String        @unique
+  invoiceId     String
+  paymentType   PaymentType
+  amount        Int
+  paymentMethod PaymentMethod
+  paymentDate   DateTime?
+  verifiedById  String?
+  verifiedAt    DateTime?
+  notes         String?
+  createdAt     DateTime      @default(now())
+
+  invoice   Invoice @relation(fields: [invoiceId], references: [id])
+  verifiedBy Admin? @relation("PaymentVerifier", fields: [verifiedById], references: [id])
+
+  @@index([invoiceId])
+  @@map("payments")
+}
+
+model Timeline {
+  id           String   @id @default(cuid())
+  submissionId String
+  activity     String
+  description  String?
+  performedById String?
+  createdAt    DateTime @default(now())
+
+  submission  Submission @relation(fields: [submissionId], references: [id])
+  performedBy Admin?     @relation("TimelinePerformer", fields: [performedById], references: [id])
+
+  @@index([submissionId])
+  @@map("timelines")
+}
+
+model Reminder {
+  id           String         @id @default(cuid())
+  submissionId String
+  type         ReminderType
+  title        String
+  dueDate      DateTime?
+  status       ReminderStatus  @default(PENDING)
+  createdAt    DateTime        @default(now())
+
+  submission Submission @relation(fields: [submissionId], references: [id])
+
+  @@index([submissionId])
+  @@index([status])
+  @@map("reminders")
+}
+
+model Settings {
+  id                String   @id @default(cuid())
+  studioName        String   @default("Lovery Photography")
+  whatsapp          String
+  bankName          String?
+  bankAccount       String?
+  bankHolder        String?
+  qrisImage         String?
+  googleCalendarId  String?
+  googleDriveFolder String?
+  businessHourStart String?
+  businessHourEnd   String?
+  updatedAt         DateTime @updatedAt
+
+  @@map("settings")
+}
