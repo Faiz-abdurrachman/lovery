@@ -52,6 +52,7 @@ export async function POST(request: NextRequest) {
           instagram: data.instagram || null,
           allowPublish: data.allowPublish,
           clientNumber: "",
+          updatedAt: new Date().toISOString(),
         },
         { onConflict: "phone" }
       )
@@ -105,6 +106,7 @@ export async function POST(request: NextRequest) {
         location: data.location,
         specialRequest: data.specialRequest || null,
         status: "PENDING_REVIEW",
+        updatedAt: new Date().toISOString(),
       })
       .select()
       .single()
@@ -137,10 +139,19 @@ export async function POST(request: NextRequest) {
       },
       { status: 201 }
     )
-  } catch (error) {
-    console.error("Create submission error:", error)
+  } catch (error: any) {
+    console.error("[CREATE SUBMISSION ERROR]", {
+      message: error?.message || "Unknown",
+      code: error?.code,
+      details: error?.details,
+      hint: error?.hint,
+    })
     return NextResponse.json(
-      { success: false, message: "Terjadi kesalahan server" },
+      {
+        success: false,
+        message: "Terjadi kesalahan server",
+        debug: process.env.NODE_ENV !== "production" ? error?.message : undefined,
+      },
       { status: 500 }
     )
   }

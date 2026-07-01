@@ -168,6 +168,7 @@ export async function createInvoiceForSubmission(submissionId: string, adminId?:
       status: "ACTIVE",
       revision,
       issuedAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
     })
     .select()
     .single()
@@ -217,7 +218,7 @@ export async function updateSettings(body: Record<string, unknown>) {
   if (!data) {
     const { data: created, error } = await supabase
       .from("settings")
-      .insert({ ...body, whatsapp: body.whatsapp || "6281234567890" })
+      .insert({ ...body, whatsapp: body.whatsapp || "6281234567890", updatedAt: new Date().toISOString() })
       .select()
       .single()
     if (error) throw error
@@ -226,7 +227,7 @@ export async function updateSettings(body: Record<string, unknown>) {
 
   const { data: updated, error } = await supabase
     .from("settings")
-    .update(body)
+    .update({ ...body, updatedAt: new Date().toISOString() })
     .eq("id", data.id)
     .select()
     .single()
