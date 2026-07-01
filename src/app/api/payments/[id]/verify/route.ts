@@ -61,9 +61,9 @@ export async function PATCH(
       const inv = await getActiveInvoice(invoice?.submissionId)
       const eventId = await createCalendarEvent({
         eventName: submission.eventName,
-        clientName: submission.client?.name,
-        clientPhone: submission.client?.phone,
-        packageName: submission.package?.name,
+        clientName: (submission.client as any)?.[0]?.name || "",
+        clientPhone: (submission.client as any)?.[0]?.phone || "",
+        packageName: (submission.package as any)?.[0]?.name || "",
         addOnNames: (submission.submission_add_ons || []).map((s: any) => s.addOn?.name).filter(Boolean),
         eventDate: submission.eventDate,
         eventTime: submission.eventTime,
@@ -83,7 +83,7 @@ export async function PATCH(
       await supabase.from("reminders").insert({
         submissionId: invoice.submissionId,
         type: "SESSION",
-        title: `Sesi - ${submission.client?.name} (${format(new Date(submission.eventDate), "dd MMM")})`,
+        title: `Sesi - ${(submission.client as any)?.[0]?.name} (${format(new Date(submission.eventDate), "dd MMM")})`,
         dueDate: dueDate.toISOString(),
       })
     }

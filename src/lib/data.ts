@@ -50,16 +50,26 @@ export async function getSubmission(id: string) {
 }
 
 export async function trackSubmission(number: string, phone: string) {
-  const { data, error } = await supabase
+  // First find the submission
+  const { data: submission, error } = await supabase
     .from("submissions")
-    .select("*, client:clients!inner(*), package:packages(*), submission_add_ons(*, addOn:add_ons(*)), timelines(*), invoices(*, payments(*))")
+    .select("*, package:packages(*), submission_add_ons(*, addOn:add_ons(*)), timelines(*), invoices(*, payments(*))")
     .eq("submissionNumber", number)
-    .eq("client.phone", phone)
-    .eq("invoices.status", "ACTIVE")
     .single()
 
-  if (error) throw error
-  return data
+  if (error || !submission) return null
+
+  // Then verify the client phone
+  const { data: client } = await supabase
+    .from("clients")
+    .select("*")
+    .eq("id", submission.clientId)
+    .eq("phone", phone)
+    .maybeSingle()
+
+  if (!client) return null
+
+  return { ...submission, client }
 }
 
 export async function updateSubmissionStatus(
@@ -109,14 +119,15 @@ export async function createInvoiceForSubmission(submissionId: string, adminId?:
 
   if (!sub) throw new Error("Submission not found")
 
-  const subtotal = sub.package.price
+  const pkg = (sub.package as any)?.[0] || sub.package
+  const subtotal = pkg.price
   const addonTotal = (sub.submission_add_ons || []).reduce(
     (s: number, a: { priceSnapshot: number }) => s + a.priceSnapshot, 0
   )
   const grandTotal = subtotal + addonTotal
   const hasAddOns = (sub.submission_add_ons || []).length > 0
   const dpAmount =
-    sub.package.category === "Wedding"
+    pkg.category === "Wedding"
       ? Math.round(grandTotal * 0.4)
       : hasAddOns ? 100000 : 50000
 
