@@ -42,24 +42,44 @@ export async function POST(request: NextRequest) {
 
     const year = new Date().getFullYear()
 
-    // Upsert client
-    const { data: client, error: clientError } = await supabase
+    // Check if client already exists
+    let { data: client } = await supabase
       .from("clients")
-      .upsert(
-        {
+      .select("id, clientNumber")
+      .eq("phone", data.phone)
+      .maybeSingle()
+
+    if (client) {
+      // Update existing client
+      await supabase.from("clients").update({
+        name: data.name,
+        instagram: data.instagram || null,
+        allowPublish: data.allowPublish,
+        updatedAt: new Date().toISOString(),
+      }).eq("id", client.id).select().single()
+    } else {
+      // Create new client with UUID
+      const { data: newClient, error: clientError } = await supabase
+        .from("clients")
+        .insert({
+          id: crypto.randomUUID(),
           phone: data.phone,
           name: data.name,
           instagram: data.instagram || null,
           allowPublish: data.allowPublish,
           clientNumber: "",
           updatedAt: new Date().toISOString(),
-        },
-        { onConflict: "phone" }
-      )
-      .select()
-      .single()
+        })
+        .select()
+        .single()
 
-    if (clientError) throw clientError
+      if (clientError) throw clientError
+      client = newClient
+    }
+
+    if (!client) {
+      return NextResponse.json({ success: false, message: "Gagal membuat data klien" }, { status: 500 })
+    }
 
     // Update client number for new clients
     if (!client.clientNumber || client.clientNumber === "") {
