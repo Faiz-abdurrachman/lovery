@@ -1,13 +1,11 @@
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
-import { PrismaAdapter } from "@auth/prisma-adapter"
-import { prisma } from "@/lib/prisma"
+import { supabase } from "@/lib/supabase"
 import bcrypt from "bcryptjs"
 import { authConfig } from "@/lib/auth.config"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,
-  adapter: PrismaAdapter(prisma),
   providers: [
     Credentials({
       credentials: {
@@ -17,9 +15,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null
 
-        const admin = await prisma.admin.findUnique({
-          where: { email: credentials.email as string },
-        })
+        const { data: admin } = await supabase
+          .from("admins")
+          .select("*")
+          .eq("email", credentials.email as string)
+          .single()
 
         if (!admin) return null
 

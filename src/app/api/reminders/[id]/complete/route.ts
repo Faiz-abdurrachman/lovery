@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
-import { prisma } from "@/lib/prisma"
-import { Prisma } from "@prisma/client"
+import { completeReminder } from "@/lib/data"
 
 export async function PATCH(
   _request: NextRequest,
@@ -12,22 +11,10 @@ export async function PATCH(
     if (!session?.user) {
       return NextResponse.json({ success: false, message: "Tidak diizinkan" }, { status: 401 })
     }
-
     const { id } = await params
-
-    const updated = await prisma.reminder.update({
-      where: { id },
-      data: { status: "COMPLETED" },
-    })
-
-    return NextResponse.json({ success: true, data: updated })
+    const data = await completeReminder(id)
+    return NextResponse.json({ success: true, data })
   } catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
-      return NextResponse.json(
-        { success: false, message: "Pengingat tidak ditemukan" },
-        { status: 404 }
-      )
-    }
     console.error("Complete reminder error:", error)
     return NextResponse.json({ success: false, message: "Terjadi kesalahan" }, { status: 500 })
   }

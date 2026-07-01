@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
-import { prisma } from "@/lib/prisma"
-import { editInvoiceSchema } from "@/features/invoice/schemas/invoice.schema"
+import { getInvoice } from "@/lib/data"
+import { supabase } from "@/lib/supabase"
 
 export async function GET(
   _request: NextRequest,
@@ -10,71 +10,15 @@ export async function GET(
   try {
     const session = await auth()
     if (!session?.user) {
-      return NextResponse.json(
-        { success: false, message: "Tidak diizinkan" },
-        { status: 401 }
-      )
+      return NextResponse.json({ success: false, message: "Tidak diizinkan" }, { status: 401 })
     }
-
     const { id } = await params
-
-    const invoice = await prisma.invoice.findUnique({
-      where: { id },
-      include: {
-        submission: {
-          select: {
-            id: true,
-            submissionNumber: true,
-            eventName: true,
-            eventDate: true,
-            eventTime: true,
-            location: true,
-            specialRequest: true,
-            client: {
-              select: {
-                id: true,
-                name: true,
-                phone: true,
-                instagram: true,
-              },
-            },
-            package: {
-              select: {
-                id: true,
-                name: true,
-                category: true,
-                price: true,
-              },
-            },
-            submissionAddOns: {
-              include: {
-                addOn: {
-                  select: { id: true, name: true, price: true },
-                },
-              },
-            },
-          },
-        },
-        payments: {
-          orderBy: { createdAt: "desc" },
-        },
-      },
-    })
-
-    if (!invoice) {
-      return NextResponse.json(
-        { success: false, message: "Invoice tidak ditemukan" },
-        { status: 404 }
-      )
-    }
-
-    return NextResponse.json({ success: true, data: invoice })
+    const data = await getInvoice(id)
+    if (!data) return NextResponse.json({ success: false, message: "Invoice tidak ditemukan" }, { status: 404 })
+    return NextResponse.json({ success: true, data })
   } catch (error) {
     console.error("Get invoice error:", error)
-    return NextResponse.json(
-      { success: false, message: "Terjadi kesalahan server" },
-      { status: 500 }
-    )
+    return NextResponse.json({ success: false, message: "Terjadi kesalahan" }, { status: 500 })
   }
 }
 
@@ -85,59 +29,20 @@ export async function PATCH(
   try {
     const session = await auth()
     if (!session?.user) {
-      return NextResponse.json(
-        { success: false, message: "Tidak diizinkan" },
-        { status: 401 }
-      )
+      return NextResponse.json({ success: false, message: "Tidak diizinkan" }, { status: 401 })
     }
-
     const { id } = await params
     const body = await request.json()
 
-    const parsed = editInvoiceSchema.safeParse(body)
-    if (!parsed.success) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Validasi gagal",
-          errors: parsed.error.flatten().fieldErrors,
-        },
-        { status: 400 }
-      )
-    }
+    const { data: existing } = await supabase.from("invoices").select("status").eq("id", id).single()
+    if (!existing) return NextResponse.json({ success: false, message: "Invoice tidak ditemukan" }, { status: 404 })
+    if (existing.status !== "ACTIVE") return NextResponse.json({ success: false, message: "Hanya invoice aktif yang dapat diedit" }, { status: 400 })
 
-    const existing = await prisma.invoice.findUnique({ where: { id } })
-    if (!existing) {
-      return NextResponse.json(
-        { success: false, message: "Invoice tidak ditemukan" },
-        { status: 404 }
-      )
-    }
-
-    if (existing.status !== "ACTIVE") {
-      return NextResponse.json(
-        { success: false, message: "Hanya invoice aktif yang dapat diedit" },
-        { status: 400 }
-      )
-    }
-
-    const updated = await prisma.invoice.update({
-      where: { id },
-      data: {
-        subtotal: parsed.data.subtotal ?? existing.subtotal,
-        addonTotal: parsed.data.addonTotal ?? existing.addonTotal,
-        grandTotal: parsed.data.grandTotal ?? existing.grandTotal,
-        dpAmount: parsed.data.dpAmount ?? existing.dpAmount,
-        remainingAmount: parsed.data.remainingAmount ?? existing.remainingAmount,
-      },
-    })
-
+    const { data: updated, error } = await supabase.from("invoices").update(body).eq("id", id).select().single()
+    if (error) throw error
     return NextResponse.json({ success: true, data: updated })
   } catch (error) {
     console.error("Edit invoice error:", error)
-    return NextResponse.json(
-      { success: false, message: "Terjadi kesalahan server" },
-      { status: 500 }
-    )
+    return NextResponse.json({ success: false, message: "Terjadi kesalahan" }, { status: 500 })
   }
 }

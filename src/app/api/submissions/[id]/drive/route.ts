@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
-import { prisma } from "@/lib/prisma"
-
-const TERMINAL_STATUSES = ["CANCELLED", "REJECTED", "COMPLETED"] as const
+import { supabase } from "@/lib/supabase"
 
 export async function PATCH(
   request: NextRequest,
@@ -11,93 +9,51 @@ export async function PATCH(
   try {
     const session = await auth()
     if (!session?.user) {
-      return NextResponse.json(
-        { success: false, message: "Tidak diizinkan" },
-        { status: 401 }
-      )
+      return NextResponse.json({ success: false, message: "Tidak diizinkan" }, { status: 401 })
     }
 
     const { id } = await params
     const body = await request.json()
     const { driveLink, send } = body
 
-    if (!driveLink || typeof driveLink !== "string") {
-      return NextResponse.json(
-        { success: false, message: "Link Google Drive wajib diisi" },
-        { status: 400 }
-      )
+    if (!driveLink || !driveLink.startsWith("https://")) {
+      return NextResponse.json({ success: false, message: "Link harus URL valid" }, { status: 400 })
     }
 
-    if (!driveLink.startsWith("https://")) {
-      return NextResponse.json(
-        { success: false, message: "Link harus berupa URL valid (https://)" },
-        { status: 400 }
-      )
-    }
-
-    const submission = await prisma.submission.findUnique({
-      where: { id },
-      include: {
-        client: { select: { name: true, phone: true } },
-      },
-    })
+    const { data: submission } = await supabase.from("submissions").select("*, client:clients(name,phone)").eq("id", id).single()
 
     if (!submission) {
-      return NextResponse.json(
-        { success: false, message: "Pengajuan tidak ditemukan" },
-        { status: 404 }
-      )
+      return NextResponse.json({ success: false, message: "Pengajuan tidak ditemukan" }, { status: 404 })
     }
 
-    if (TERMINAL_STATUSES.includes(submission.status as typeof TERMINAL_STATUSES[number])) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Tidak dapat mengubah pengajuan yang sudah selesai atau dibatalkan",
-        },
-        { status: 400 }
-      )
+    if (["CANCELLED", "REJECTED", "COMPLETED"].includes(submission.status)) {
+      return NextResponse.json({ success: false, message: "Pengajuan sudah selesai" }, { status: 400 })
     }
 
     if (send && submission.status !== "EDITING") {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Hasil hanya bisa dikirim saat status Proses Editing",
-        },
-        { status: 400 }
-      )
+      return NextResponse.json({ success: false, message: "Hasil hanya bisa dikirim saat Proses Editing" }, { status: 400 })
     }
 
-    const updateData = send
-      ? { googleDriveLink: driveLink, status: "DELIVERED" as const }
-      : { googleDriveLink: driveLink }
+    const updateData: Record<string, unknown> = { googleDriveLink: driveLink }
+    if (send) updateData.status = "DELIVERED"
 
-    await prisma.submission.update({
-      where: { id },
-      data: updateData,
-    })
+    await supabase.from("submissions").update(updateData).eq("id", id)
 
-    await prisma.timeline.create({
-      data: {
-        submissionId: id,
-        activity: send ? "Hasil dikirim" : "Link Google Drive diperbarui",
-        description: driveLink,
-        performedById: session.user?.id as string,
-      },
+    await supabase.from("timelines").insert({
+      submissionId: id,
+      activity: send ? "Hasil dikirim" : "Link Google Drive diperbarui",
+      description: driveLink,
+      performedById: session.user.id as string,
     })
 
     return NextResponse.json({
       success: true,
       data: { driveLink },
-      clientName: submission.client.name,
-      clientPhone: submission.client.phone,
+      clientName: submission.client?.name,
+      clientPhone: submission.client?.phone,
     })
   } catch (error) {
     console.error("Drive link error:", error)
-    return NextResponse.json(
-      { success: false, message: "Terjadi kesalahan server" },
-      { status: 500 }
-    )
+    return NextResponse.json({ success: false, message: "Terjadi kesalahan server" }, { status: 500 })
   }
 }
