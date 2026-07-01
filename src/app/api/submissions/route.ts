@@ -117,6 +117,7 @@ export async function POST(request: NextRequest) {
     const { data: submission, error: subError } = await supabase
       .from("submissions")
       .insert({
+        id: crypto.randomUUID(),
         submissionNumber: subNumber,
         clientId: client.id,
         packageId: data.packageId,
