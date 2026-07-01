@@ -9,6 +9,12 @@ function generateNumber(prefix: string, year: number, seq: number): string {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
+
+    // Convert ISO date string from JSON to Date object (Zod 4 requires Date, not string)
+    if (body.eventDate && typeof body.eventDate === "string") {
+      body.eventDate = new Date(body.eventDate)
+    }
+
     const parsed = submissionSchema.safeParse(body)
 
     if (!parsed.success) {
