@@ -230,8 +230,15 @@ export default function AjukanSesiContent() {
         </FormProvider>
 
         {createSubmission.isError && (
-          <div className="mt-6 p-4 rounded-xl bg-error/10 text-error text-sm text-center">
-            {(createSubmission.error as Error)?.message || "Terjadi kesalahan. Silakan coba lagi."}
+          <div className="mt-6 p-4 rounded-xl bg-error/10 text-error text-sm space-y-2">
+            <p className="font-medium">{(createSubmission.error as Error)?.message || "Terjadi kesalahan. Silakan coba lagi."}</p>
+            {(createSubmission.error as any)?.fields && (
+              <ul className="list-disc ml-4 space-y-1">
+                {Object.entries((createSubmission.error as any).fields).map(([field, msgs]: [string, any]) => (
+                  <li key={field}><span className="font-medium">{field}:</span> {Array.isArray(msgs) ? msgs.join(", ") : String(msgs)}</li>
+                ))}
+              </ul>
+            )}
           </div>
         )}
       </div>

@@ -23,7 +23,7 @@ export const submissionSchema = z.object({
     .string()
     .min(2, "Nama acara minimal 2 karakter")
     .max(200, "Nama acara maksimal 200 karakter"),
-  eventDate: z.date({ message: "Tanggal wajib dipilih" }),
+  eventDate: z.coerce.date({ message: "Tanggal wajib dipilih" }),
   eventTime: z.string().min(1, "Jam wajib diisi"),
   location: z
     .string()

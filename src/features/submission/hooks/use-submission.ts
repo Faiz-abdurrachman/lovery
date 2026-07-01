@@ -53,7 +53,11 @@ export function useCreateSubmission() {
         body: JSON.stringify(data),
       })
       const json = await res.json()
-      if (!json.success) throw new Error(json.message)
+      if (!json.success) {
+        const err = new Error(json.message) as Error & { fields?: Record<string, string[]> }
+        if (json.errors) err.fields = json.errors
+        throw err
+      }
       return json.data
     },
     onSuccess: () => {
