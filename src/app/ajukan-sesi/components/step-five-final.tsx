@@ -1,12 +1,10 @@
 "use client"
 
-import { useFormContext } from "react-hook-form"
+import { useFormContext, Controller } from "react-hook-form"
 import type { SubmissionFormData } from "@/features/submission/schemas/submission.schema"
 
 function formatRupiah(n: number) {
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency", currency: "IDR", minimumFractionDigits: 0,
-  }).format(n)
+  return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(n)
 }
 
 interface StepFiveFinalProps {
@@ -16,16 +14,8 @@ interface StepFiveFinalProps {
   dpAmount: number
 }
 
-export function StepFiveFinal({
-  selectedPackage,
-  selectedAddOns,
-  totalPrice,
-  dpAmount,
-}: StepFiveFinalProps) {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext<SubmissionFormData>()
+export function StepFiveFinal({ selectedPackage, selectedAddOns, totalPrice, dpAmount }: StepFiveFinalProps) {
+  const { register, control, formState: { errors } } = useFormContext<SubmissionFormData>()
 
   return (
     <div className="space-y-6">
@@ -63,34 +53,34 @@ export function StepFiveFinal({
       <div className="space-y-4">
         <div className="space-y-3">
           <p className="text-sm font-medium text-black">Publikasi Hasil Foto</p>
-          <label className="flex items-start gap-3 cursor-pointer">
-            <input type="radio" value="true" {...register("allowPublish")} className="mt-1 accent-lovery-pink" />
-            <span className="text-sm text-gray-600">Saya mengizinkan Lovery Photography mempublikasikan hasil foto pada portfolio dan media sosial.</span>
-          </label>
-          <label className="flex items-start gap-3 cursor-pointer">
-            <input type="radio" value="false" {...register("allowPublish")} className="mt-1 accent-lovery-pink" />
-            <span className="text-sm text-gray-600">Saya tidak mengizinkan publikasi hasil foto.</span>
-          </label>
+          <Controller
+            name="allowPublish"
+            control={control}
+            render={({ field }) => (
+              <>
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input type="radio" name="allowPublish" checked={field.value === true} onChange={() => field.onChange(true)} className="mt-1 accent-lovery-pink" />
+                  <span className="text-sm text-gray-600">Saya mengizinkan Lovery Photography mempublikasikan hasil foto pada portfolio dan media sosial.</span>
+                </label>
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input type="radio" name="allowPublish" checked={field.value === false} onChange={() => field.onChange(false)} className="mt-1 accent-lovery-pink" />
+                  <span className="text-sm text-gray-600">Saya tidak mengizinkan publikasi hasil foto.</span>
+                </label>
+              </>
+            )}
+          />
         </div>
 
         <div className="space-y-2">
           <label className="flex items-start gap-3 cursor-pointer">
-            <input
-              type="checkbox"
-              {...register("agreedTerms")}
-              className="mt-1 accent-lovery-pink"
-            />
+            <input type="checkbox" {...register("agreedTerms")} className="mt-1 accent-lovery-pink" />
             <span>
               <span className="text-sm text-gray-600">
                 Saya telah membaca dan menyetujui{" "}
-                <a href="/syarat-ketentuan" className="text-lovery-pink underline" target="_blank" rel="noopener noreferrer">
-                  Syarat & Ketentuan
-                </a>{" "}
+                <a href="/syarat-ketentuan" className="text-lovery-pink underline" target="_blank" rel="noopener noreferrer">Syarat & Ketentuan</a>{" "}
                 Lovery Photography.
               </span>
-              {errors.agreedTerms && (
-                <p className="text-xs text-error mt-1">{errors.agreedTerms.message}</p>
-              )}
+              {errors.agreedTerms && <p className="text-xs text-error mt-1">{errors.agreedTerms.message}</p>}
             </span>
           </label>
         </div>
