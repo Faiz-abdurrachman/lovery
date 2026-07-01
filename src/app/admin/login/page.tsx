@@ -69,7 +69,7 @@ export default function LoginPage() {
           </div>
           <div>
             <CardTitle className="text-xl text-black">
-              Lovery Admin
+              Lovery Photography
             </CardTitle>
             <CardDescription className="text-gray-500 mt-1">
               Masuk ke dashboard operasional

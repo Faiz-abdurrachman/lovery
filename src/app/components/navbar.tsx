@@ -17,7 +17,7 @@ export function Navbar() {
           <div className="w-9 h-9 rounded-lg bg-lovery-pink flex items-center justify-center">
             <Camera className="h-5 w-5 text-white" />
           </div>
-          <span className="text-lg font-semibold text-black">Lovery</span>
+          <span className="text-lg font-semibold text-black">Lovery Photography</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">

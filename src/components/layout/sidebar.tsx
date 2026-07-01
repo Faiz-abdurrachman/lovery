@@ -69,7 +69,7 @@ export function Sidebar({ className }: { className?: string }) {
         <div className="w-9 h-9 rounded-lg bg-lovery-pink/20 flex items-center justify-center shrink-0">
           <Camera className="h-5 w-5 text-lovery-pink" />
         </div>
-        <span className="font-semibold text-black text-sm">Lovery</span>
+        <span className="font-semibold text-black text-sm">Lovery Photography</span>
       </Link>
 
       <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">

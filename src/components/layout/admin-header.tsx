@@ -42,7 +42,7 @@ export function AdminHeader() {
           </SheetContent>
         </Sheet>
         <span className="text-sm font-medium text-gray-500 hidden lg:block">
-          Lovery Studio Management
+          Lovery Photography
         </span>
       </div>
 
