@@ -33,6 +33,8 @@ function formatRupiah(n: number) {
   }).format(n)
 }
 
+export const dynamic = "force-dynamic"
+
 export default async function AdminDashboardPage() {
   const session = await auth()
   if (!session?.user) {

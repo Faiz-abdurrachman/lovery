@@ -11,6 +11,8 @@ import {
 } from "@/features/submission/constants/submission.constant"
 import { cn } from "@/lib/utils"
 
+export const dynamic = "force-dynamic"
+
 export default async function AdminCalendarPage() {
   const now = new Date()
   const submissions = await prisma.submission.findMany({

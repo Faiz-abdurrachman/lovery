@@ -9,6 +9,8 @@ function formatRupiah(n: number) {
 
 const ICON: Record<string, string> = { Graduation: "🎓", Wedding: "💍", Casual: "📷", Event: "🎉" }
 
+export const dynamic = "force-dynamic"
+
 export default async function PaketPage() {
   const packages = await prisma.package.findMany({
     where: { isActive: true },
