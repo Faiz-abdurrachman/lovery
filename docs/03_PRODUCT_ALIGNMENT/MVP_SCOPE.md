@@ -414,4 +414,4 @@ Versi pertama harus sederhana, cepat dipelajari, dan nyaman digunakan oleh admin
 
 Dokumen MVP Scope menjadi batas resmi ruang lingkup pengembangan Lovery Studio Management System versi pertama.
 
-Dokumen ini memastikan seluruh tim tetap fokus menyelesaikan fitur yang benar-benar memberikan nilai bagi operasional Lovery Photography sebelum mengembangkan fitur lanjutan.
+Dokumen ini memastikan seluruh tim tetap fokus menyelesaikan fitur yang benar-benar memberikan nilai bagi operasional Lovery Photography sebelum mengembangkan fitur lanjutan.www

@@ -5,32 +5,19 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
 }
 
-let _prisma: PrismaClient
+const dbUrl = process.env.DATABASE_URL
 
-function getPrismaClient(): PrismaClient {
-  if (!_prisma) {
-    const dbUrl = process.env.DATABASE_URL
-    if (!dbUrl) {
-      throw new Error(
-        "DATABASE_URL environment variable is not set. Please set it in your .env file or Vercel environment variables."
-      )
-    }
+const adapter = dbUrl ? new PrismaPg({ connectionString: dbUrl }) : undefined
 
-    const adapter = new PrismaPg({ connectionString: dbUrl })
-    _prisma = new PrismaClient({ adapter })
+function createPrismaClient(): PrismaClient {
+  if (!adapter) {
+    throw new Error(
+      "DATABASE_URL environment variable is not set. Check Vercel Environment Variables."
+    )
   }
-  return _prisma
+  return new PrismaClient({ adapter })
 }
 
-type PrismaClientLike = {
-  [K in keyof PrismaClient]: PrismaClient[K]
-}
+export const prisma = globalForPrisma.prisma ?? createPrismaClient()
 
-export const prisma = new Proxy({} as PrismaClientLike, {
-  get(_target, prop: string) {
-    if (globalForPrisma.prisma) return (globalForPrisma.prisma as unknown as Record<string, unknown>)[prop]
-    const client = getPrismaClient()
-    if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = client
-    return (client as unknown as Record<string, unknown>)[prop]
-  },
-}) as unknown as PrismaClient
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma
