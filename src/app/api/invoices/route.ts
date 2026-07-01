@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
 import { listInvoices, getInvoice, createInvoiceForSubmission } from "@/lib/data"
-import { createPayment, verifyPayment } from "@/lib/data"
 
 export async function GET() {
   try {
