@@ -34,6 +34,10 @@ export async function PATCH(
       .eq("id", payment.invoiceId)
       .single()
 
+    if (!invoice) {
+      return NextResponse.json({ success: false, message: "Invoice tidak ditemukan" }, { status: 404 })
+    }
+
     const { data: submission } = await supabase
       .from("submissions")
       .select("status, eventName, eventDate, eventTime, location, specialRequest, submissionNumber, client:clients(name,phone), package:packages(name), submission_add_ons(addOn:add_ons(name))")
