@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase"
+import { calculateDP } from "@/features/invoice/constants/invoice.constant"
 
 // ─── Submissions ────────────────────────────────
 
@@ -126,10 +127,7 @@ export async function createInvoiceForSubmission(submissionId: string, adminId?:
   )
   const grandTotal = subtotal + addonTotal
   const hasAddOns = (sub.submission_add_ons || []).length > 0
-  const dpAmount =
-    pkg.category === "Wedding"
-      ? Math.round(grandTotal * 0.4)
-      : hasAddOns ? 100000 : 50000
+  const dpAmount = calculateDP(grandTotal, pkg.category, hasAddOns)
 
   // Get revision number
   const { data: lastInv } = await supabase

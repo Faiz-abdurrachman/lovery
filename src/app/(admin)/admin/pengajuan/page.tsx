@@ -39,7 +39,7 @@ export default function AdminPengajuanPage() {
   const [searchQuery, setSearchQuery] = useState("")
 
   const { data, isLoading } = useSubmissions({
-    status: (statusFilter || undefined) as SubmissionStatus | undefined,
+    status: (statusFilter && statusFilter !== "ALL" ? statusFilter : undefined) as SubmissionStatus | undefined,
     search: searchQuery || undefined,
   })
 

@@ -95,7 +95,7 @@ export function StepFiveFinal({
           <div>
             <Label htmlFor="agreedTerms" className="text-sm text-gray-600">
               Saya telah membaca dan menyetujui{" "}
-              <span className="text-lovery-pink underline">Syarat & Ketentuan</span>{" "}
+              <a href="/syarat-ketentuan" className="text-lovery-pink underline" target="_blank">Syarat & Ketentuan</a>{" "}
               Lovery Photography.
             </Label>
             {errors.agreedTerms && (

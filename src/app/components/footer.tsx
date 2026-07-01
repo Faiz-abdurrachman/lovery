@@ -32,8 +32,6 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Kontak</h3>
             <div className="space-y-2 text-sm text-gray-400">
-              <p>WhatsApp: 0812-3456-7890</p>
-              <p>Instagram: @loveryphotography</p>
               <p>Yogyakarta, Indonesia</p>
             </div>
           </div>

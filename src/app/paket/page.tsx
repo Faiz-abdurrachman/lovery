@@ -1,22 +1,18 @@
-import Link from "next/link"
-import { prisma } from "@/lib/prisma"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
-
-function formatRupiah(n: number) {
-  return new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(n)
-}
+import { supabase } from "@/lib/supabase"
 
 const ICON: Record<string, string> = { Graduation: "🎓", Wedding: "💍", Casual: "📷", Event: "🎉" }
 
 export const dynamic = "force-dynamic"
 
 export default async function PaketPage() {
-  const packages = await prisma.package.findMany({
-    where: { isActive: true },
-    orderBy: [{ category: "asc" }, { name: "asc" }],
-  })
-  const categories = [...new Set(packages.map((p) => p.category))]
+  const { data: packages } = await supabase
+    .from("packages")
+    .select("*")
+    .eq("isActive", true)
+    .order("category", { ascending: true })
+
+  const all = packages || []
+  const categories = [...new Set(all.map((p: { category: string }) => p.category))]
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -26,30 +22,36 @@ export default async function PaketPage() {
           <p className="text-gray-500 mt-3 max-w-md mx-auto">Pilih paket fotografi yang sesuai dengan kebutuhan Anda.</p>
         </div>
 
-        {categories.map((cat) => {
-          const items = packages.filter((p) => p.category === cat)
-          return (
-            <div key={cat} className="mb-10">
-              <h2 className="text-xl font-bold text-black mb-4 flex items-center gap-2">
-                <span>{ICON[cat] || "📸"}</span> {cat}
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {items.map((pkg) => (
-                  <div key={pkg.id} className="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
-                    <p className="font-semibold text-black text-lg">{pkg.name}</p>
-                    <p className="text-gray-500 text-sm mt-2 line-clamp-3">{pkg.description}</p>
-                    <p className="text-lovery-pink font-bold text-xl mt-4">{formatRupiah(pkg.price)}</p>
-                    <Link href={`/ajukan-sesi?pkg=${pkg.id}`}>
-                      <Button className="w-full mt-4 rounded-xl bg-lovery-pink hover:bg-lovery-pink-dark text-white">
-                        Pilih <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </Link>
-                  </div>
-                ))}
+        {all.length === 0 ? (
+          <div className="text-center py-16 text-gray-400">
+            <p className="text-lg">Belum ada paket tersedia.</p>
+          </div>
+        ) : (
+          categories.map((cat) => {
+            const items = all.filter((p: { category: string }) => p.category === cat)
+            return (
+              <div key={cat} className="mb-10">
+                <h2 className="text-xl font-bold text-black mb-4 flex items-center gap-2">
+                  <span>{ICON[cat] || "📸"}</span> {cat}
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {items.map((pkg: { id: string; name: string; description: string | null; price: number }) => (
+                    <div key={pkg.id} className="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-md transition-shadow">
+                      <p className="font-semibold text-black text-lg">{pkg.name}</p>
+                      <p className="text-gray-500 text-sm mt-2 line-clamp-3">{pkg.description}</p>
+                      <p className="text-lovery-pink font-bold text-xl mt-4">
+                        {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(pkg.price)}
+                      </p>
+                      <a href={`/ajukan-sesi?pkg=${pkg.id}`} className="mt-4 rounded-xl bg-lovery-pink hover:bg-lovery-pink-dark text-white px-4 py-2 text-sm font-medium inline-flex items-center gap-2">
+                        Pilih
+                      </a>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })
+        )}
       </div>
     </div>
   )

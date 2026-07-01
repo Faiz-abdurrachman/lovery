@@ -125,7 +125,7 @@ export function StatusContent() {
                 </div>
               </CardContent>
             </Card>
-            <Button variant="outline" className="w-full rounded-xl" onClick={() => window.open("https://wa.me/6281234567890", "_blank")}>
+            <Button variant="outline" className="w-full rounded-xl" onClick={() => window.open(`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281234567890"}`, "_blank")}>
               <ExternalLink className="mr-2 h-4 w-4" /> Hubungi Admin via WhatsApp
             </Button>
           </div>

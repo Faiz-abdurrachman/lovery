@@ -26,12 +26,15 @@ export function Services({ packages }: ServiceProps) {
         <div className="text-center mb-12">
           <p className="text-sm font-medium text-lovery-pink uppercase tracking-wide">Layanan</p>
           <h2 className="text-3xl lg:text-4xl font-bold text-black mt-3">Paket Fotografi</h2>
-          <p className="text-gray-500 mt-4 max-w-lg mx-auto">
-            Pilih paket yang sesuai dengan kebutuhan Anda.
-          </p>
+          <p className="text-gray-500 mt-4 max-w-lg mx-auto">Pilih paket yang sesuai dengan kebutuhan Anda.</p>
         </div>
 
-        {categories.map((cat) => {
+        {packages.length === 0 ? (
+          <div className="text-center py-16 text-gray-400">
+            <p className="text-lg">Belum ada paket tersedia.</p>
+          </div>
+        ) : (
+          categories.map((cat) => {
           const catPackages = packages.filter((p) => p.category === cat)
           return (
             <div key={cat} className="mb-10">
@@ -55,6 +58,7 @@ export function Services({ packages }: ServiceProps) {
             </div>
           )
         })}
+        )}
       </div>
     </section>
   )
