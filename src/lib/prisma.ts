@@ -1,24 +1,19 @@
 import { PrismaClient } from "@prisma/client"
-import { PrismaPg } from "@prisma/adapter-pg"
 
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined
-}
+const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient }
 
-function createPrisma(customUrl?: string): PrismaClient {
-  const url = customUrl || process.env.DATABASE_URL
+// eslint-disable-next-line
+function getClient(): PrismaClient {
+  const url = process.env.DATABASE_URL
   if (!url) throw new Error("DATABASE_URL not set")
-  return new PrismaClient({
-    adapter: new PrismaPg({ connectionString: url }),
-  })
+  return new PrismaClient({ datasourceUrl: url } as any)
 }
+
+let _prisma: PrismaClient
 
 export const prisma = new Proxy({} as PrismaClient, {
-  get(_target, prop: string | symbol) {
-    if (globalForPrisma.prisma) {
-      return (globalForPrisma.prisma as unknown as Record<string, unknown>)[prop as string]
-    }
-    globalForPrisma.prisma = createPrisma()
-    return (globalForPrisma.prisma as unknown as Record<string, unknown>)[prop as string]
+  get(_, prop: string | symbol) {
+    if (!_prisma) _prisma = getClient()
+    return (_prisma as any)[prop]
   },
 })
