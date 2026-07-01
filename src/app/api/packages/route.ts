@@ -1,13 +1,17 @@
 import { NextResponse } from "next/server"
-import { prisma } from "@/lib/prisma"
+import { supabase } from "@/lib/supabase"
 
 export async function GET() {
   try {
-    const packages = await prisma.package.findMany({
-      where: { isActive: true },
-      orderBy: { category: "asc" },
-    })
-    return NextResponse.json({ success: true, data: packages })
+    const { data, error } = await supabase
+      .from("packages")
+      .select("*")
+      .eq("isActive", true)
+      .order("category", { ascending: true })
+
+    if (error) throw error
+
+    return NextResponse.json({ success: true, data })
   } catch (error) {
     console.error("Get packages error:", error)
     return NextResponse.json(

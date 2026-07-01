@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
-import { prisma } from "@/lib/prisma"
+import { supabase } from "@/lib/supabase"
 import { submissionSchema } from "@/features/submission/schemas/submission.schema"
-import { Prisma } from "@prisma/client"
+
+function generateNumber(prefix: string, year: number, seq: number): string {
+  return `${prefix}-${String(seq).padStart(4, "0")}-${year}`
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -20,85 +23,99 @@ export async function POST(request: NextRequest) {
     }
 
     const data = parsed.data
+    const year = new Date().getFullYear()
 
-    const submissionNumber = await generateSubmissionNumber()
-
-    const result = await prisma.$transaction(async (tx: any) => {
-      const client = await tx.client.upsert({
-        where: { phone: data.phone },
-        update: {
-          name: data.name,
-          instagram: data.instagram || undefined,
-          allowPublish: data.allowPublish,
-        },
-        create: {
-          clientNumber: await generateClientNumber(),
-          name: data.name,
+    // Upsert client
+    const { data: client, error: clientError } = await supabase
+      .from("clients")
+      .upsert(
+        {
           phone: data.phone,
-          instagram: data.instagram || undefined,
+          name: data.name,
+          instagram: data.instagram || null,
           allowPublish: data.allowPublish,
+          clientNumber: "",
         },
-      })
+        { onConflict: "phone" }
+      )
+      .select()
+      .single()
 
-      const submission = await tx.submission.create({
-        data: {
-          submissionNumber,
-          clientId: client.id,
-          packageId: data.packageId,
-          eventName: data.eventName,
-          eventDate: data.eventDate,
-          eventTime: data.eventTime,
-          location: data.location,
-          specialRequest: data.specialRequest || undefined,
-          status: "PENDING_REVIEW",
-          submissionAddOns: {
-            create: data.addonIds.map((addonId: string) => ({
-              addonId,
-              priceSnapshot: 0,
-            })),
-          },
-        },
-        include: {
-          submissionAddOns: true,
-        },
-      })
+    if (clientError) throw clientError
 
-      if (data.addonIds.length > 0) {
-        const addOns = await tx.addOn.findMany({
-          where: { id: { in: data.addonIds } },
-        })
+    // Update client number for new clients
+    if (!client.clientNumber || client.clientNumber === "") {
+      const { count } = await supabase
+        .from("clients")
+        .select("*", { count: "exact", head: true })
 
-        for (const item of submission.submissionAddOns) {
-          const addon = addOns.find((a: { id: string }) => a.id === item.addonId)
-          if (addon) {
-            await tx.submissionAddOn.update({
-              where: {
-                submissionId_addonId: {
-                  submissionId: submission.id,
-                  addonId: item.addonId,
-                },
-              },
-              data: { priceSnapshot: addon.price },
-            })
-          }
-        }
+      await supabase
+        .from("clients")
+        .update({ clientNumber: `CLI-${String((count || 0)).padStart(5, "0")}` })
+        .eq("id", client.id)
+    }
+
+    // Generate submission number
+    const { count: subCount } = await supabase
+      .from("submissions")
+      .select("*", { count: "exact", head: true })
+
+    const subNumber = generateNumber("LVR", year, (subCount || 0) + 1)
+
+    // Get addon prices
+    let addonPrices: Record<string, number> = {}
+    if (data.addonIds.length > 0) {
+      const { data: addons } = await supabase
+        .from("add_ons")
+        .select("id,price")
+        .in("id", data.addonIds)
+
+      if (addons) {
+        addonPrices = Object.fromEntries(addons.map((a: { id: string; price: number }) => [a.id, a.price]))
       }
+    }
 
-      await tx.timeline.create({
-        data: {
-          submissionId: submission.id,
-          activity: "Pengajuan dibuat",
-          description: "Klien mengirim pengajuan sesi",
-        },
+    // Create submission
+    const { data: submission, error: subError } = await supabase
+      .from("submissions")
+      .insert({
+        submissionNumber: subNumber,
+        clientId: client.id,
+        packageId: data.packageId,
+        eventName: data.eventName,
+        eventDate: data.eventDate.toISOString().split("T")[0],
+        eventTime: data.eventTime,
+        location: data.location,
+        specialRequest: data.specialRequest || null,
+        status: "PENDING_REVIEW",
       })
+      .select()
+      .single()
 
-      return { submission, client }
+    if (subError) throw subError
+
+    // Create submission addons
+    if (data.addonIds.length > 0) {
+      await supabase.from("submission_add_ons").insert(
+        data.addonIds.map((id: string) => ({
+          submissionId: submission.id,
+          addonId: id,
+          priceSnapshot: addonPrices[id] || 0,
+        }))
+      )
+    }
+
+    // Create timeline
+    await supabase.from("timelines").insert({
+      submissionId: submission.id,
+      activity: "Pengajuan dibuat",
+      description: "Klien mengirim pengajuan sesi",
     })
 
     return NextResponse.json(
       {
         success: true,
-        data: result.submission,
+        data: submission,
         message: "Pengajuan berhasil dikirim",
       },
       { status: 201 }
@@ -110,19 +127,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     )
   }
-}
-
-async function generateSubmissionNumber(): Promise<string> {
-  const year = new Date().getFullYear()
-  const count = await prisma.submission.count({
-    where: { createdAt: { gte: new Date(`${year}-01-01`) } },
-  })
-  const seq = String(count + 1).padStart(4, "0")
-  return `LVR-${seq}-${year}`
-}
-
-async function generateClientNumber(): Promise<string> {
-  const count = await prisma.client.count()
-  const seq = String(count + 1).padStart(5, "0")
-  return `CLI-${seq}`
 }
