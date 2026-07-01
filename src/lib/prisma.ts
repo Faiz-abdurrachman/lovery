@@ -28,9 +28,9 @@ type PrismaClientLike = {
 
 export const prisma = new Proxy({} as PrismaClientLike, {
   get(_target, prop: string) {
-    if (globalForPrisma.prisma) return (globalForPrisma.prisma as Record<string, unknown>)[prop]
+    if (globalForPrisma.prisma) return (globalForPrisma.prisma as unknown as Record<string, unknown>)[prop]
     const client = getPrismaClient()
     if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = client
-    return (client as Record<string, unknown>)[prop]
+    return (client as unknown as Record<string, unknown>)[prop]
   },
 }) as unknown as PrismaClient
