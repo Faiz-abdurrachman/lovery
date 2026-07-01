@@ -27,15 +27,8 @@ export function AdminHeader() {
     <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-gray-200 bg-white px-4 lg:px-6">
       <div className="flex items-center gap-3">
         <Sheet>
-          <SheetTrigger>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden -ml-2"
-              aria-label="Buka menu"
-            >
-              <Menu className="h-5 w-5" />
-            </Button>
+          <SheetTrigger className="lg:hidden -ml-2 p-2 rounded-xl hover:bg-gray-100" aria-label="Buka menu">
+            <Menu className="h-5 w-5 text-black" />
           </SheetTrigger>
           <SheetContent side="left" className="p-0 w-64">
             <Sidebar className="h-full" />
