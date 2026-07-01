@@ -81,6 +81,12 @@ export function StepTwoAddOns({
           Memuat daftar add-on...
         </p>
       )}
+
+      {addOns.length > 0 && selectedIds.length === 0 && (
+        <p className="text-center text-sm text-gray-400 mt-6">
+          Tidak ada add-on yang dipilih. Klik <strong>Selanjutnya</strong> untuk melanjutkan.
+        </p>
+      )}
     </div>
   )
 }

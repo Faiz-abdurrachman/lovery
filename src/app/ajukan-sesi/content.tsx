@@ -43,8 +43,8 @@ export default function AjukanSesiContent() {
     resolver: zodResolver(submissionSchema),
     defaultValues: {
       addonIds: [],
-      allowPublish: true,
-      agreedTerms: false as unknown as true,
+      allowPublish: "true",
+      agreedTerms: true as unknown as true,
     },
     mode: "onChange",
   })

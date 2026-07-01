@@ -34,7 +34,7 @@ export const submissionSchema = z.object({
     .max(500, "Request khusus maksimal 500 karakter")
     .optional()
     .or(z.literal("")),
-  allowPublish: z.boolean(),
+  allowPublish: z.preprocess((v) => v === "true" || v === true, z.boolean()),
   agreedTerms: z.boolean().refine((v) => v === true, {
     message: "Anda harus menyetujui Syarat & Ketentuan",
   }),
