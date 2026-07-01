@@ -101,6 +101,7 @@ export async function updateSubmissionStatus(
   }
 
   await supabase.from("timelines").insert({
+    id: crypto.randomUUID(),
     submissionId: id,
     activity: activityLabels[status] || `Status: ${status}`,
     description: adminNote || null,
@@ -158,6 +159,7 @@ export async function createInvoiceForSubmission(submissionId: string, adminId?:
   const { data: invoice, error } = await supabase
     .from("invoices")
     .insert({
+      id: crypto.randomUUID(),
       invoiceNumber: invNumber,
       submissionId,
       subtotal,
@@ -176,6 +178,7 @@ export async function createInvoiceForSubmission(submissionId: string, adminId?:
   if (error) throw error
 
   await supabase.from("timelines").insert({
+    id: crypto.randomUUID(),
     submissionId,
     activity: "Invoice dibuat",
     description: `Invoice ${invNumber} (Revisi ${revision})`,
@@ -218,7 +221,7 @@ export async function updateSettings(body: Record<string, unknown>) {
   if (!data) {
     const { data: created, error } = await supabase
       .from("settings")
-      .insert({ ...body, whatsapp: body.whatsapp || "6281234567890", updatedAt: new Date().toISOString() })
+      .insert({ id: crypto.randomUUID(), ...body, whatsapp: body.whatsapp || "6281234567890", updatedAt: new Date().toISOString() })
       .select()
       .single()
     if (error) throw error
@@ -277,7 +280,7 @@ export async function createPayment(data: {
 
   const { data: payment, error } = await supabase
     .from("payments")
-    .insert({ ...data, paymentNumber })
+    .insert({ id: crypto.randomUUID(), ...data, paymentNumber })
     .select()
     .single()
 
@@ -306,6 +309,7 @@ export async function verifyPayment(paymentId: string, adminId: string) {
 
   const activity = isDP ? "DP Diverifikasi" : "Pelunasan Diverifikasi"
   await supabase.from("timelines").insert({
+    id: crypto.randomUUID(),
     submissionId: payment.invoice.submissionId,
     activity,
     description: `${new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(payment.amount)} via ${payment.paymentMethod}`,

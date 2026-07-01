@@ -147,6 +147,7 @@ export async function POST(request: NextRequest) {
 
     // Create timeline
     await supabase.from("timelines").insert({
+      id: crypto.randomUUID(),
       submissionId: submission.id,
       activity: "Pengajuan dibuat",
       description: "Klien mengirim pengajuan sesi",

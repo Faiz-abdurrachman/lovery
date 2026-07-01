@@ -40,6 +40,7 @@ export async function PATCH(
     await supabase.from("submissions").update(updateData).eq("id", id)
 
     await supabase.from("timelines").insert({
+      id: crypto.randomUUID(),
       submissionId: id,
       activity: send ? "Hasil dikirim" : "Link Google Drive diperbarui",
       description: driveLink,
