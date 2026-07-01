@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
+import { settingsSchema } from "@/features/settings/schemas/settings.schema"
 
 export async function GET() {
   try {
@@ -35,37 +36,46 @@ export async function PATCH(request: NextRequest) {
     }
 
     const body = await request.json()
+    const parsed = settingsSchema.safeParse(body)
+    if (!parsed.success) {
+      return NextResponse.json(
+        { success: false, message: "Validasi gagal", errors: parsed.error.flatten().fieldErrors },
+        { status: 400 }
+      )
+    }
+
+    const data = parsed.data
     let settings = await prisma.settings.findFirst()
 
     if (!settings) {
       settings = await prisma.settings.create({
         data: {
-          studioName: body.studioName || "Lovery Photography",
-          whatsapp: body.whatsapp || "6281234567890",
-          bankName: body.bankName || undefined,
-          bankAccount: body.bankAccount || undefined,
-          bankHolder: body.bankHolder || undefined,
-          qrisImage: body.qrisImage || undefined,
-          googleCalendarId: body.googleCalendarId || undefined,
-          googleDriveFolder: body.googleDriveFolder || undefined,
-          businessHourStart: body.businessHourStart || undefined,
-          businessHourEnd: body.businessHourEnd || undefined,
+          studioName: data.studioName || "Lovery Photography",
+          whatsapp: data.whatsapp || "6281234567890",
+          bankName: data.bankName || undefined,
+          bankAccount: data.bankAccount || undefined,
+          bankHolder: data.bankHolder || undefined,
+          qrisImage: data.qrisImage || undefined,
+          googleCalendarId: data.googleCalendarId || undefined,
+          googleDriveFolder: data.googleDriveFolder || undefined,
+          businessHourStart: data.businessHourStart || undefined,
+          businessHourEnd: data.businessHourEnd || undefined,
         },
       })
     } else {
       settings = await prisma.settings.update({
         where: { id: settings.id },
         data: {
-          studioName: body.studioName ?? settings.studioName,
-          whatsapp: body.whatsapp ?? settings.whatsapp,
-          bankName: body.bankName !== undefined ? body.bankName || null : settings.bankName,
-          bankAccount: body.bankAccount !== undefined ? body.bankAccount || null : settings.bankAccount,
-          bankHolder: body.bankHolder !== undefined ? body.bankHolder || null : settings.bankHolder,
-          qrisImage: body.qrisImage !== undefined ? body.qrisImage || null : settings.qrisImage,
-          googleCalendarId: body.googleCalendarId !== undefined ? body.googleCalendarId || null : settings.googleCalendarId,
-          googleDriveFolder: body.googleDriveFolder !== undefined ? body.googleDriveFolder || null : settings.googleDriveFolder,
-          businessHourStart: body.businessHourStart !== undefined ? body.businessHourStart || null : settings.businessHourStart,
-          businessHourEnd: body.businessHourEnd !== undefined ? body.businessHourEnd || null : settings.businessHourEnd,
+          studioName: data.studioName ?? settings.studioName,
+          whatsapp: data.whatsapp ?? settings.whatsapp,
+          bankName: data.bankName !== undefined ? data.bankName || null : settings.bankName,
+          bankAccount: data.bankAccount !== undefined ? data.bankAccount || null : settings.bankAccount,
+          bankHolder: data.bankHolder !== undefined ? data.bankHolder || null : settings.bankHolder,
+          qrisImage: data.qrisImage !== undefined ? data.qrisImage || null : settings.qrisImage,
+          googleCalendarId: data.googleCalendarId !== undefined ? data.googleCalendarId || null : settings.googleCalendarId,
+          googleDriveFolder: data.googleDriveFolder !== undefined ? data.googleDriveFolder || null : settings.googleDriveFolder,
+          businessHourStart: data.businessHourStart !== undefined ? data.businessHourStart || null : settings.businessHourStart,
+          businessHourEnd: data.businessHourEnd !== undefined ? data.businessHourEnd || null : settings.businessHourEnd,
         },
       })
     }

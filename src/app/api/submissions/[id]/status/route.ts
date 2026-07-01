@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 import { NEXT_ALLOWED_STATUSES } from "@/features/submission/constants/submission.constant"
+import { calculateDP } from "@/features/invoice/constants/invoice.constant"
 import type { SubmissionStatus, Prisma } from "@prisma/client"
 
 async function generateInvNumber(tx: Prisma.TransactionClient): Promise<string> {
@@ -97,13 +98,7 @@ export async function PATCH(
           )
           const grandTotal = subtotal + addonTotal
           const hasAddOns = submission.submissionAddOns.length > 0
-          const category = submission.package.category
-          const dpAmount =
-            category === "Wedding"
-              ? Math.round(grandTotal * 0.4)
-              : hasAddOns
-                ? 100000
-                : 50000
+          const dpAmount = calculateDP(grandTotal, submission.package.category, hasAddOns)
 
           await tx.invoice.updateMany({
             where: { submissionId: id, status: "ACTIVE" },

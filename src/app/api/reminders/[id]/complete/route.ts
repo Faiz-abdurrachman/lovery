@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
+import { Prisma } from "@prisma/client"
 
 export async function PATCH(
   _request: NextRequest,
@@ -21,6 +22,12 @@ export async function PATCH(
 
     return NextResponse.json({ success: true, data: updated })
   } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
+      return NextResponse.json(
+        { success: false, message: "Pengingat tidak ditemukan" },
+        { status: 404 }
+      )
+    }
     console.error("Complete reminder error:", error)
     return NextResponse.json({ success: false, message: "Terjadi kesalahan" }, { status: 500 })
   }

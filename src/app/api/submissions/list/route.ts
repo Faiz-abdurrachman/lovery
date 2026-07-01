@@ -20,7 +20,9 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get("limit") || "10")
     const skip = (page - 1) * limit
 
-    const where: Prisma.SubmissionWhereInput = {}
+    const where: Prisma.SubmissionWhereInput = {
+      deletedAt: null,
+    }
 
     if (status) {
       where.status = status as SubmissionStatus
