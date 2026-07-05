@@ -46,6 +46,8 @@ export function Footer() {
           <p>&copy; {new Date().getFullYear()} Lovery Photography. All rights reserved.</p>
           <div className="mt-4 sm:mt-0 flex gap-4">
             <Link href="/syarat-ketentuan" className="hover:text-white transition-colors">Syarat & Ketentuan</Link>
+            <span className="text-gray-800">|</span>
+            <Link href="/admin/login" className="hover:text-white transition-colors">Admin Login</Link>
           </div>
         </div>
       </div>
