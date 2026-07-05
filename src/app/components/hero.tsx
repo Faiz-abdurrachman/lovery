@@ -21,7 +21,7 @@ export function Hero() {
           </motion.div>
 
           {/* Massive Overlapping Typo */}
-          <div className="relative font-heading font-black text-black leading-[0.8] tracking-tighter uppercase text-[4rem] sm:text-[8rem] lg:text-[10rem]">
+          <div className="relative font-heading font-black text-black leading-none sm:leading-[0.8] tracking-tighter uppercase text-[3.2rem] sm:text-[8rem] lg:text-[10rem]">
             <motion.div 
               initial={{ x: -200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
@@ -34,7 +34,7 @@ export function Hero() {
               initial={{ x: 200, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2, type: "spring", damping: 12 }}
-              className="relative z-20 text-white bg-black w-fit px-6 sm:px-10 py-2 sm:py-3 -skew-x-12 -mt-4 sm:-mt-6 shadow-[8px_8px_0_0_#E89CC9] sm:shadow-[12px_12px_0_0_#E89CC9] ml-6 sm:ml-12 leading-none flex items-center"
+              className="relative z-20 text-white bg-black w-fit px-4 sm:px-10 py-1 sm:py-3 -skew-x-12 mt-1 sm:-mt-6 shadow-[6px_6px_0_0_#E89CC9] sm:shadow-[12px_12px_0_0_#E89CC9] ml-4 sm:ml-12 leading-none flex items-center"
             >
               <span className="translate-y-1">MOMEN</span>
             </motion.div>
@@ -42,7 +42,7 @@ export function Hero() {
               initial={{ y: 200, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3, type: "spring", damping: 12 }}
-              className="relative z-10 text-white mt-4 [-webkit-text-stroke:2px_#111111] sm:[-webkit-text-stroke:3px_#111111] drop-shadow-[4px_4px_0_#111111] sm:drop-shadow-[8px_8px_0_#111111] ml-2 sm:ml-4"
+              className="relative z-10 text-white mt-2 sm:mt-4 [-webkit-text-stroke:2px_#111111] sm:[-webkit-text-stroke:3px_#111111] drop-shadow-[4px_4px_0_#111111] sm:drop-shadow-[8px_8px_0_#111111] ml-2 sm:ml-4"
             >
               SPESIAL
             </motion.div>

@@ -37,8 +37,8 @@ export function Sidebar({ className }: { className?: string }) {
         href="/admin"
         className="flex items-center gap-3 px-6 py-6 border-b-4 border-black bg-lovery-pink"
       >
-        <div className="w-10 h-10 border-2 border-black bg-white flex items-center justify-center shadow-[2px_2px_0_0_#111111]">
-          <Camera className="w-6 h-6 text-black" />
+        <div className="w-10 h-10 border-2 border-black bg-white flex items-center justify-center shadow-[2px_2px_0_0_#111111] overflow-hidden">
+          <img src="/LOGO.png" alt="Lovery" className="w-full h-full object-cover scale-110" />
         </div>
         <span className="font-heading font-black text-black text-xl tracking-widest uppercase mt-1">Lovery</span>
       </Link>
