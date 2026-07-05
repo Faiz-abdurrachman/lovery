@@ -31,7 +31,7 @@ export const SUBMISSION_STATUS_COLORS: Record<SubmissionStatus, string> = {
 export const SUBMISSION_GENERATOR_PREFIX = "LVR"
 
 export const NEXT_ALLOWED_STATUSES: Record<SubmissionStatus, SubmissionStatus[]> = {
-  PENDING_REVIEW: ["WAITING_DP", "REJECTED", "RESCHEDULE"],
+  PENDING_REVIEW: ["WAITING_DP", "RESCHEDULE"],
   WAITING_DP: ["DP_PAID", "CANCELLED"],
   DP_PAID: ["PAID", "CANCELLED"],
   PAID: ["ON_SESSION", "CANCELLED"],
