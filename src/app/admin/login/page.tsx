@@ -68,7 +68,7 @@ export default function LoginPage() {
 
         <div className="text-center space-y-4 mb-10">
           <div className="mx-auto w-24 h-24 bg-lovery-pink border-4 border-black shadow-[6px_6px_0_0_#111111] flex items-center justify-center p-3 -skew-y-3">
-            <img src="/LOGO.png" alt="Lovery" className="w-full h-full object-contain" />
+            <img src="/logo bulat.png" alt="Lovery" className="w-full h-full object-contain" />
           </div>
           <div className="pt-4">
             <h1 className="text-2xl md:text-3xl font-heading font-black text-black uppercase tracking-widest">
