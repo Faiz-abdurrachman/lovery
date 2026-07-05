@@ -1,0 +1,16 @@
+[     464ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[     553ms] [LOG] [HMR] connected @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[     776ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[     827ms] [LOG] [Fast Refresh] done in 182ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[     944ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[     988ms] [LOG] [Fast Refresh] done in 143ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   16703ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   16939ms] [LOG] [Fast Refresh] done in 336ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   34558ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   34779ms] [LOG] [Fast Refresh] done in 322ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   60225ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   60390ms] [LOG] [Fast Refresh] done in 265ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   90739ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   90840ms] [LOG] [Fast Refresh] done in 202ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[  102978ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[  103087ms] [LOG] [Fast Refresh] done in 209ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477

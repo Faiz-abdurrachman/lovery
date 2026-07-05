@@ -1,0 +1,22 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e3]:
+    - generic [ref=f3e4]:
+      - img [ref=f3e6]
+      - heading "Status Pengajuan" [level=1] [ref=f3e9]
+      - paragraph [ref=f3e10]: Lacak status pengajuan sesi Anda.
+    - generic [ref=f3e13]:
+      - generic [ref=f3e14]:
+        - generic [ref=f3e15]: Nomor Pengajuan
+        - textbox "Nomor Pengajuan" [ref=f3e16]:
+          - /placeholder: LVR-0001-2026
+      - generic [ref=f3e17]:
+        - generic [ref=f3e18]: Nomor WhatsApp
+        - textbox "Nomor WhatsApp" [ref=f3e19]:
+          - /placeholder: "08123456789"
+      - button "Lacak Status" [ref=f3e20]:
+        - img
+        - text: Lacak Status
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f3e26] [cursor=pointer]:
+    - img [ref=f3e27]
+  - alert [ref=f3e30]

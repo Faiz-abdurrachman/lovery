@@ -1,0 +1,149 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e37]:
+    - complementary [ref=f1e38]:
+      - link "Lovery Photography Lovery Photography" [ref=f1e39] [cursor=pointer]:
+        - /url: /admin
+        - img "Lovery Photography" [ref=f1e40]
+        - generic [ref=f1e41]: Lovery Photography
+      - navigation [ref=f1e42]:
+        - link "Dashboard" [ref=f1e43] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=f1e44]
+          - generic [ref=f1e49]: Dashboard
+        - link "Sesi" [ref=f1e50] [cursor=pointer]:
+          - /url: /admin/pengajuan
+          - img [ref=f1e51]
+          - generic [ref=f1e54]: Sesi
+        - link "Kalender" [ref=f1e55] [cursor=pointer]:
+          - /url: /admin/kalender
+          - img [ref=f1e56]
+          - generic [ref=f1e58]: Kalender
+        - link "Pendapatan" [ref=f1e59] [cursor=pointer]:
+          - /url: /admin/pendapatan
+          - img [ref=f1e60]
+          - generic [ref=f1e62]: Pendapatan
+        - link "Klien" [ref=f1e63] [cursor=pointer]:
+          - /url: /admin/klien
+          - img [ref=f1e64]
+          - generic [ref=f1e69]: Klien
+        - link "Pengaturan" [ref=f1e70] [cursor=pointer]:
+          - /url: /admin/pengaturan
+          - img [ref=f1e71]
+          - generic [ref=f1e74]: Pengaturan
+    - generic [ref=f1e75]:
+      - banner [ref=f1e76]:
+        - generic [ref=f1e78]: Lovery Photography
+        - button "AL Admin Lovery" [ref=f1e79] [cursor=pointer]:
+          - generic [ref=f1e81]: AL
+          - generic [ref=f1e82]: Admin Lovery
+      - main [ref=f1e83]:
+        - generic [ref=f1e84]:
+          - generic [ref=f1e85]:
+            - heading "Selamat datang, Admin" [level=1] [ref=f1e86]
+            - paragraph [ref=f1e87]: Berikut ringkasan operasional studio hari ini.
+          - generic [ref=f1e88]:
+            - generic [ref=f1e90]:
+              - img [ref=f1e91]
+              - text: Yang Harus Dikerjakan
+            - generic [ref=f1e93]:
+              - link "Sesi - undefined (15 Aug) LVR-YASOP-2026 • E2E Test Final" [ref=f1e94] [cursor=pointer]:
+                - /url: /admin/pengajuan/cdb294b6-07cf-4707-89b0-7509c86dbc7e
+                - img [ref=f1e96]
+                - generic [ref=f1e99]:
+                  - paragraph [ref=f1e100]: Sesi - undefined (15 Aug)
+                  - paragraph [ref=f1e101]: LVR-YASOP-2026 • E2E Test Final
+              - link "Sesi - undefined (10 Aug) LVR-XSLR0-2026 • Budi Santoso" [ref=f1e102] [cursor=pointer]:
+                - /url: /admin/pengajuan/e4550b03-05f3-460e-9d2d-59539c46712f
+                - img [ref=f1e104]
+                - generic [ref=f1e107]:
+                  - paragraph [ref=f1e108]: Sesi - undefined (10 Aug)
+                  - paragraph [ref=f1e109]: LVR-XSLR0-2026 • Budi Santoso
+          - generic [ref=f1e110]:
+            - generic [ref=f1e112]:
+              - paragraph [ref=f1e113]: "1"
+              - paragraph [ref=f1e114]: Pengajuan Baru
+            - generic [ref=f1e116]:
+              - paragraph [ref=f1e117]: "4"
+              - paragraph [ref=f1e118]: Menunggu DP
+            - generic [ref=f1e120]:
+              - paragraph [ref=f1e121]: "3"
+              - paragraph [ref=f1e122]: DP Diterima
+            - generic [ref=f1e124]:
+              - paragraph [ref=f1e125]: "0"
+              - paragraph [ref=f1e126]: Proses Editing
+            - generic [ref=f1e128]:
+              - paragraph [ref=f1e129]: "0"
+              - paragraph [ref=f1e130]: Sesi Hari Ini
+            - generic [ref=f1e132]:
+              - paragraph [ref=f1e133]: "0"
+              - paragraph [ref=f1e134]: Hasil Blm Dikirim
+          - generic [ref=f1e135]:
+            - generic [ref=f1e137]:
+              - img [ref=f1e138]
+              - text: Agenda Hari Ini
+            - paragraph [ref=f1e141]: Tidak ada sesi hari ini.
+          - generic [ref=f1e142]:
+            - generic [ref=f1e143]:
+              - generic [ref=f1e145]:
+                - img [ref=f1e146]
+                - text: Pendapatan
+              - generic [ref=f1e150]:
+                - generic [ref=f1e151]:
+                  - paragraph [ref=f1e152]: Hari Ini
+                  - paragraph [ref=f1e153]: Rp 200.000
+                - generic [ref=f1e154]:
+                  - paragraph [ref=f1e155]: Bulan Ini
+                  - paragraph [ref=f1e156]: Rp 300.000
+                - generic [ref=f1e157]:
+                  - paragraph [ref=f1e158]: Outstanding
+                  - paragraph [ref=f1e159]: Rp 5.750.000
+                - generic [ref=f1e160]:
+                  - paragraph [ref=f1e161]: DP Hari Ini
+                  - paragraph [ref=f1e162]: Rp 200.000
+            - generic [ref=f1e163]:
+              - generic [ref=f1e165]:
+                - img [ref=f1e166]
+                - text: Aktivitas Terbaru
+              - generic [ref=f1e170]:
+                - generic [ref=f1e173]:
+                  - paragraph [ref=f1e174]: 05 Jul, 16:20
+                  - paragraph [ref=f1e175]: Pengajuan dibuat
+                  - paragraph [ref=f1e176]: Klien mengirim pengajuan sesi
+                  - paragraph [ref=f1e177]: LVR-ZY8FS-2026
+                - generic [ref=f1e180]:
+                  - paragraph [ref=f1e181]: 05 Jul, 10:36
+                  - paragraph [ref=f1e182]: Invoice dibuat
+                  - paragraph [ref=f1e183]: Invoice INVMZI047326 (Revisi 1)
+                  - paragraph [ref=f1e184]: LVR-NLTXH-2026
+                - generic [ref=f1e187]:
+                  - paragraph [ref=f1e188]: 05 Jul, 10:36
+                  - paragraph [ref=f1e189]: Pengajuan diterima
+                  - paragraph [ref=f1e190]: LVR-NLTXH-2026
+                - generic [ref=f1e193]:
+                  - paragraph [ref=f1e194]: 05 Jul, 10:35
+                  - paragraph [ref=f1e195]: Pengajuan dibuat
+                  - paragraph [ref=f1e196]: Klien mengirim pengajuan sesi
+                  - paragraph [ref=f1e197]: LVR-NLTXH-2026
+                - generic [ref=f1e200]:
+                  - paragraph [ref=f1e201]: 05 Jul, 10:15
+                  - paragraph [ref=f1e202]: Invoice dibuat
+                  - paragraph [ref=f1e203]: Invoice INVWXM289226 (Revisi 1)
+                  - paragraph [ref=f1e204]: LVR-MVAKA-2026
+                - generic [ref=f1e207]:
+                  - paragraph [ref=f1e208]: 05 Jul, 10:15
+                  - paragraph [ref=f1e209]: Pengajuan diterima
+                  - paragraph [ref=f1e210]: LVR-MVAKA-2026
+                - generic [ref=f1e213]:
+                  - paragraph [ref=f1e214]: 05 Jul, 10:14
+                  - paragraph [ref=f1e215]: Pengajuan dibuat
+                  - paragraph [ref=f1e216]: Klien mengirim pengajuan sesi
+                  - paragraph [ref=f1e217]: LVR-MVAKA-2026
+                - generic [ref=f1e220]:
+                  - paragraph [ref=f1e221]: 04 Jul, 23:46
+                  - paragraph [ref=f1e222]: Invoice dibuat
+                  - paragraph [ref=f1e223]: Invoice INVG2L853626 (Revisi 1)
+                  - paragraph [ref=f1e224]: LVR-0F9NJ-2026
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f1e24] [cursor=pointer]:
+    - img [ref=f1e25]
+  - alert [ref=f1e28]

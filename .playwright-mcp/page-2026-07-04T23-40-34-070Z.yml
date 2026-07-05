@@ -1,0 +1,59 @@
+- generic [active] [ref=f16e1]:
+  - generic [ref=f16e2]:
+    - complementary [ref=f16e3]:
+      - link "Lovery Photography" [ref=f16e4] [cursor=pointer]:
+        - /url: /admin
+        - img [ref=f16e6]
+        - generic [ref=f16e9]: Lovery Photography
+      - navigation [ref=f16e10]:
+        - link "Dashboard" [ref=f16e11] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=f16e12]
+          - generic [ref=f16e17]: Dashboard
+        - link "Pengajuan" [ref=f16e18] [cursor=pointer]:
+          - /url: /admin/pengajuan
+          - img [ref=f16e19]
+          - generic [ref=f16e22]: Pengajuan
+        - link "Invoice" [ref=f16e23] [cursor=pointer]:
+          - /url: /admin/invoice
+          - img [ref=f16e24]
+          - generic [ref=f16e27]: Invoice
+        - link "Kalender" [ref=f16e28] [cursor=pointer]:
+          - /url: /admin/kalender
+          - img [ref=f16e29]
+          - generic [ref=f16e31]: Kalender
+        - link "Pendapatan" [ref=f16e32] [cursor=pointer]:
+          - /url: /admin/pendapatan
+          - img [ref=f16e33]
+          - generic [ref=f16e35]: Pendapatan
+        - link "Klien" [ref=f16e36] [cursor=pointer]:
+          - /url: /admin/klien
+          - img [ref=f16e37]
+          - generic [ref=f16e42]: Klien
+        - link "Pengaturan" [ref=f16e43] [cursor=pointer]:
+          - /url: /admin/pengaturan
+          - img [ref=f16e44]
+          - generic [ref=f16e47]: Pengaturan
+    - generic [ref=f16e48]:
+      - banner [ref=f16e49]:
+        - generic [ref=f16e51]: Lovery Photography
+        - button "A Admin" [ref=f16e52] [cursor=pointer]:
+          - generic [ref=f16e54]: A
+          - generic [ref=f16e55]: Admin
+      - main [ref=f16e56]:
+        - generic [ref=f16e57]:
+          - generic [ref=f16e58]:
+            - heading "Pengajuan" [level=1] [ref=f16e59]
+            - paragraph [ref=f16e60]: Review dan kelola seluruh pengajuan sesi dari klien.
+          - generic [ref=f16e61]:
+            - generic [ref=f16e62]:
+              - img [ref=f16e63]
+              - textbox "Cari nama, nomor pengajuan, atau WA..." [ref=f16e66]
+            - combobox [ref=f16e67]:
+              - generic [ref=f16e68]: Semua Status
+              - img: ▼
+            - textbox [ref=f16e69]
+          - img [ref=f16e72]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f16e79] [cursor=pointer]:
+    - img [ref=f16e80]

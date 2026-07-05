@@ -64,8 +64,8 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <Card className="w-full max-w-sm border-gray-200 shadow-sm">
         <CardHeader className="text-center space-y-3">
-          <div className="mx-auto w-12 h-12 rounded-xl bg-lovery-pink/20 flex items-center justify-center">
-            <Camera className="h-6 w-6 text-lovery-pink" />
+          <div className="mx-auto w-16 h-16 rounded-xl flex items-center justify-center">
+            <img src="/logo lovery bulat.jpg" alt="Lovery" className="w-14 h-14 rounded-full object-cover" />
           </div>
           <div>
             <CardTitle className="text-xl text-black">

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
-import { supabase } from "@/lib/supabase"
+import { supabaseAdmin } from "@/lib/supabase-server"
 
 export async function PATCH(
   request: NextRequest,
@@ -20,7 +20,7 @@ export async function PATCH(
       return NextResponse.json({ success: false, message: "Link harus URL valid" }, { status: 400 })
     }
 
-    const { data: submission } = await supabase.from("submissions").select("*, client:clients(name,phone)").eq("id", id).single()
+    const { data: submission } = await supabaseAdmin.from("submissions").select("*, client:clients(name,phone)").eq("id", id).single()
 
     if (!submission) {
       return NextResponse.json({ success: false, message: "Pengajuan tidak ditemukan" }, { status: 404 })
@@ -37,9 +37,9 @@ export async function PATCH(
     const updateData: Record<string, unknown> = { googleDriveLink: driveLink }
     if (send) updateData.status = "DELIVERED"
 
-    await supabase.from("submissions").update(updateData).eq("id", id)
+    await supabaseAdmin.from("submissions").update(updateData).eq("id", id)
 
-    await supabase.from("timelines").insert({
+    await supabaseAdmin.from("timelines").insert({
       id: crypto.randomUUID(),
       submissionId: id,
       activity: send ? "Hasil dikirim" : "Link Google Drive diperbarui",
@@ -47,11 +47,14 @@ export async function PATCH(
       performedById: session.user.id as string,
     })
 
+    // Supabase join `client:clients(name,phone)` returns array [{...}]
+    const clientInfo = (submission.client as any)?.[0] || submission.client
+
     return NextResponse.json({
       success: true,
       data: { driveLink },
-      clientName: submission.client?.name,
-      clientPhone: submission.client?.phone,
+      clientName: clientInfo?.name || "",
+      clientPhone: clientInfo?.phone || "",
     })
   } catch (error) {
     console.error("Drive link error:", error)

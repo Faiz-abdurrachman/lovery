@@ -1,0 +1,163 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e2]:
+    - complementary [ref=f5e3]:
+      - link "Lovery Photography Lovery Photography" [ref=f5e175] [cursor=pointer]:
+        - /url: /admin
+        - img "Lovery Photography" [ref=f5e176]
+        - generic [ref=f5e6]: Lovery Photography
+      - navigation [ref=f5e7]:
+        - link "Dashboard" [ref=f5e177] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=f5e9]
+          - generic [ref=f5e14]: Dashboard
+        - link "Sesi" [ref=f5e178] [cursor=pointer]:
+          - /url: /admin/pengajuan
+          - img [ref=f5e16]
+          - generic [ref=f5e19]: Sesi
+        - link "Kalender" [ref=f5e179] [cursor=pointer]:
+          - /url: /admin/kalender
+          - img [ref=f5e21]
+          - generic [ref=f5e23]: Kalender
+        - link "Pendapatan" [ref=f5e180] [cursor=pointer]:
+          - /url: /admin/pendapatan
+          - img [ref=f5e25]
+          - generic [ref=f5e27]: Pendapatan
+        - link "Klien" [ref=f5e181] [cursor=pointer]:
+          - /url: /admin/klien
+          - img [ref=f5e29]
+          - generic [ref=f5e34]: Klien
+        - link "Pengaturan" [ref=f5e182] [cursor=pointer]:
+          - /url: /admin/pengaturan
+          - img [ref=f5e36]
+          - generic [ref=f5e39]: Pengaturan
+    - generic [ref=f5e40]:
+      - banner [ref=f5e41]:
+        - generic [ref=f5e43]: Lovery Photography
+        - button "AL Admin Lovery" [ref=f5e183] [cursor=pointer]:
+          - generic [ref=f5e46]: AL
+          - generic [ref=f5e47]: Admin Lovery
+      - main [ref=f5e48]:
+        - generic [ref=f5e49]:
+          - generic [ref=f5e71]:
+            - link "Kembali" [ref=f5e184] [cursor=pointer]:
+              - /url: /admin/pengajuan
+              - img [ref=f5e73]
+              - text: Kembali
+            - generic [ref=f5e75]:
+              - heading "LVR-47LDB-2026" [level=1] [ref=f5e185]
+              - generic [ref=f5e77]: Menunggu DP
+          - generic [ref=f5e78]:
+            - generic [ref=f5e79]:
+              - generic [ref=f5e80]:
+                - generic [ref=f5e82]:
+                  - img [ref=f5e83]
+                  - text: Info Klien
+                - generic [ref=f5e86]:
+                  - generic [ref=f5e87]:
+                    - generic [ref=f5e88]: Nama
+                    - generic [ref=f5e89]: E2E Test WA
+                  - generic [ref=f5e90]:
+                    - generic [ref=f5e91]: WhatsApp
+                    - generic [ref=f5e92]: "081234567892"
+              - generic [ref=f5e93]:
+                - generic [ref=f5e95]:
+                  - img [ref=f5e96]
+                  - text: Detail Sesi
+                - generic [ref=f5e99]:
+                  - generic [ref=f5e100]:
+                    - generic [ref=f5e101]: Acara
+                    - generic [ref=f5e102]: Test WA
+                  - generic [ref=f5e103]:
+                    - generic [ref=f5e104]: Tanggal
+                    - generic [ref=f5e105]: Sabtu, 01 Agustus 2026
+                  - generic [ref=f5e106]:
+                    - generic [ref=f5e107]: Jam
+                    - generic [ref=f5e108]: 10:00
+                  - generic [ref=f5e109]:
+                    - generic [ref=f5e110]: Lokasi
+                    - generic [ref=f5e111]: Jogja
+              - generic [ref=f5e112]:
+                - generic [ref=f5e114]:
+                  - img [ref=f5e115]
+                  - text: Paket & Add-On
+                - generic [ref=f5e120]:
+                  - generic [ref=f5e121]: Personal
+                  - generic [ref=f5e122]: Rp 300.000
+            - generic [ref=f5e123]:
+              - generic [ref=f5e124]:
+                - generic [ref=f5e126]:
+                  - img [ref=f5e127]
+                  - text: Timeline
+                - generic [ref=f5e131]:
+                  - generic [ref=f5e136]:
+                    - paragraph [ref=f5e137]: 05 Jul, 18:19
+                    - paragraph [ref=f5e138]: Pengajuan dibuat
+                    - paragraph [ref=f5e139]: Klien mengirim pengajuan sesi
+                  - generic [ref=f5e190]:
+                    - paragraph [ref=f5e191]: 05 Jul, 18:21
+                    - paragraph [ref=f5e192]: Pengajuan diterima
+                  - generic [ref=f5e197]:
+                    - paragraph [ref=f5e198]: 05 Jul, 18:21
+                    - paragraph [ref=f5e199]: Invoice dibuat
+                    - paragraph [ref=f5e200]: Invoice INV943210726 (Revisi 1)
+              - generic [ref=f5e201]:
+                - generic [ref=f5e203]:
+                  - img [ref=f5e204]
+                  - text: Invoice
+                  - generic [ref=f5e207]: Aktif
+                - generic [ref=f5e208]:
+                  - paragraph [ref=f5e209]: INV943210726
+                  - generic [ref=f5e210]:
+                    - generic [ref=f5e211]:
+                      - generic [ref=f5e212]: Total
+                      - generic [ref=f5e213]: Rp 650.000
+                    - generic [ref=f5e214]:
+                      - generic [ref=f5e215]: DP
+                      - generic [ref=f5e216]: Rp 100.000
+                    - generic [ref=f5e217]:
+                      - generic [ref=f5e218]: Sisa
+                      - generic [ref=f5e219]: Rp 550.000
+                    - generic [ref=f5e220]:
+                      - generic [ref=f5e221]: Terkumpul
+                      - generic [ref=f5e222]: Rp 0
+                  - generic [ref=f5e223]:
+                    - button "PDF" [ref=f5e224]:
+                      - img
+                      - text: PDF
+                    - button "Bayar" [ref=f5e225]:
+                      - img
+                      - text: Bayar
+              - generic [ref=f5e140]:
+                - generic [ref=f5e142]:
+                  - img [ref=f5e143]
+                  - text: WhatsApp
+                - generic [ref=f5e145]:
+                  - paragraph [ref=f5e146]: E2E Test WA • 081234567892
+                  - generic [ref=f5e147]:
+                    - button "Invoice" [ref=f5e226]:
+                      - img
+                      - text: Invoice
+                    - button "Pengingat" [ref=f5e227]:
+                      - img
+                      - text: Pengingat
+                  - generic [ref=f5e150]:
+                    - button "Buka Chat" [ref=f5e228]:
+                      - img
+                      - text: Buka Chat
+                    - button "PDF" [ref=f5e229]:
+                      - img
+                      - text: PDF
+              - generic [ref=f5e153]:
+                - generic [ref=f5e155]: Aksi
+                - generic [ref=f5e156]:
+                  - button "Ubah ke DP_PAID" [ref=f5e230]
+                  - button "Batalkan Pengajuan" [ref=f5e231]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f5e232] [cursor=pointer]:
+    - generic [ref=f5e235]:
+      - text: Compiling
+      - generic [ref=f5e236]:
+        - generic [ref=f5e237]: .
+        - generic [ref=f5e238]: .
+        - generic [ref=f5e239]: .
+  - alert [ref=f5e61]

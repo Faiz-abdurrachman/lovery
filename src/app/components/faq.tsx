@@ -1,14 +1,14 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { GlassCard } from "./glass-card"
 
 const FAQS = [
-  { q: "Bagaimana cara mengajukan sesi?", a: "Klik tombol 'Ajukan Sesi' di website, pilih paket, isi data diri, dan kirim. Admin akan meninjau pengajuan Anda dan menghubungi via WhatsApp." },
-  { q: "Apakah saya bisa memilih lebih dari satu add-on?", a: "Ya, Anda bisa memilih beberapa add-on sekaligus seperti Drone, Extra Jam, Video Highlight, dan lainnya. Harga akan dihitung otomatis." },
-  { q: "Bagaimana proses pembayaran?", a: "Setelah pengajuan diterima, Anda akan menerima invoice via WhatsApp. Pembayaran dilakukan via transfer bank atau QRIS. DP wajib dibayar untuk mengamankan jadwal." },
-  { q: "Berapa lama proses editing?", a: "Estimasi editing bervariasi tergantung paket. Status pengajuan Anda akan diperbarui secara real-time sehingga Anda selalu tahu progresnya." },
-  { q: "Bagaimana saya menerima hasil foto?", a: "Hasil akan dikirim melalui Google Drive. Link akan dikirim via WhatsApp. Link aktif selama 14 hari (paket reguler) atau 30 hari (paket premium)." },
-  { q: "Apakah bisa reschedule?", a: "Ya, Anda bisa mendiskusikan perubahan jadwal dengan admin melalui WhatsApp. Admin akan membantu menyesuaikan jadwal sesuai ketersediaan." },
+  { q: "Bagaimana cara mereservasi jadwal?", a: "Klik tombol 'Mulai Sesi Anda'. Anda akan diarahkan ke form reservasi pintar kami. Setelah data terisi, konsultan kami akan menghubungi Anda secara personal melalui WhatsApp." },
+  { q: "Apakah tersedia penambahan layanan di luar paket?", a: "Tentu. Kami menyediakan opsi fleksibel seperti penambahan waktu sesi, pengadaan drone, hingga videografi sinematik. Semua harga tertera transparan tanpa biaya tersembunyi." },
+  { q: "Bagaimana prosedur administrasinya?", a: "Setelah reservasi dikonfirmasi, Anda akan menerima invoice digital resmi. Penjadwalan akan terkunci setelah pembayaran Down Payment via QRIS atau Transfer Bank diselesaikan." },
+  { q: "Kapan saya dapat menerima hasil kurasi foto?", a: "Seluruh foto mentah akan tersedia maksimal H+1. Untuk foto yang telah melalui proses kurasi dan retouching warna, estimasi pengerjaan adalah 3-7 hari kerja tergantung dari jenis paket." },
 ]
 
 export function Faq() {
@@ -19,31 +19,56 @@ export function Faq() {
   }
 
   return (
-    <section id="faq" className="py-20 bg-gray-50">
-      <div className="max-w-3xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <p className="text-sm font-medium text-lovery-pink uppercase tracking-wide">FAQ</p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-black mt-3">Pertanyaan Umum</h2>
-        </div>
-        <div className="space-y-3">
+    <section id="faq" className="py-32 relative z-10">
+      <div className="max-w-4xl mx-auto px-6">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white/40 backdrop-blur-md text-black border border-white/50 text-xs font-bold tracking-widest mb-6">FAQ</span>
+          <h2 className="text-4xl lg:text-5xl font-heading font-bold text-black tracking-tight">Informasi Esensial</h2>
+        </motion.div>
+
+        <div className="space-y-4">
           {FAQS.map(({ q, a }, i) => (
-            <div key={q} className="bg-white rounded-2xl border border-gray-100">
+            <GlassCard 
+              key={q} 
+              intensity="heavy"
+              className="group"
+            >
               <button
                 onClick={() => toggle(i)}
-                className="w-full px-6 py-4 text-left font-medium text-black flex items-center justify-between cursor-pointer"
+                className="w-full px-8 py-8 text-left flex items-center justify-between cursor-pointer focus:outline-none"
                 aria-expanded={openIndex === i}
               >
-                {q}
-                <span className="text-gray-400 text-lg">
-                  {openIndex === i ? "−" : "+"}
-                </span>
+                <span className="font-heading font-bold text-black text-xl tracking-tight pr-8">{q}</span>
+                <motion.div 
+                  animate={{ rotate: openIndex === i ? 45 : 0 }}
+                  className="flex-shrink-0 w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-black"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4"/></svg>
+                </motion.div>
               </button>
-              {openIndex === i && (
-                <div className="px-6 pb-4 text-gray-500 text-sm leading-relaxed">
-                  {a}
-                </div>
-              )}
-            </div>
+              <AnimatePresence>
+                {openIndex === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-8 pb-8 pt-0 text-gray-600 text-base leading-relaxed border-t border-black/5 mt-2">
+                      {a}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </GlassCard>
           ))}
         </div>
       </div>

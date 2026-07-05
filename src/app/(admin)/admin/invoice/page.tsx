@@ -34,16 +34,12 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
-import { Loader2, Eye, CheckCircle, FileText } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { Loader2, Eye, CheckCircle, FileText, Download } from "lucide-react"
+import { cn, formatRupiah } from "@/lib/utils"
 import { format } from "date-fns"
 import { toast } from "sonner"
 
-function formatRupiah(n: number) {
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency", currency: "IDR", minimumFractionDigits: 0,
-  }).format(n)
-}
+import jsPDF from "jspdf"
 
 export default function AdminInvoicePage() {
   const { data: invoices, isLoading } = useInvoices()
@@ -56,6 +52,143 @@ export default function AdminInvoicePage() {
   const [payType, setPayType] = useState("DP")
   const [payAmount, setPayAmount] = useState("")
   const [payMethod, setPayMethod] = useState("TRANSFER")
+  function handleDownloadPDF() {
+    if (!selectedInvoice) return
+    try {
+      const inv = selectedInvoice
+      const pdf = new jsPDF("p", "mm", "a4")
+      const w = pdf.internal.pageSize.getWidth()
+      let y = 20
+
+      // Header
+      pdf.setFontSize(20)
+      pdf.setTextColor("#E89CC9")
+      pdf.text("LOVERY PHOTOGRAPHY", w / 2, y, { align: "center" })
+      y += 10
+      pdf.setFontSize(10)
+      pdf.setTextColor("#6B7280")
+      pdf.text("All Female Crew Photographer", w / 2, y, { align: "center" })
+      y += 12
+
+      // Line
+      pdf.setDrawColor("#E5E7EB")
+      pdf.line(20, y, w - 20, y)
+      y += 8
+
+      // Invoice title
+      pdf.setFontSize(16)
+      pdf.setTextColor("#111111")
+      pdf.text(`INVOICE`, 20, y)
+      pdf.setFontSize(10)
+      pdf.setTextColor("#6B7280")
+      pdf.text(`No. ${inv.invoiceNumber}`, 20, y + 5)
+      pdf.text(`Revisi: ${inv.revision}`, w - 20, y + 5, { align: "right" })
+      y += 18
+
+      // Client info
+      const client = (inv.submission as any)?.client
+      const clientName = (client as any)?.[0]?.name || client?.name || "-"
+      const clientPhone = (client as any)?.[0]?.phone || client?.phone || "-"
+      const subNumber = inv.submission?.submissionNumber || "-"
+      const pkgName = (inv.submission as any)?.package?.[0]?.name || (inv.submission as any)?.package?.name || "-"
+
+      pdf.setFontSize(10)
+      pdf.setTextColor("#374151")
+      pdf.text(`Klien: ${clientName}`, 20, y)
+      pdf.text(`WA: ${clientPhone}`, 20, y + 5)
+      pdf.text(`Pengajuan: ${subNumber}`, 20, y + 10)
+      pdf.text(`Paket: ${pkgName}`, 20, y + 15)
+      y += 24
+
+      // Line
+      pdf.line(20, y, w - 20, y)
+      y += 8
+
+      // Table header
+      pdf.setFontSize(10)
+      pdf.setTextColor("#FFFFFF")
+      pdf.setFillColor("#E89CC9")
+      pdf.rect(20, y, w - 40, 7, "F")
+      pdf.text("Deskripsi", 24, y + 5)
+      pdf.text("Jumlah", w - 24, y + 5, { align: "right" })
+      y += 10
+
+      // Subtotal
+      pdf.setFontSize(10)
+      pdf.setTextColor("#111111")
+      pdf.text("Subtotal (Paket)", 24, y)
+      pdf.text(formatRupiah(inv.subtotal), w - 24, y, { align: "right" })
+      y += 6
+
+      // Addons
+      if (inv.addonTotal > 0) {
+        pdf.text("Add-On", 24, y)
+        pdf.text(formatRupiah(inv.addonTotal), w - 24, y, { align: "right" })
+        y += 6
+      }
+
+      // Line
+      y += 2
+      pdf.setDrawColor("#E5E7EB")
+      pdf.line(20, y, w - 20, y)
+      y += 6
+
+      // Grand total
+      pdf.setFontSize(12)
+      pdf.setFont("helvetica", "bold")
+      pdf.text("Grand Total", 24, y)
+      pdf.text(formatRupiah(inv.grandTotal), w - 24, y, { align: "right" })
+      y += 7
+
+      // DP
+      pdf.setFont("helvetica", "normal")
+      pdf.setFontSize(10)
+      pdf.text("DP", 24, y)
+      pdf.text(formatRupiah(inv.dpAmount), w - 24, y, { align: "right" })
+      y += 6
+
+      // Remaining
+      pdf.text("Sisa Pembayaran", 24, y)
+      pdf.text(formatRupiah(inv.remainingAmount), w - 24, y, { align: "right" })
+      y += 16
+
+      // Payment history
+      if (inv.payments?.length > 0) {
+        pdf.setDrawColor("#E5E7EB")
+        pdf.line(20, y, w - 20, y)
+        y += 6
+        pdf.setFont("helvetica", "bold")
+        pdf.setFontSize(10)
+        pdf.setTextColor("#111111")
+        pdf.text("Riwayat Pembayaran", 20, y)
+        y += 6
+        pdf.setFont("helvetica", "normal")
+        pdf.setTextColor("#6B7280")
+        for (const p of inv.payments) {
+          const label = p.paymentType === "DP" ? "DP" : "Pelunasan"
+          const status = p.verifiedAt ? "✓ Terverifikasi" : "○ Pending"
+          pdf.text(`${label} - ${formatRupiah(p.amount)} via ${p.paymentMethod}`, 24, y)
+          pdf.text(status, w - 24, y, { align: "right" })
+          y += 5
+        }
+      }
+
+      // Footer
+      y = 270
+      pdf.setDrawColor("#E5E7EB")
+      pdf.line(20, y, w - 20, y)
+      y += 6
+      pdf.setFontSize(8)
+      pdf.setTextColor("#9CA3AF")
+      pdf.text("Lovery Photography", 20, y)
+      pdf.text("Terima kasih telah mempercayakan momen Anda kepada kami", w / 2, y + 4, { align: "center" })
+
+      pdf.save(`Invoice-${inv.invoiceNumber}.pdf`)
+      toast.success("Invoice berhasil di-download")
+    } catch (err) {
+      toast.error("Gagal membuat PDF: " + (err as Error)?.message)
+    }
+  }
 
   const verifyPayment = useVerifyPayment()
   const createPayment = useCreatePayment()
@@ -185,20 +318,29 @@ export default function AdminInvoicePage() {
               <h2 className="text-lg font-semibold">
                 Detail Invoice: {selectedInvoice.invoiceNumber}
               </h2>
-              <Badge
-                className={cn(
-                  "rounded-full",
-                  selectedInvoice.status === "ACTIVE"
-                    ? "bg-success text-white"
-                    : selectedInvoice.status === "REVISED"
-                      ? "bg-warning text-white"
-                      : "bg-gray-400 text-white"
-                )}
-              >
-                {INVOICE_STATUS_LABELS[selectedInvoice.status]}
-              </Badge>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="rounded-xl gap-1.5"
+                  onClick={handleDownloadPDF}
+                >
+                  <Download className="h-4 w-4" /> PDF
+                </Button>
+                <Badge
+                  className={cn(
+                    "rounded-full",
+                    selectedInvoice.status === "ACTIVE"
+                      ? "bg-success text-white"
+                      : selectedInvoice.status === "REVISED"
+                        ? "bg-warning text-white"
+                        : "bg-gray-400 text-white"
+                  )}
+                >
+                  {INVOICE_STATUS_LABELS[selectedInvoice.status]}
+                </Badge>
+              </div>
             </div>
-
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
               <div>
                 <p className="text-gray-400 text-xs">Subtotal</p>

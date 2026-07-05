@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
-import { supabase } from "@/lib/supabase"
+import { supabaseAdmin } from "@/lib/supabase-server"
 import bcrypt from "bcryptjs"
 import { authConfig } from "@/lib/auth.config"
 
@@ -15,7 +15,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null
 
-        const { data: admin } = await supabase
+        const { data: admin } = await supabaseAdmin
           .from("admins")
           .select("*")
           .eq("email", credentials.email as string)

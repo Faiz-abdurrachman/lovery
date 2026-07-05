@@ -1,0 +1,45 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e3]:
+    - generic [ref=f1e4]:
+      - heading "Daftar Paket" [level=1] [ref=f1e5]
+      - paragraph [ref=f1e6]: Pilih paket fotografi yang sesuai dengan kebutuhan Anda.
+    - generic [ref=f1e7]:
+      - heading "📷 Casual" [level=2] [ref=f1e8]:
+        - generic [ref=f1e9]: 📷
+        - text: Casual
+      - generic [ref=f1e11]:
+        - paragraph [ref=f1e12]: Casual Session
+        - paragraph [ref=f1e13]: Paket foto casual.
+        - paragraph [ref=f1e14]: Rp 400.000
+        - link "Pilih" [ref=f1e15] [cursor=pointer]:
+          - /url: /ajukan-sesi?pkg=pkg-casual-session
+    - generic [ref=f1e16]:
+      - heading "🎓 Graduation" [level=2] [ref=f1e17]:
+        - generic [ref=f1e18]: 🎓
+        - text: Graduation
+      - generic [ref=f1e19]:
+        - generic [ref=f1e20]:
+          - paragraph [ref=f1e21]: Graduation Basic
+          - paragraph [ref=f1e22]: Paket foto wisuda basic.
+          - paragraph [ref=f1e23]: Rp 500.000
+          - link "Pilih" [ref=f1e24] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-graduation-basic
+        - generic [ref=f1e25]:
+          - paragraph [ref=f1e26]: Graduation Premium
+          - paragraph [ref=f1e27]: Paket foto wisuda premium.
+          - paragraph [ref=f1e28]: Rp 750.000
+          - link "Pilih" [ref=f1e29] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-graduation-premium
+    - generic [ref=f1e30]:
+      - heading "💍 Wedding" [level=2] [ref=f1e31]:
+        - generic [ref=f1e32]: 💍
+        - text: Wedding
+      - generic [ref=f1e34]:
+        - paragraph [ref=f1e35]: Wedding Package
+        - paragraph [ref=f1e36]: Paket foto pernikahan lengkap.
+        - paragraph [ref=f1e37]: Rp 2.000.000
+        - link "Pilih" [ref=f1e38] [cursor=pointer]:
+          - /url: /ajukan-sesi?pkg=pkg-wedding
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f1e44] [cursor=pointer]:
+    - img [ref=f1e45]

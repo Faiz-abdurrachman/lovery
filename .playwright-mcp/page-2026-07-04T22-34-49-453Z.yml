@@ -1,0 +1,28 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e3]:
+    - generic [ref=f5e4]:
+      - img [ref=f5e6]
+      - generic [ref=f5e9]:
+        - generic [ref=f5e10]: Lovery Photography
+        - generic [ref=f5e11]: Masuk ke dashboard operasional
+    - generic [ref=f5e13]:
+      - generic [ref=f5e14]:
+        - generic [ref=f5e15]: Email
+        - textbox "Email" [ref=f5e16]:
+          - /placeholder: admin@lovery.com
+          - text: admin@lovery.com
+      - generic [ref=f5e17]:
+        - generic [ref=f5e18]: Password
+        - textbox "Password" [ref=f5e19]:
+          - /placeholder: ••••••••
+          - text: admin123
+      - button "Masuk" [ref=f5e20]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f5e31] [cursor=pointer]:
+    - generic [ref=f5e34]:
+      - text: Rendering
+      - generic [ref=f5e35]:
+        - generic [ref=f5e36]: .
+        - generic [ref=f5e37]: .
+        - generic [ref=f5e38]: .
+  - alert [ref=f5e30]

@@ -1,0 +1,83 @@
+- generic [ref=f2e1]:
+  - generic [ref=f2e3]:
+    - generic [ref=f2e4]:
+      - img [ref=f2e6]
+      - heading "Ajukan Sesi" [level=1] [ref=f2e9]
+      - paragraph [ref=f2e10]: Isi formulir di bawah untuk mengajukan sesi fotografi. Admin akan meninjau pengajuan Anda.
+    - generic [ref=f2e11]:
+      - generic [ref=f2e12]:
+        - img [ref=f2e104]
+        - generic [ref=f2e14]: Paket
+      - generic [ref=f2e16]:
+        - img [ref=f2e159]
+        - generic [ref=f2e18]: Add-On
+      - generic [ref=f2e20]:
+        - generic [ref=f2e21]: "3"
+        - generic [ref=f2e22]: Data Diri
+      - generic [ref=f2e24]:
+        - generic [ref=f2e25]: "4"
+        - generic [ref=f2e26]: Acara
+      - generic [ref=f2e28]:
+        - generic [ref=f2e29]: "5"
+        - generic [ref=f2e30]: Konfirmasi
+    - generic [ref=f2e31]:
+      - generic [ref=f2e32]:
+        - generic [ref=f2e161]:
+          - generic [ref=f2e162]:
+            - heading "Data Diri" [level=2] [ref=f2e163]
+            - paragraph [ref=f2e164]: Isi data diri Anda. Nomor WhatsApp digunakan untuk komunikasi selanjutnya.
+          - generic [ref=f2e165]:
+            - generic [ref=f2e166]:
+              - generic [ref=f2e167]:
+                - text: Nama Lengkap
+                - generic [ref=f2e168]: "*"
+              - textbox "Nama Lengkap *" [ref=f2e169]:
+                - /placeholder: Nama Anda
+                - text: Budi Santoso
+            - generic [ref=f2e170]:
+              - generic [ref=f2e171]:
+                - text: Nomor WhatsApp
+                - generic [ref=f2e172]: "*"
+              - textbox "Nomor WhatsApp *" [active] [ref=f2e173]:
+                - /placeholder: "08123456789"
+                - text: "081298765432"
+            - generic [ref=f2e174]:
+              - generic [ref=f2e175]: Instagram (Opsional)
+              - textbox "Instagram (Opsional)" [ref=f2e176]:
+                - /placeholder: "@username"
+        - generic [ref=f2e40]:
+          - button "Kembali" [ref=f2e143]:
+            - img
+            - text: Kembali
+          - button "Selanjutnya" [ref=f2e103]:
+            - text: Selanjutnya
+            - img
+      - generic [ref=f2e42]:
+        - generic [ref=f2e44]: Ringkasan Harga
+        - generic [ref=f2e45]:
+          - generic [ref=f2e46]:
+            - generic [ref=f2e47]: Paket
+            - generic [ref=f2e48]: Rp 500.000
+          - generic [ref=f2e146]:
+            - paragraph [ref=f2e147]: Add-On
+            - generic [ref=f2e148]:
+              - generic [ref=f2e149]: Drone
+              - generic [ref=f2e150]: Rp 300.000
+            - generic [ref=f2e156]:
+              - generic [ref=f2e157]: Extra Foto
+              - generic [ref=f2e158]: Rp 100.000
+            - generic [ref=f2e151]:
+              - generic [ref=f2e152]: Total Add-On
+              - generic [ref=f2e153]: Rp 400.000
+          - separator [ref=f2e49]
+          - generic [ref=f2e50]:
+            - generic [ref=f2e51]: Total
+            - generic [ref=f2e52]: Rp 900.000
+          - generic [ref=f2e53]:
+            - generic [ref=f2e54]: Estimasi DP
+            - generic [ref=f2e55]: Rp 100.000
+          - paragraph [ref=f2e56]: "* DP minimum ditentukan berdasarkan paket dan add-on yang dipilih. Pembayaran dilakukan setelah admin menerima pengajuan."
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f2e62] [cursor=pointer]:
+    - img [ref=f2e63]
+  - alert [ref=f2e66]

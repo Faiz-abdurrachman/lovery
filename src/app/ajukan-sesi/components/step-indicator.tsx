@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils"
-import { Check } from "lucide-react"
 
 interface StepIndicatorProps {
   steps: { label: string; icon: string }[]
@@ -8,37 +7,46 @@ interface StepIndicatorProps {
 
 export function StepIndicator({ steps, currentStep }: StepIndicatorProps) {
   return (
-    <div className="flex items-center justify-center gap-2">
-      {steps.map((step, i) => (
-        <div key={i} className="flex items-center gap-2">
-          <div
-            className={cn(
-              "w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-colors",
-              i < currentStep && "bg-lovery-pink text-white",
-              i === currentStep && "bg-lovery-pink text-white",
-              i > currentStep && "bg-gray-200 text-gray-500"
-            )}
-          >
-            {i < currentStep ? <Check className="h-3.5 w-3.5" /> : step.icon}
-          </div>
-          <span
-            className={cn(
-              "text-xs hidden sm:block",
-              i <= currentStep ? "text-lovery-pink font-medium" : "text-gray-400"
-            )}
-          >
-            {step.label}
-          </span>
-          {i < steps.length - 1 && (
+    <div className="flex items-center justify-center gap-1 sm:gap-2 mb-12">
+      {steps.map((step, i) => {
+        const isPast = i < currentStep
+        const isCurrent = i === currentStep
+        
+        return (
+          <div key={i} className="flex items-center">
+            {/* Step Node */}
             <div
               className={cn(
-                "w-8 h-0.5 hidden sm:block",
-                i < currentStep ? "bg-lovery-pink" : "bg-gray-200"
+                "relative flex items-center justify-center font-accent font-black text-lg transition-all duration-300",
+                "w-10 h-10 sm:w-14 sm:h-14 border-4",
+                isPast || isCurrent 
+                  ? "bg-lovery-pink text-black border-black shadow-[4px_4px_0_0_#111111]" 
+                  : "bg-white/40 backdrop-blur-md border-black/20 text-gray-400"
               )}
-            />
-          )}
-        </div>
-      ))}
+              style={isCurrent ? { transform: 'skewX(-10deg)' } : {}}
+            >
+              <span className={cn("relative z-10", isCurrent && "skew-x-12")}>{step.icon}</span>
+              
+              {/* Floating label */}
+              {isCurrent && (
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap font-heading font-bold text-sm tracking-widest text-black bg-white px-2 border border-black shadow-[2px_2px_0_0_#111111]">
+                  {step.label.toUpperCase()}
+                </div>
+              )}
+            </div>
+            
+            {/* Connector Line */}
+            {i < steps.length - 1 && (
+              <div
+                className={cn(
+                  "w-4 sm:w-12 h-1 ml-1 sm:ml-2 transition-colors",
+                  isPast ? "bg-black" : "bg-black/10"
+                )}
+              />
+            )}
+          </div>
+        )
+      })}
     </div>
   )
 }

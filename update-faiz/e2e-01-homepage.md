@@ -1,0 +1,39 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e4]:
+      - link "Lovery Photography" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e185]
+    - generic [ref=e14]:
+      - generic [ref=e15]
+      - generic [ref=e26]
+    - generic [ref=e35]:
+      - generic [ref=e36]
+      - generic [ref=e40]
+    - generic [ref=e54]:
+      - paragraph [ref=e55]: Tentang Lovery
+      - heading "Studio Fotografi yang Mengutamakan Kenyamanan Anda" [level=2] [ref=e56]
+      - paragraph [ref=e57]: Lovery Photography adalah studio fotografi profesional yang berbasis di Yogyakarta. Kami percaya bahwa setiap momen berharga layak diabadikan dengan penuh perhatian dan profesionalisme. Dengan pengalaman melayani berbagai jenis sesi — dari wisuda, casual, wedding, hingga event korporat — kami siap menjadi bagian dari cerita Anda.
+    - generic [ref=e59]:
+      - generic [ref=e60]
+      - generic [ref=e64]
+      - generic [ref=e74]
+      - generic [ref=e90]
+    - generic [ref=e101]:
+      - generic [ref=e102]
+      - generic [ref=e105]
+    - generic [ref=e131]:
+      - generic [ref=e132]
+      - generic [ref=e135]
+    - generic [ref=e156]:
+      - heading "Siap Mengabadikan Momen Anda?" [level=2] [ref=e157]
+      - paragraph [ref=e158]: Ajukan sesi sekarang dan biarkan kami mengabadikan cerita Anda dengan profesional dan penuh perhatian.
+      - link "Ajukan Sesi Sekarang" [ref=e159] [cursor=pointer]:
+        - /url: /ajukan-sesi
+    - generic [ref=e162]:
+      - generic [ref=e163]
+      - generic [ref=e184]: © 2026 Lovery Photography. All rights reserved.
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e196] [cursor=pointer]:
+    - img [ref=e197]
+  - alert [ref=e200]

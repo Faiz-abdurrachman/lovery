@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase"
+import { supabaseAdmin as supabase } from "@/lib/supabase-server"
 import { calculateDP } from "@/features/invoice/constants/invoice.constant"
 
 // ─── Submissions ────────────────────────────────
@@ -50,7 +50,7 @@ export async function getSubmission(id: string) {
   return data
 }
 
-export async function trackSubmission(number: string, phone: string) {
+export async function trackSubmission(number: string) {
   // First find the submission
   const { data: submission, error } = await supabase
     .from("submissions")
@@ -60,15 +60,11 @@ export async function trackSubmission(number: string, phone: string) {
 
   if (error || !submission) return null
 
-  // Then verify the client phone
   const { data: client } = await supabase
     .from("clients")
     .select("*")
     .eq("id", submission.clientId)
-    .eq("phone", phone)
     .maybeSingle()
-
-  if (!client) return null
 
   return { ...submission, client }
 }
@@ -94,6 +90,8 @@ export async function updateSubmissionStatus(
     REJECTED: "Pengajuan ditolak",
     RESCHEDULE: "Penjadwalan ulang diminta",
     CANCELLED: "Pengajuan dibatalkan",
+    DP_PAID: "DP Diterima",
+    PAID: "Pembayaran Lunas",
     ON_SESSION: "Sesi dimulai",
     EDITING: "Sesi selesai - Masuk editing",
     DELIVERED: "Hasil dikirim",
@@ -148,13 +146,12 @@ export async function createInvoiceForSubmission(submissionId: string, adminId?:
     .eq("submissionId", submissionId)
     .eq("status", "ACTIVE")
 
-  // Generate invoice number
-  const year = new Date().getFullYear().toString().slice(-2)
-  const { count } = await supabase
-    .from("invoices")
-    .select("*", { count: "exact", head: true })
-
-  const invNumber = `INV${String((count || 0) + 1).padStart(4, "0")}${year}`
+  // Generate invoice number — pake timestamp biar unique, hindari race condition
+  const now = new Date()
+  const year = now.getFullYear().toString().slice(-2)
+  const ts = now.getTime().toString(36).toUpperCase().slice(-4)
+  const rand = Math.floor(Math.random() * 1000).toString().padStart(3, "0")
+  const invNumber = `INV${ts}${rand}${year}`
 
   const { data: invoice, error } = await supabase
     .from("invoices")
@@ -216,7 +213,7 @@ export async function getSettings() {
 }
 
 export async function updateSettings(body: Record<string, unknown>) {
-  let { data } = await supabase.from("settings").select("id").limit(1).maybeSingle()
+  const { data } = await supabase.from("settings").select("id").limit(1).maybeSingle()
 
   if (!data) {
     const { data: created, error } = await supabase

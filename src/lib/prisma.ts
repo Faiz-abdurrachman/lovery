@@ -1,3 +1,5 @@
+// @deprecated — Tidak dipakai runtime. Semua query pake Supabase SDK (lib/supabase-server.ts)
+// Prisma cuma dipake buat generate types (prisma generate) dan schema reference.
 import { PrismaClient } from "@prisma/client"
 
 const globalForPrisma = globalThis as unknown as {

@@ -95,17 +95,17 @@ export function useUpdateStatus() {
   })
 }
 
-export function useTrackSubmission(number: string, phone: string) {
+export function useTrackSubmission(number: string) {
   return useQuery({
-    queryKey: ["track", number, phone],
+    queryKey: ["track", number],
     queryFn: async () => {
-      const params = new URLSearchParams({ number, phone })
+      const params = new URLSearchParams({ number })
       const res = await fetch(`/api/submissions/track?${params}`)
       const json = await res.json()
       if (!json.success) throw new Error(json.message)
       return json.data
     },
-    enabled: !!number && !!phone,
+    enabled: !!number,
     retry: false,
   })
 }

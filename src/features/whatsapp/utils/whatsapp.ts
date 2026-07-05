@@ -1,5 +1,8 @@
 export function openWhatsApp(phone: string, message: string) {
-  const cleanPhone = phone.replace(/[^0-9]/g, "")
+  let cleanPhone = phone.replace(/[^0-9]/g, "")
+  if (cleanPhone.startsWith("0")) {
+    cleanPhone = "62" + cleanPhone.slice(1)
+  }
   const url = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`
   window.open(url, "_blank")
 }
@@ -11,8 +14,8 @@ export const WhatsAppTemplates = {
   submissionRejected: (name: string, reason: string) =>
     `Halo ${name},\n\nMohon maaf, pengajuan sesi Anda belum dapat kami terima.\n\nAlasan: ${reason}\n\nSilakan hubungi kami jika ada pertanyaan.\n\nTerima kasih,\nLovery Photography`,
 
-  invoiceReady: (name: string, invNumber: string, total: string, dp: string) =>
-    `Halo ${name},\n\nInvoice untuk pengajuan Anda sudah siap:\n\nNo. Invoice: *${invNumber}*\nTotal: *${total}*\nDP: *${dp}*\n\nSilakan lakukan pembayaran DP untuk mengamankan jadwal Anda.\n\nTerima kasih,\nLovery Photography`,
+  invoiceReady: (name: string, invNumber: string, total: string, dp: string, packageName?: string) =>
+    `Halo ${name},\n\nInvoice untuk pengajuan${packageName ? ` *${packageName}*` : ""} Anda sudah siap:\n\nNo. Invoice: *${invNumber}*\nTotal: *${total}*\nDP: *${dp}*\n\nSilakan lakukan pembayaran DP untuk mengamankan jadwal Anda.\n\nTerima kasih,\nLovery Photography`,
 
   dpVerified: (name: string, eventDate: string) =>
     `Halo ${name},\n\nPembayaran DP Anda telah *diverifikasi*.\n\nJadwal sesi Anda pada *${eventDate}* telah dikonfirmasi.\n\nKami akan menghubungi kembali menjelang hari H.\n\nTerima kasih,\nLovery Photography`,

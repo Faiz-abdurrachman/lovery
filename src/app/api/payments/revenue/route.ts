@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
-import { supabase } from "@/lib/supabase"
+import { supabaseAdmin } from "@/lib/supabase-server"
 
 export async function GET(request: NextRequest) {
   try {
@@ -12,10 +12,12 @@ export async function GET(request: NextRequest) {
     const start = searchParams.get("startDate")
     const end = searchParams.get("endDate")
 
-    let query = supabase.from("payments").select("*, invoice:invoices(invoiceNumber, submission:submissions(submissionNumber, client:clients(name), package:packages(name)))").in("paymentType", ["DP", "PELUNASAN"])
+    let query = supabaseAdmin.from("payments").select("*, invoice:invoices(invoiceNumber, submission:submissions(submissionNumber, client:clients(name), package:packages(name)))").in("paymentType", ["DP", "PELUNASAN"])
 
-    if (start) query = query.gte("createdAt", start)
-    if (end) query = query.lte("createdAt", end)
+    // Filter pake verifiedAt karena revenue = pembayaran yg udah diverifikasi
+    if (start) query = query.gte("verifiedAt", start)
+    if (end) query = query.lt("verifiedAt", end)
+    query = query.not("verifiedAt", "is", null)
 
     const { data, error } = await query.order("createdAt", { ascending: false }).limit(500)
 

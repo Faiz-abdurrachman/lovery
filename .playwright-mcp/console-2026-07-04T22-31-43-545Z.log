@@ -1,0 +1,16 @@
+[     425ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[     499ms] [LOG] [HMR] connected @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[     707ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[     710ms] [LOG] [Fast Refresh] done in 104ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[    6596ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/api/submissions/track?number=LVR-XSL0R-2026&phone=081298765432:0
+[   42464ms] [ERROR] WebSocket connection to 'ws://localhost:3001/_next/webpack-hmr?id=9IakqjG-3qGQm0lo_jUOj' failed:  @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_client_1z1on1h._.js:13422
+[   43482ms] [LOG] [HMR] connected @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   61954ms] [ERROR] WebSocket connection to 'ws://localhost:3001/_next/webpack-hmr?id=9IakqjG-3qGQm0lo_jUOj' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_client_1z1on1h._.js:13422
+[   62956ms] [ERROR] WebSocket connection to 'ws://localhost:3001/_next/webpack-hmr?id=9IakqjG-3qGQm0lo_jUOj' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_client_1z1on1h._.js:13422
+[   66466ms] [LOG] [HMR] connected @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   71120ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   71340ms] [LOG] [HMR] connected @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   73546ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[   73602ms] [LOG] [Fast Refresh] done in 156ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[  111044ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[  111144ms] [LOG] [Fast Refresh] done in 200ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477

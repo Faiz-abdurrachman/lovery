@@ -1,0 +1,125 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - heading "Daftar Paket" [level=1] [ref=e5]
+      - paragraph [ref=e6]: Pilih paket fotografi yang sesuai dengan kebutuhan Anda.
+    - generic [ref=e7]:
+      - heading "📷 Casual" [level=2] [ref=e8]:
+        - generic [ref=e9]: 📷
+        - text: Casual
+      - generic [ref=e10]:
+        - generic [ref=e11]:
+          - paragraph [ref=e12]: Personal Reguler
+          - paragraph [ref=e13]: 1 orang, 60 menit, 30 foto edited, free transport area kota.
+          - paragraph [ref=e14]: Rp 300.000
+          - link "Pilih" [ref=e15] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-casual-personal
+        - generic [ref=e16]:
+          - paragraph [ref=e17]: Personal Premium
+          - paragraph [ref=e18]: 1 orang, 60 menit, 30 foto edited, 1 assistant, lighting, free transport.
+          - paragraph [ref=e19]: Rp 500.000
+          - link "Pilih" [ref=e20] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-casual-premium
+        - generic [ref=e21]:
+          - paragraph [ref=e22]: Group & Family
+          - paragraph [ref=e23]: 4-6 orang, 90 menit, 30 foto edited, 1 assistant, lighting, free transport.
+          - paragraph [ref=e24]: Rp 725.000
+          - link "Pilih" [ref=e25] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-casual-group
+    - generic [ref=e26]:
+      - heading "🎓 Graduation" [level=2] [ref=e27]:
+        - generic [ref=e28]: 🎓
+        - text: Graduation
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - paragraph [ref=e31]: Personal Premium
+          - paragraph [ref=e32]: 1 wisudawan/ti, 60 menit, 30 foto edited, 1 assistant, lighting support.
+          - paragraph [ref=e33]: Rp 500.000
+          - link "Pilih" [ref=e34] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-grad-premium
+        - generic [ref=e35]:
+          - paragraph [ref=e36]: Couple
+          - paragraph [ref=e37]: 2 wisudawan/ti, 60 menit, 30 foto edited, 1 assistant, lighting support.
+          - paragraph [ref=e38]: Rp 650.000
+          - link "Pilih" [ref=e39] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-grad-couple
+        - generic [ref=e40]:
+          - paragraph [ref=e41]: Group
+          - paragraph [ref=e42]: 4-6 wisudawan/ti, 90 menit, 30 foto edited, 1 assistant, lighting support.
+          - paragraph [ref=e43]: Rp 725.000
+          - link "Pilih" [ref=e44] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-grad-group
+        - generic [ref=e45]:
+          - paragraph [ref=e46]: Short Session
+          - paragraph [ref=e47]: 1 wisudawan/ti, 30 menit, 15 foto edited, unlimited file via Gdrive.
+          - paragraph [ref=e48]: Rp 195.000
+          - link "Pilih" [ref=e49] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-grad-short
+        - generic [ref=e50]:
+          - paragraph [ref=e51]: Personal
+          - paragraph [ref=e52]: 1 wisudawan/ti, 60 menit, 30 foto edited, unlimited file via Gdrive.
+          - paragraph [ref=e53]: Rp 300.000
+          - link "Pilih" [ref=e54] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-grad-personal
+        - generic [ref=e55]:
+          - paragraph [ref=e56]: Premium Short Session
+          - paragraph [ref=e57]: 1 wisudawan/ti, 30 menit, 15 foto edited, 1 assistant, lighting support.
+          - paragraph [ref=e58]: Rp 290.000
+          - link "Pilih" [ref=e59] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-grad-premium-short
+    - generic [ref=e60]:
+      - heading "💍 Wedding" [level=2] [ref=e61]:
+        - generic [ref=e62]: 💍
+        - text: Wedding
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - paragraph [ref=e65]: Prewedding Bronze
+          - paragraph [ref=e66]: 1 fotografer, 2 jam, 1 lokasi, 40 foto edited, free transport DIY.
+          - paragraph [ref=e67]: Rp 650.000
+          - link "Pilih" [ref=e68] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-wed-prewed-bronze
+        - generic [ref=e69]:
+          - paragraph [ref=e70]: Prewedding Silver
+          - paragraph [ref=e71]: 1 foto + 1 video, cinematic 1mnt, 40 foto, 3 jam.
+          - paragraph [ref=e72]: Rp 1.450.000
+          - link "Pilih" [ref=e73] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-wed-prewed-silver
+        - generic [ref=e74]:
+          - paragraph [ref=e75]: Engagement Bronze
+          - paragraph [ref=e76]: 1 fotografer, 4 jam, 60 foto edited, free transport DIY.
+          - paragraph [ref=e77]: Rp 850.000
+          - link "Pilih" [ref=e78] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-wed-engage-bronze
+        - generic [ref=e79]:
+          - paragraph [ref=e80]: Engagement Silver
+          - paragraph [ref=e81]: 1 foto + 1 video, cinematic 1mnt, 60 foto, 4 jam.
+          - paragraph [ref=e82]: Rp 1.750.000
+          - link "Pilih" [ref=e83] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-wed-engage-silver
+        - generic [ref=e84]:
+          - paragraph [ref=e85]: Gold (Akad Only)
+          - paragraph [ref=e86]: 2 foto + 1 video, 6-7 jam, 100 foto edited.
+          - paragraph [ref=e87]: Rp 3.500.000
+          - link "Pilih" [ref=e88] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-wed-gold
+        - generic [ref=e89]:
+          - paragraph [ref=e90]: Platinum (Resepsi)
+          - paragraph [ref=e91]: 2 foto + 1 video, cinematic 2mnt, 8-9 jam.
+          - paragraph [ref=e92]: Rp 4.500.000
+          - link "Pilih" [ref=e93] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-wed-platinum
+        - generic [ref=e94]:
+          - paragraph [ref=e95]: Diamond (Akad+Resepsi)
+          - paragraph [ref=e96]: 2 foto + 1 video, 3-4mnt cinematic, 10-12 jam, 200 foto.
+          - paragraph [ref=e97]: Rp 5.500.000
+          - link "Pilih" [ref=e98] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-wed-diamond
+        - generic [ref=e99]:
+          - paragraph [ref=e100]: YPS (Yang Penting Sah)
+          - paragraph [ref=e101]: 1 fotografer, 3 jam, 15 foto, khusus KUA/pencatatan nikah, area Jogja.
+          - paragraph [ref=e102]: Rp 670.000
+          - link "Pilih" [ref=e103] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-wed-yps
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e109] [cursor=pointer]:
+    - img [ref=e110]

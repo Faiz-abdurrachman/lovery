@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
 import { getInvoice } from "@/lib/data"
-import { supabase } from "@/lib/supabase"
+import { supabaseAdmin } from "@/lib/supabase-server"
 
 export async function GET(
   _request: NextRequest,
@@ -34,11 +34,18 @@ export async function PATCH(
     const { id } = await params
     const body = await request.json()
 
-    const { data: existing } = await supabase.from("invoices").select("status").eq("id", id).single()
+    const { data: existing } = await supabaseAdmin.from("invoices").select("status").eq("id", id).single()
     if (!existing) return NextResponse.json({ success: false, message: "Invoice tidak ditemukan" }, { status: 404 })
     if (existing.status !== "ACTIVE") return NextResponse.json({ success: false, message: "Hanya invoice aktif yang dapat diedit" }, { status: 400 })
 
-    const { data: updated, error } = await supabase.from("invoices").update(body).eq("id", id).select().single()
+    // Whitelist field yang boleh diupdate
+    const allowedFields = ["dpAmount", "remainingAmount", "subtotal", "addonTotal", "grandTotal", "issuedAt"]
+    const sanitized: Record<string, unknown> = {}
+    for (const key of allowedFields) {
+      if (body[key] !== undefined) sanitized[key] = body[key]
+    }
+
+    const { data: updated, error } = await supabaseAdmin.from("invoices").update(sanitized).eq("id", id).select().single()
     if (error) throw error
     return NextResponse.json({ success: true, data: updated })
   } catch (error) {

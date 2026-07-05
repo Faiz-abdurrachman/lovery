@@ -1,5 +1,6 @@
 import { fetchPackages } from "./queries"
 import { Navbar } from "./components/navbar"
+import { AnimatedMeshBg } from "./components/animated-mesh"
 import { Hero } from "./components/hero"
 import { Portfolio } from "./components/portfolio"
 import { About } from "./components/about"
@@ -15,7 +16,8 @@ export default async function HomePage() {
   const packages = await fetchPackages()
 
   return (
-    <main className="bg-white">
+    <main className="relative min-h-screen">
+      <AnimatedMeshBg />
       <Navbar />
       <Hero />
       <Portfolio />

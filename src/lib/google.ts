@@ -1,3 +1,4 @@
+// @deprecated — Tidak dipakai. Google Calendar pake implementasi di google-calendar.ts
 import { google } from "googleapis"
 
 function getAuth() {

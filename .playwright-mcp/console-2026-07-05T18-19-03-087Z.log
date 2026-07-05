@@ -1,0 +1,9 @@
+[     235ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[     391ms] [LOG] [Fast Refresh] done in 257ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[     924ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[     981ms] [LOG] [HMR] connected @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[    1109ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[    1465ms] [LOG] [Fast Refresh] done in 456ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[    1485ms] [WARNING] Image with src "/LOGO LOVERY.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[    1803ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477
+[    2422ms] [LOG] [Fast Refresh] done in 878ms @ http://localhost:3001/_next/static/chunks/0k5d_next_dist_1qmvpb9._.js:2477

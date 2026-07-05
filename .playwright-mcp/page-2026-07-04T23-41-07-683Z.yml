@@ -1,0 +1,127 @@
+- generic [ref=f17e1]:
+  - generic [ref=f17e22]:
+    - complementary [ref=f17e23]:
+      - link [ref=f17e161] [cursor=pointer]:
+        - /url: /admin
+        - img [ref=f17e26]
+        - generic [ref=f17e29]: Lovery Photography
+      - navigation [ref=f17e30]:
+        - link [ref=f17e162] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=f17e32]
+          - generic [ref=f17e37]: Dashboard
+        - link [ref=f17e163] [cursor=pointer]:
+          - /url: /admin/pengajuan
+          - img [ref=f17e39]
+          - generic [ref=f17e42]: Pengajuan
+        - link [ref=f17e164] [cursor=pointer]:
+          - /url: /admin/invoice
+          - img [ref=f17e44]
+          - generic [ref=f17e47]: Invoice
+        - link [ref=f17e165] [cursor=pointer]:
+          - /url: /admin/kalender
+          - img [ref=f17e49]
+          - generic [ref=f17e51]: Kalender
+        - link [ref=f17e166] [cursor=pointer]:
+          - /url: /admin/pendapatan
+          - img [ref=f17e53]
+          - generic [ref=f17e55]: Pendapatan
+        - link [ref=f17e167] [cursor=pointer]:
+          - /url: /admin/klien
+          - img [ref=f17e57]
+          - generic [ref=f17e62]: Klien
+        - link [ref=f17e168] [cursor=pointer]:
+          - /url: /admin/pengaturan
+          - img [ref=f17e64]
+          - generic [ref=f17e67]: Pengaturan
+    - generic [ref=f17e68]:
+      - banner [ref=f17e69]:
+        - generic [ref=f17e71]: Lovery Photography
+        - button [ref=f17e169] [cursor=pointer]:
+          - generic [ref=f17e74]: AL
+          - generic [ref=f17e75]: Admin Lovery
+      - main [ref=f17e76]:
+        - generic [ref=f17e77]:
+          - generic [ref=f17e78]:
+            - link [ref=f17e170] [cursor=pointer]:
+              - /url: /admin/pengajuan
+              - img [ref=f17e80]
+              - text: Kembali
+            - generic [ref=f17e82]:
+              - heading [level=1] [ref=f17e171]: LVR-X4V6K-2026
+              - generic [ref=f17e84]: Menunggu Review
+          - generic [ref=f17e85]:
+            - generic [ref=f17e86]:
+              - generic [ref=f17e87]:
+                - generic [ref=f17e89]:
+                  - img [ref=f17e90]
+                  - text: Info Klien
+                - generic [ref=f17e93]:
+                  - generic [ref=f17e94]:
+                    - generic [ref=f17e95]: Nama
+                    - generic [ref=f17e96]: Budi Test E2E
+                  - generic [ref=f17e97]:
+                    - generic [ref=f17e98]: WhatsApp
+                    - generic [ref=f17e99]: "081234567890"
+                  - generic [ref=f17e100]:
+                    - generic [ref=f17e101]: Instagram
+                    - generic [ref=f17e102]: "@buditest"
+              - generic [ref=f17e103]:
+                - generic [ref=f17e105]:
+                  - img [ref=f17e106]
+                  - text: Detail Sesi
+                - generic [ref=f17e109]:
+                  - generic [ref=f17e110]:
+                    - generic [ref=f17e111]: Acara
+                    - generic [ref=f17e112]: Wisuda Sarah E2E
+                  - generic [ref=f17e113]:
+                    - generic [ref=f17e114]: Tanggal
+                    - generic [ref=f17e115]: Senin, 20 Juli 2026
+                  - generic [ref=f17e116]:
+                    - generic [ref=f17e117]: Jam
+                    - generic [ref=f17e118]: 14:00
+                  - generic [ref=f17e119]:
+                    - generic [ref=f17e120]: Lokasi
+                    - generic [ref=f17e121]: UII Jogja
+                  - generic [ref=f17e122]:
+                    - generic [ref=f17e123]: Request Khusus
+                    - paragraph [ref=f17e124]: Test E2E
+              - generic [ref=f17e125]:
+                - generic [ref=f17e127]:
+                  - img [ref=f17e128]
+                  - text: Paket & Add-On
+                - generic [ref=f17e133]:
+                  - generic [ref=f17e134]: Graduation Basic
+                  - generic [ref=f17e135]: Rp 500.000
+            - generic [ref=f17e136]:
+              - generic [ref=f17e137]:
+                - generic [ref=f17e139]:
+                  - img [ref=f17e140]
+                  - text: Timeline
+                - generic [ref=f17e149]:
+                  - paragraph [ref=f17e150]: 04 Jul, 22:14
+                  - paragraph [ref=f17e151]: Pengajuan dibuat
+                  - paragraph [ref=f17e152]: Klien mengirim pengajuan sesi
+              - generic [ref=f17e153]:
+                - generic [ref=f17e155]: Aksi
+                - generic [ref=f17e156]:
+                  - button [ref=f17e172]:
+                    - text: Terima Pengajuan
+                    - img
+                  - button [ref=f17e173]: Tolak Pengajuan
+                  - button [ref=f17e174]: Minta Penjadwalan Ulang
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f17e18] [cursor=pointer]:
+    - img [ref=f17e19]
+  - alert [ref=f17e160]
+  - dialog "Terima Pengajuan" [ref=f17e178]:
+    - heading "Terima Pengajuan" [level=2] [ref=f17e180]
+    - generic [ref=f17e181]:
+      - paragraph [ref=f17e182]: Anda yakin ingin melakukan aksi ini?
+      - textbox "Catatan (opsional)..." [active] [ref=f17e183]
+    - generic [ref=f17e184]:
+      - button "Batal" [ref=f17e185]
+      - button "Konfirmasi" [ref=f17e186]
+    - button "Close" [ref=f17e187]:
+      - img
+      - generic [ref=f17e188]: Close

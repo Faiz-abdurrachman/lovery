@@ -30,9 +30,9 @@ export function StepTwoAddOns({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-lg font-semibold text-black">Pilih Add-On</h2>
+        <h2 className="text-lg font-semibold text-black">Add-On <span className="text-sm font-normal text-gray-400">(Opsional)</span></h2>
         <p className="text-sm text-gray-500 mt-1">
-          Tambahkan layanan ekstra sesuai kebutuhan. Opsional.
+          Tambahkan layanan ekstra sesuai kebutuhan. Jika tidak ada yang dipilih, langsung klik <strong>Selanjutnya</strong>.
         </p>
       </div>
 

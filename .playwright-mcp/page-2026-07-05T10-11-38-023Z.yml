@@ -1,0 +1,73 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - img [ref=e6]
+      - heading "Ajukan Sesi" [level=1] [ref=e9]
+      - paragraph [ref=e10]: Isi formulir di bawah untuk mengajukan sesi fotografi. Admin akan meninjau pengajuan Anda.
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - img [ref=e104]
+        - generic [ref=e14]: Paket
+      - generic [ref=e16]:
+        - img [ref=e145]
+        - generic [ref=e18]: Add-On
+      - generic [ref=e20]:
+        - generic [ref=e21]: "3"
+        - generic [ref=e22]: Data Diri
+      - generic [ref=e24]:
+        - generic [ref=e25]: "4"
+        - generic [ref=e26]: Acara
+      - generic [ref=e28]:
+        - generic [ref=e29]: "5"
+        - generic [ref=e30]: Konfirmasi
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - heading "Data Diri" [level=2] [ref=e149]
+            - paragraph [ref=e150]: Isi data diri Anda. Nomor WhatsApp digunakan untuk komunikasi selanjutnya.
+          - generic [ref=e151]:
+            - generic [ref=e152]:
+              - generic [ref=e153]:
+                - text: Nama Lengkap
+                - generic [ref=e154]: "*"
+              - textbox "Nama Lengkap *" [ref=e155]:
+                - /placeholder: Nama Anda
+            - generic [ref=e156]:
+              - generic [ref=e157]:
+                - text: Nomor WhatsApp
+                - generic [ref=e158]: "*"
+              - textbox "Nomor WhatsApp *" [invalid] [ref=e159]:
+                - /placeholder: "08123456789"
+                - text: k6a
+              - paragraph [ref=e163]: Format nomor WhatsApp tidak valid (08xx atau 628xx)
+            - generic [ref=e160]:
+              - generic [ref=e161]: Instagram (Opsional)
+              - textbox "Instagram (Opsional)" [active] [ref=e162]:
+                - /placeholder: "@username"
+                - text: 2f 8af9ia5zi3az2ha4.8a7r8s9y27
+        - generic [ref=e40]:
+          - button "Kembali" [ref=e144]:
+            - img
+            - text: Kembali
+          - button "Selanjutnya" [disabled]:
+            - text: Selanjutnya
+            - img
+      - generic [ref=e42]:
+        - generic [ref=e44]: Ringkasan Harga
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: Paket
+            - generic [ref=e48]: Rp 750.000
+          - separator [ref=e49]
+          - generic [ref=e50]:
+            - generic [ref=e51]: Total
+            - generic [ref=e52]: Rp 750.000
+          - generic [ref=e53]:
+            - generic [ref=e54]: Estimasi DP
+            - generic [ref=e55]: Rp 50.000
+          - paragraph [ref=e56]: "* DP minimum ditentukan berdasarkan paket dan add-on yang dipilih. Pembayaran dilakukan setelah admin menerima pengajuan."
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e62] [cursor=pointer]:
+    - img [ref=e63]
+  - alert [ref=e66]

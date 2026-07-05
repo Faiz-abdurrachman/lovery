@@ -1,0 +1,181 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e4]:
+      - link "Lovery Photography" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img [ref=e7]
+        - generic [ref=e10]: Lovery Photography
+      - button "Buka menu navigasi" [ref=e11]:
+        - img [ref=e12]
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - paragraph [ref=e16]: Studio Fotografi Premium
+        - heading "Abadikan Momen Spesial Anda" [level=1] [ref=e17]:
+          - text: Abadikan Momen
+          - text: Spesial Anda
+        - paragraph [ref=e18]: Lovery Photography hadir untuk mendokumentasikan momen berharga Anda dengan profesional, hangat, dan personal.
+        - generic [ref=e19]:
+          - link "Ajukan Sesi Sekarang" [ref=e20] [cursor=pointer]:
+            - /url: /ajukan-sesi
+            - button "Ajukan Sesi Sekarang" [ref=e21]:
+              - text: Ajukan Sesi Sekarang
+              - img
+          - link "Lihat Portfolio" [ref=e22] [cursor=pointer]:
+            - /url: "#portfolio"
+            - button "Lihat Portfolio" [ref=e23]
+      - generic [ref=e26]:
+        - generic [ref=e28]: 📸
+        - paragraph [ref=e29]: Foto berbicara lebih dari seribu kata
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - paragraph [ref=e37]: Portfolio
+        - heading "Karya Terbaik Kami" [level=2] [ref=e38]
+        - paragraph [ref=e39]: Setiap momen memiliki cerita. Kami mengabadikannya dengan penuh perhatian dan ketulusan.
+      - generic [ref=e40]:
+        - paragraph [ref=e43]: Graduation
+        - paragraph [ref=e46]: Wedding
+        - paragraph [ref=e49]: Casual
+        - paragraph [ref=e52]: Event
+    - generic [ref=e54]:
+      - paragraph [ref=e55]: Tentang Lovery
+      - heading "Studio Fotografi yang Mengutamakan Kenyamanan Anda" [level=2] [ref=e56]
+      - paragraph [ref=e57]: Lovery Photography adalah studio fotografi profesional yang berbasis di Yogyakarta. Kami percaya bahwa setiap momen berharga layak diabadikan dengan penuh perhatian dan profesionalisme. Dengan pengalaman melayani berbagai jenis sesi — dari wisuda, casual, wedding, hingga event korporat — kami siap menjadi bagian dari cerita Anda.
+    - generic [ref=e59]:
+      - generic [ref=e60]:
+        - paragraph [ref=e61]: Layanan
+        - heading "Paket Fotografi" [level=2] [ref=e62]
+        - paragraph [ref=e63]: Pilih paket yang sesuai dengan kebutuhan Anda.
+      - generic [ref=e64]:
+        - heading "📷 Casual" [level=3] [ref=e65]:
+          - generic [ref=e66]: 📷
+          - text: Casual
+        - generic [ref=e68]:
+          - paragraph [ref=e69]: Casual Session
+          - paragraph [ref=e70]: Paket foto casual.
+          - paragraph [ref=e71]: Rp 400.000
+          - link "Pilih Paket" [ref=e72] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-casual-session
+            - button "Pilih Paket" [ref=e73]:
+              - text: Pilih Paket
+              - img
+      - generic [ref=e74]:
+        - heading "🎓 Graduation" [level=3] [ref=e75]:
+          - generic [ref=e76]: 🎓
+          - text: Graduation
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - paragraph [ref=e79]: Graduation Basic
+            - paragraph [ref=e80]: Paket foto wisuda basic.
+            - paragraph [ref=e81]: Rp 500.000
+            - link "Pilih Paket" [ref=e82] [cursor=pointer]:
+              - /url: /ajukan-sesi?pkg=pkg-graduation-basic
+              - button "Pilih Paket" [ref=e83]:
+                - text: Pilih Paket
+                - img
+          - generic [ref=e84]:
+            - paragraph [ref=e85]: Graduation Premium
+            - paragraph [ref=e86]: Paket foto wisuda premium.
+            - paragraph [ref=e87]: Rp 750.000
+            - link "Pilih Paket" [ref=e88] [cursor=pointer]:
+              - /url: /ajukan-sesi?pkg=pkg-graduation-premium
+              - button "Pilih Paket" [ref=e89]:
+                - text: Pilih Paket
+                - img
+      - generic [ref=e90]:
+        - heading "💍 Wedding" [level=3] [ref=e91]:
+          - generic [ref=e92]: 💍
+          - text: Wedding
+        - generic [ref=e94]:
+          - paragraph [ref=e95]: Wedding Package
+          - paragraph [ref=e96]: Paket foto pernikahan lengkap.
+          - paragraph [ref=e97]: Rp 2.000.000
+          - link "Pilih Paket" [ref=e98] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-wedding
+            - button "Pilih Paket" [ref=e99]:
+              - text: Pilih Paket
+              - img
+    - generic [ref=e101]:
+      - generic [ref=e102]:
+        - paragraph [ref=e103]: Mengapa Lovery
+        - heading "Alasan Memilih Kami" [level=2] [ref=e104]
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - paragraph [ref=e107]: 🎯
+          - heading "Profesional" [level=3] [ref=e108]
+          - paragraph [ref=e109]: Fotografer berpengalaman yang memahami setiap momen penting Anda.
+        - generic [ref=e110]:
+          - paragraph [ref=e111]: 💝
+          - heading "Personal" [level=3] [ref=e112]
+          - paragraph [ref=e113]: Pendekatan hangat dan personal — Anda bukan sekadar klien.
+        - generic [ref=e114]:
+          - paragraph [ref=e115]: ✨
+          - heading "Hasil Berkualitas" [level=3] [ref=e116]
+          - paragraph [ref=e117]: Editing profesional dengan sentuhan estetika yang timeless.
+        - generic [ref=e118]:
+          - paragraph [ref=e119]: ⚡
+          - heading "Proses Mudah" [level=3] [ref=e120]
+          - paragraph [ref=e121]: Pengajuan sesi cukup 3 menit. Komunikasi via WhatsApp.
+        - generic [ref=e122]:
+          - paragraph [ref=e123]: 🔍
+          - heading "Transparan" [level=3] [ref=e124]
+          - paragraph [ref=e125]: Harga jelas tanpa biaya tersembunyi. Status selalu bisa dilacak.
+        - generic [ref=e126]:
+          - paragraph [ref=e127]: ⏰
+          - heading "Tepat Waktu" [level=3] [ref=e128]
+          - paragraph [ref=e129]: Kami menghargai waktu Anda. Hasil selalu sesuai timeline.
+    - generic [ref=e131]:
+      - generic [ref=e132]:
+        - paragraph [ref=e133]: FAQ
+        - heading "Pertanyaan Umum" [level=2] [ref=e134]
+      - generic [ref=e135]:
+        - button "Bagaimana cara mengajukan sesi? +" [ref=e137] [cursor=pointer]:
+          - text: Bagaimana cara mengajukan sesi?
+          - generic [ref=e138]: +
+        - button "Apakah saya bisa memilih lebih dari satu add-on? +" [ref=e140] [cursor=pointer]:
+          - text: Apakah saya bisa memilih lebih dari satu add-on?
+          - generic [ref=e141]: +
+        - button "Bagaimana proses pembayaran? +" [ref=e143] [cursor=pointer]:
+          - text: Bagaimana proses pembayaran?
+          - generic [ref=e144]: +
+        - button "Berapa lama proses editing? +" [ref=e146] [cursor=pointer]:
+          - text: Berapa lama proses editing?
+          - generic [ref=e147]: +
+        - button "Bagaimana saya menerima hasil foto? +" [ref=e149] [cursor=pointer]:
+          - text: Bagaimana saya menerima hasil foto?
+          - generic [ref=e150]: +
+        - button "Apakah bisa reschedule? +" [ref=e152] [cursor=pointer]:
+          - text: Apakah bisa reschedule?
+          - generic [ref=e153]: +
+    - generic [ref=e156]:
+      - heading "Siap Mengabadikan Momen Anda?" [level=2] [ref=e157]
+      - paragraph [ref=e158]: Ajukan sesi sekarang dan biarkan kami mengabadikan cerita Anda dengan profesional dan penuh perhatian.
+      - link "Ajukan Sesi Sekarang" [ref=e159] [cursor=pointer]:
+        - /url: /ajukan-sesi
+        - button "Ajukan Sesi Sekarang" [ref=e160]:
+          - text: Ajukan Sesi Sekarang
+          - img
+    - generic [ref=e162]:
+      - generic [ref=e163]:
+        - generic [ref=e164]:
+          - generic [ref=e165]:
+            - img [ref=e167]
+            - generic [ref=e170]: Lovery Photography
+          - paragraph [ref=e171]: Studio fotografi profesional di Yogyakarta. Mengabadikan momen spesial Anda dengan profesional, hangat, dan personal.
+        - generic [ref=e172]:
+          - heading "Navigasi" [level=3] [ref=e173]
+          - generic [ref=e174]:
+            - link "Beranda" [ref=e175] [cursor=pointer]:
+              - /url: /
+            - link "Portfolio" [ref=e176] [cursor=pointer]:
+              - /url: /#portfolio
+            - link "Layanan" [ref=e177] [cursor=pointer]:
+              - /url: /#layanan
+            - link "Ajukan Sesi" [ref=e178] [cursor=pointer]:
+              - /url: /ajukan-sesi
+            - link "Status Pengajuan" [ref=e179] [cursor=pointer]:
+              - /url: /status
+        - generic [ref=e180]:
+          - heading "Kontak" [level=3] [ref=e181]
+          - paragraph [ref=e183]: Yogyakarta, Indonesia
+      - generic [ref=e184]: © 2026 Lovery Photography. All rights reserved.
+  - region "Notifications alt+T"

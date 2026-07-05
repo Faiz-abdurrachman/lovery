@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
-import { supabase } from "@/lib/supabase"
+import { supabaseAdmin } from "@/lib/supabase-server"
 
 export async function GET(
   _request: NextRequest,
@@ -12,7 +12,7 @@ export async function GET(
       return NextResponse.json({ success: false, message: "Tidak diizinkan" }, { status: 401 })
     }
     const { id } = await params
-    const { data, error } = await supabase.from("clients").select("*, submissions:submissions(*, package:packages(name,category), invoices(grandTotal,status))").eq("id", id).single()
+    const { data, error } = await supabaseAdmin.from("clients").select("*, submissions:submissions(*, package:packages(name,category), invoices(grandTotal,status))").eq("id", id).single()
     if (error || !data) return NextResponse.json({ success: false, message: "Klien tidak ditemukan" }, { status: 404 })
     return NextResponse.json({ success: true, data })
   } catch (error) {

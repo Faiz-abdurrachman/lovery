@@ -9,7 +9,9 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ success: false, message: "Tidak diizinkan" }, { status: 401 })
     }
     const { searchParams } = new URL(request.url)
-    const data = await listReminders(searchParams.get("status") || "PENDING")
+    const statusParam = searchParams.get("status")
+    const validStatus = statusParam === "COMPLETED" ? "COMPLETED" : "PENDING"
+    const data = await listReminders(validStatus)
     return NextResponse.json({ success: true, data })
   } catch (error) {
     console.error("List reminders error:", error)

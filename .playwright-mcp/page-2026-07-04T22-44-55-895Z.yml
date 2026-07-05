@@ -1,0 +1,191 @@
+- generic [active] [ref=f11e1]:
+  - main [ref=f11e2]:
+    - generic [ref=f11e4]:
+      - link "Lovery Photography" [ref=f11e5] [cursor=pointer]:
+        - /url: /
+        - img [ref=f11e7]
+        - generic [ref=f11e10]: Lovery Photography
+      - navigation [ref=f11e11]:
+        - link "Portfolio" [ref=f11e12] [cursor=pointer]:
+          - /url: "#portfolio"
+        - link "Layanan" [ref=f11e13] [cursor=pointer]:
+          - /url: "#layanan"
+        - link "FAQ" [ref=f11e14] [cursor=pointer]:
+          - /url: "#faq"
+        - link "Ajukan Sesi" [ref=f11e15] [cursor=pointer]:
+          - /url: /ajukan-sesi
+          - button "Ajukan Sesi" [ref=f11e16]
+    - generic [ref=f11e18]:
+      - generic [ref=f11e19]:
+        - paragraph [ref=f11e20]: Studio Fotografi Premium
+        - heading "Abadikan Momen Spesial Anda" [level=1] [ref=f11e21]:
+          - text: Abadikan Momen
+          - text: Spesial Anda
+        - paragraph [ref=f11e22]: Lovery Photography hadir untuk mendokumentasikan momen berharga Anda dengan profesional, hangat, dan personal.
+        - generic [ref=f11e23]:
+          - link "Ajukan Sesi Sekarang" [ref=f11e24] [cursor=pointer]:
+            - /url: /ajukan-sesi
+            - button "Ajukan Sesi Sekarang" [ref=f11e25]:
+              - text: Ajukan Sesi Sekarang
+              - img
+          - link "Lihat Portfolio" [ref=f11e26] [cursor=pointer]:
+            - /url: "#portfolio"
+            - button "Lihat Portfolio" [ref=f11e27]
+      - generic [ref=f11e30]:
+        - generic [ref=f11e32]: 📸
+        - paragraph [ref=f11e33]: Foto berbicara lebih dari seribu kata
+    - generic [ref=f11e39]:
+      - generic [ref=f11e40]:
+        - paragraph [ref=f11e41]: Portfolio
+        - heading "Karya Terbaik Kami" [level=2] [ref=f11e42]
+        - paragraph [ref=f11e43]: Setiap momen memiliki cerita. Kami mengabadikannya dengan penuh perhatian dan ketulusan.
+      - generic [ref=f11e44]:
+        - paragraph [ref=f11e47]: Graduation
+        - paragraph [ref=f11e50]: Wedding
+        - paragraph [ref=f11e53]: Casual
+        - paragraph [ref=f11e56]: Event
+    - generic [ref=f11e58]:
+      - paragraph [ref=f11e59]: Tentang Lovery
+      - heading "Studio Fotografi yang Mengutamakan Kenyamanan Anda" [level=2] [ref=f11e60]
+      - paragraph [ref=f11e61]: Lovery Photography adalah studio fotografi profesional yang berbasis di Yogyakarta. Kami percaya bahwa setiap momen berharga layak diabadikan dengan penuh perhatian dan profesionalisme. Dengan pengalaman melayani berbagai jenis sesi — dari wisuda, casual, wedding, hingga event korporat — kami siap menjadi bagian dari cerita Anda.
+    - generic [ref=f11e63]:
+      - generic [ref=f11e64]:
+        - paragraph [ref=f11e65]: Layanan
+        - heading "Paket Fotografi" [level=2] [ref=f11e66]
+        - paragraph [ref=f11e67]: Pilih paket yang sesuai dengan kebutuhan Anda.
+      - generic [ref=f11e68]:
+        - heading "📷 Casual" [level=3] [ref=f11e69]:
+          - generic [ref=f11e70]: 📷
+          - text: Casual
+        - generic [ref=f11e72]:
+          - paragraph [ref=f11e73]: Casual Session
+          - paragraph [ref=f11e74]: Paket foto casual.
+          - paragraph [ref=f11e75]: Rp 400.000
+          - link "Pilih Paket" [ref=f11e76] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-casual-session
+            - button "Pilih Paket" [ref=f11e77]:
+              - text: Pilih Paket
+              - img
+      - generic [ref=f11e78]:
+        - heading "🎓 Graduation" [level=3] [ref=f11e79]:
+          - generic [ref=f11e80]: 🎓
+          - text: Graduation
+        - generic [ref=f11e81]:
+          - generic [ref=f11e82]:
+            - paragraph [ref=f11e83]: Graduation Basic
+            - paragraph [ref=f11e84]: Paket foto wisuda basic.
+            - paragraph [ref=f11e85]: Rp 500.000
+            - link "Pilih Paket" [ref=f11e86] [cursor=pointer]:
+              - /url: /ajukan-sesi?pkg=pkg-graduation-basic
+              - button "Pilih Paket" [ref=f11e87]:
+                - text: Pilih Paket
+                - img
+          - generic [ref=f11e88]:
+            - paragraph [ref=f11e89]: Graduation Premium
+            - paragraph [ref=f11e90]: Paket foto wisuda premium.
+            - paragraph [ref=f11e91]: Rp 750.000
+            - link "Pilih Paket" [ref=f11e92] [cursor=pointer]:
+              - /url: /ajukan-sesi?pkg=pkg-graduation-premium
+              - button "Pilih Paket" [ref=f11e93]:
+                - text: Pilih Paket
+                - img
+      - generic [ref=f11e94]:
+        - heading "💍 Wedding" [level=3] [ref=f11e95]:
+          - generic [ref=f11e96]: 💍
+          - text: Wedding
+        - generic [ref=f11e98]:
+          - paragraph [ref=f11e99]: Wedding Package
+          - paragraph [ref=f11e100]: Paket foto pernikahan lengkap.
+          - paragraph [ref=f11e101]: Rp 2.000.000
+          - link "Pilih Paket" [ref=f11e102] [cursor=pointer]:
+            - /url: /ajukan-sesi?pkg=pkg-wedding
+            - button "Pilih Paket" [ref=f11e103]:
+              - text: Pilih Paket
+              - img
+    - generic [ref=f11e105]:
+      - generic [ref=f11e106]:
+        - paragraph [ref=f11e107]: Mengapa Lovery
+        - heading "Alasan Memilih Kami" [level=2] [ref=f11e108]
+      - generic [ref=f11e109]:
+        - generic [ref=f11e110]:
+          - paragraph [ref=f11e111]: 🎯
+          - heading "Profesional" [level=3] [ref=f11e112]
+          - paragraph [ref=f11e113]: Fotografer berpengalaman yang memahami setiap momen penting Anda.
+        - generic [ref=f11e114]:
+          - paragraph [ref=f11e115]: 💝
+          - heading "Personal" [level=3] [ref=f11e116]
+          - paragraph [ref=f11e117]: Pendekatan hangat dan personal — Anda bukan sekadar klien.
+        - generic [ref=f11e118]:
+          - paragraph [ref=f11e119]: ✨
+          - heading "Hasil Berkualitas" [level=3] [ref=f11e120]
+          - paragraph [ref=f11e121]: Editing profesional dengan sentuhan estetika yang timeless.
+        - generic [ref=f11e122]:
+          - paragraph [ref=f11e123]: ⚡
+          - heading "Proses Mudah" [level=3] [ref=f11e124]
+          - paragraph [ref=f11e125]: Pengajuan sesi cukup 3 menit. Komunikasi via WhatsApp.
+        - generic [ref=f11e126]:
+          - paragraph [ref=f11e127]: 🔍
+          - heading "Transparan" [level=3] [ref=f11e128]
+          - paragraph [ref=f11e129]: Harga jelas tanpa biaya tersembunyi. Status selalu bisa dilacak.
+        - generic [ref=f11e130]:
+          - paragraph [ref=f11e131]: ⏰
+          - heading "Tepat Waktu" [level=3] [ref=f11e132]
+          - paragraph [ref=f11e133]: Kami menghargai waktu Anda. Hasil selalu sesuai timeline.
+    - generic [ref=f11e135]:
+      - generic [ref=f11e136]:
+        - paragraph [ref=f11e137]: FAQ
+        - heading "Pertanyaan Umum" [level=2] [ref=f11e138]
+      - generic [ref=f11e139]:
+        - button "Bagaimana cara mengajukan sesi? +" [ref=f11e141] [cursor=pointer]:
+          - text: Bagaimana cara mengajukan sesi?
+          - generic [ref=f11e142]: +
+        - button "Apakah saya bisa memilih lebih dari satu add-on? +" [ref=f11e144] [cursor=pointer]:
+          - text: Apakah saya bisa memilih lebih dari satu add-on?
+          - generic [ref=f11e145]: +
+        - button "Bagaimana proses pembayaran? +" [ref=f11e147] [cursor=pointer]:
+          - text: Bagaimana proses pembayaran?
+          - generic [ref=f11e148]: +
+        - button "Berapa lama proses editing? +" [ref=f11e150] [cursor=pointer]:
+          - text: Berapa lama proses editing?
+          - generic [ref=f11e151]: +
+        - button "Bagaimana saya menerima hasil foto? +" [ref=f11e153] [cursor=pointer]:
+          - text: Bagaimana saya menerima hasil foto?
+          - generic [ref=f11e154]: +
+        - button "Apakah bisa reschedule? +" [ref=f11e156] [cursor=pointer]:
+          - text: Apakah bisa reschedule?
+          - generic [ref=f11e157]: +
+    - generic [ref=f11e160]:
+      - heading "Siap Mengabadikan Momen Anda?" [level=2] [ref=f11e161]
+      - paragraph [ref=f11e162]: Ajukan sesi sekarang dan biarkan kami mengabadikan cerita Anda dengan profesional dan penuh perhatian.
+      - link "Ajukan Sesi Sekarang" [ref=f11e163] [cursor=pointer]:
+        - /url: /ajukan-sesi
+        - button "Ajukan Sesi Sekarang" [ref=f11e164]:
+          - text: Ajukan Sesi Sekarang
+          - img
+    - generic [ref=f11e166]:
+      - generic [ref=f11e167]:
+        - generic [ref=f11e168]:
+          - generic [ref=f11e169]:
+            - img [ref=f11e171]
+            - generic [ref=f11e174]: Lovery Photography
+          - paragraph [ref=f11e175]: Studio fotografi profesional di Yogyakarta. Mengabadikan momen spesial Anda dengan profesional, hangat, dan personal.
+        - generic [ref=f11e176]:
+          - heading "Navigasi" [level=3] [ref=f11e177]
+          - generic [ref=f11e178]:
+            - link "Beranda" [ref=f11e179] [cursor=pointer]:
+              - /url: /
+            - link "Portfolio" [ref=f11e180] [cursor=pointer]:
+              - /url: /#portfolio
+            - link "Layanan" [ref=f11e181] [cursor=pointer]:
+              - /url: /#layanan
+            - link "Ajukan Sesi" [ref=f11e182] [cursor=pointer]:
+              - /url: /ajukan-sesi
+            - link "Status Pengajuan" [ref=f11e183] [cursor=pointer]:
+              - /url: /status
+        - generic [ref=f11e184]:
+          - heading "Kontak" [level=3] [ref=f11e185]
+          - paragraph [ref=f11e187]: Yogyakarta, Indonesia
+      - generic [ref=f11e188]: © 2026 Lovery Photography. All rights reserved.
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f11e194] [cursor=pointer]:
+    - img [ref=f11e195]

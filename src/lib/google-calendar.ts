@@ -46,10 +46,18 @@ export async function createCalendarEvent(data: {
     const [hours, minutes] = data.eventTime.split(":")
     const hour = hours.padStart(2, "0")
     const minute = minutes.padStart(2, "0")
-    const dateStr = format(new Date(data.eventDate), "yyyy-MM-dd")
+    const eventDt = new Date(data.eventDate)
+    const dateStr = format(eventDt, "yyyy-MM-dd")
     const startDateTime = `${dateStr}T${hour}:${minute}:00+07:00`
-    const endHour = String((parseInt(hours) + 2) % 24).padStart(2, "0")
-    const endDateTime = `${dateStr}T${endHour}:${minute}:00+07:00`
+
+    // Handle overflow: kalo 23:00 + 2 jam = 01:00 besok
+    const startHourNum = parseInt(hours)
+    const endHourNum = startHourNum + 2
+    const endDate = new Date(eventDt)
+    endDate.setDate(endDate.getDate() + Math.floor(endHourNum / 24))
+    const endDateStr = format(endDate, "yyyy-MM-dd")
+    const safeEndHour = (endHourNum % 24).toString().padStart(2, "0")
+    const endDateTime = `${endDateStr}T${safeEndHour}:${minute}:00+07:00`
 
     const description = [
       `Klien: ${data.clientName}`,

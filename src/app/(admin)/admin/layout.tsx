@@ -19,9 +19,15 @@ export default async function AdminLayout({
       <Sidebar className="hidden lg:flex w-56 shrink-0" />
 
       <div className="flex flex-1 flex-col min-w-0">
-        <AdminHeader />
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-4 lg:p-6">
-          {children}
+        <AdminHeader userName={session.user.name} />
+        <main 
+          className="flex-1 overflow-y-auto bg-white p-4 lg:p-8 relative"
+          style={{ backgroundImage: 'radial-gradient(rgba(0,0,0,0.1) 2px, transparent 2px)', backgroundSize: '24px 24px' }}
+        >
+          <div className="absolute inset-0 bg-white/50 backdrop-blur-[1px] pointer-events-none" />
+          <div className="relative z-10">
+            {children}
+          </div>
         </main>
       </div>
     </div>

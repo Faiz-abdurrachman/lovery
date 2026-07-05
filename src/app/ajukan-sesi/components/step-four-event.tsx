@@ -15,36 +15,38 @@ export function StepFourEvent() {
 
   const today = new Date().toISOString().split("T")[0]
 
+  const inputClass = "rounded-none border-2 border-black bg-white/40 backdrop-blur-md shadow-[4px_4px_0_0_#111111] focus:bg-white focus:ring-0 focus:border-lovery-pink focus:shadow-[4px_4px_0_0_#E89CC9] transition-all h-14 px-4 text-black font-body text-base"
+  const textareaClass = "rounded-none border-2 border-black bg-white/40 backdrop-blur-md shadow-[4px_4px_0_0_#111111] focus:bg-white focus:ring-0 focus:border-lovery-pink focus:shadow-[4px_4px_0_0_#E89CC9] transition-all px-4 py-3 text-black font-body text-base min-h-[120px]"
+  const labelClass = "font-accent font-bold uppercase tracking-widest text-sm text-black inline-block mb-1 bg-white border border-black px-2 py-1 shadow-[2px_2px_0_0_#111111]"
+  const errorClass = "text-xs font-bold text-white bg-black w-fit px-2 py-1 mt-1 inline-block uppercase shadow-[2px_2px_0_0_#E89CC9]"
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
       <div>
-        <h2 className="text-lg font-semibold text-black">Detail Acara</h2>
-        <p className="text-sm text-gray-500 mt-1">
-          Tentukan kapan dan di mana sesi akan berlangsung.
-        </p>
+        <h2 className="text-2xl font-heading font-black text-black uppercase tracking-widest border-b-4 border-black pb-4 inline-block">Detail Acara</h2>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-8">
         <div className="space-y-2">
-          <Label htmlFor="eventName">
-            Nama Acara <span className="text-error">*</span>
+          <Label htmlFor="eventName" className={labelClass}>
+            Nama Acara <span className="text-lovery-pink ml-1">*</span>
           </Label>
           <Input
             id="eventName"
-            placeholder="Contoh: Wisuda Sarah"
-            className="rounded-xl"
+            placeholder="CONTOH: HEIST MISSION"
+            className={inputClass}
             {...register("eventName")}
             aria-invalid={!!errors.eventName}
           />
           {errors.eventName && (
-            <p className="text-xs text-error">{errors.eventName.message}</p>
+            <p className={errorClass}>{errors.eventName.message}</p>
           )}
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-2">
-            <Label htmlFor="eventDate">
-              Tanggal <span className="text-error">*</span>
+            <Label htmlFor="eventDate" className={labelClass}>
+              Tanggal <span className="text-lovery-pink ml-1">*</span>
             </Label>
             <Controller
               name="eventDate"
@@ -54,7 +56,7 @@ export function StepFourEvent() {
                   id="eventDate"
                   type="date"
                   min={today}
-                  className="rounded-xl"
+                  className={inputClass}
                   value={
                     field.value
                       ? new Date(field.value).toISOString().split("T")[0]
@@ -70,49 +72,49 @@ export function StepFourEvent() {
               )}
             />
             {errors.eventDate && (
-              <p className="text-xs text-error">{errors.eventDate.message}</p>
+              <p className={errorClass}>{errors.eventDate.message}</p>
             )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="eventTime">
-              Jam <span className="text-error">*</span>
+            <Label htmlFor="eventTime" className={labelClass}>
+              Jam <span className="text-lovery-pink ml-1">*</span>
             </Label>
             <Input
               id="eventTime"
               type="time"
-              className="rounded-xl"
+              className={inputClass}
               {...register("eventTime")}
               aria-invalid={!!errors.eventTime}
             />
             {errors.eventTime && (
-              <p className="text-xs text-error">{errors.eventTime.message}</p>
+              <p className={errorClass}>{errors.eventTime.message}</p>
             )}
           </div>
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="location">
-            Lokasi <span className="text-error">*</span>
+          <Label htmlFor="location" className={labelClass}>
+            Lokasi <span className="text-lovery-pink ml-1">*</span>
           </Label>
           <Input
             id="location"
-            placeholder="Contoh: UII Jakal, Yogyakarta"
-            className="rounded-xl"
+            placeholder="SHIBUYA CROSSING"
+            className={inputClass}
             {...register("location")}
             aria-invalid={!!errors.location}
           />
           {errors.location && (
-            <p className="text-xs text-error">{errors.location.message}</p>
+            <p className={errorClass}>{errors.location.message}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="specialRequest">Request Khusus (Opsional)</Label>
+          <Label htmlFor="specialRequest" className={labelClass}>Request Khusus (Opsional)</Label>
           <Textarea
             id="specialRequest"
-            placeholder="Ceritakan konsep atau keinginan khusus Anda..."
-            className="rounded-xl min-h-[80px]"
+            placeholder="CERITAKAN KONSEP ATAU REQUEST KHUSUS..."
+            className={textareaClass}
             {...register("specialRequest")}
           />
         </div>

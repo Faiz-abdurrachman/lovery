@@ -1,0 +1,121 @@
+- generic [ref=f19e1]:
+  - generic [ref=f19e23]:
+    - complementary [ref=f19e24]:
+      - link [ref=f19e155] [cursor=pointer]:
+        - /url: /admin
+        - img [ref=f19e27]
+        - generic [ref=f19e30]: Lovery Photography
+      - navigation [ref=f19e31]:
+        - link [ref=f19e156] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=f19e33]
+          - generic [ref=f19e38]: Dashboard
+        - link [ref=f19e157] [cursor=pointer]:
+          - /url: /admin/pengajuan
+          - img [ref=f19e40]
+          - generic [ref=f19e43]: Pengajuan
+        - link [ref=f19e158] [cursor=pointer]:
+          - /url: /admin/invoice
+          - img [ref=f19e45]
+          - generic [ref=f19e48]: Invoice
+        - link [ref=f19e159] [cursor=pointer]:
+          - /url: /admin/kalender
+          - img [ref=f19e50]
+          - generic [ref=f19e52]: Kalender
+        - link [ref=f19e160] [cursor=pointer]:
+          - /url: /admin/pendapatan
+          - img [ref=f19e54]
+          - generic [ref=f19e56]: Pendapatan
+        - link [ref=f19e161] [cursor=pointer]:
+          - /url: /admin/klien
+          - img [ref=f19e58]
+          - generic [ref=f19e63]: Klien
+        - link [ref=f19e162] [cursor=pointer]:
+          - /url: /admin/pengaturan
+          - img [ref=f19e65]
+          - generic [ref=f19e68]: Pengaturan
+    - generic [ref=f19e69]:
+      - banner [ref=f19e70]:
+        - generic [ref=f19e72]: Lovery Photography
+        - button [ref=f19e163] [cursor=pointer]:
+          - generic [ref=f19e75]: AL
+          - generic [ref=f19e76]: Admin Lovery
+      - main [ref=f19e77]:
+        - generic [ref=f19e78]:
+          - generic [ref=f19e79]:
+            - link [ref=f19e164] [cursor=pointer]:
+              - /url: /admin/pengajuan
+              - img [ref=f19e81]
+              - text: Kembali
+            - generic [ref=f19e83]:
+              - heading [level=1] [ref=f19e165]: LVR-0F9NJ-2026
+              - generic [ref=f19e85]: Menunggu Review
+          - generic [ref=f19e86]:
+            - generic [ref=f19e87]:
+              - generic [ref=f19e88]:
+                - generic [ref=f19e90]:
+                  - img [ref=f19e91]
+                  - text: Info Klien
+                - generic [ref=f19e94]:
+                  - generic [ref=f19e95]:
+                    - generic [ref=f19e96]: Nama
+                    - generic [ref=f19e97]: Ka Faizah
+                  - generic [ref=f19e98]:
+                    - generic [ref=f19e99]: WhatsApp
+                    - generic [ref=f19e100]: "62895324878927"
+              - generic [ref=f19e101]:
+                - generic [ref=f19e103]:
+                  - img [ref=f19e104]
+                  - text: Detail Sesi
+                - generic [ref=f19e107]:
+                  - generic [ref=f19e108]:
+                    - generic [ref=f19e109]: Acara
+                    - generic [ref=f19e110]: Sesi Ka Faizah
+                  - generic [ref=f19e111]:
+                    - generic [ref=f19e112]: Tanggal
+                    - generic [ref=f19e113]: Kamis, 20 Agustus 2026
+                  - generic [ref=f19e114]:
+                    - generic [ref=f19e115]: Jam
+                    - generic [ref=f19e116]: 09:00
+                  - generic [ref=f19e117]:
+                    - generic [ref=f19e118]: Lokasi
+                    - generic [ref=f19e119]: Studio Lovery Jogja
+              - generic [ref=f19e120]:
+                - generic [ref=f19e122]:
+                  - img [ref=f19e123]
+                  - text: Paket & Add-On
+                - generic [ref=f19e128]:
+                  - generic [ref=f19e129]: Graduation Premium
+                  - generic [ref=f19e130]: Rp 750.000
+            - generic [ref=f19e131]:
+              - generic [ref=f19e132]:
+                - generic [ref=f19e134]:
+                  - img [ref=f19e135]
+                  - text: Timeline
+                - generic [ref=f19e144]:
+                  - paragraph [ref=f19e145]: 04 Jul, 23:46
+                  - paragraph [ref=f19e146]: Pengajuan dibuat
+                  - paragraph [ref=f19e147]: Klien mengirim pengajuan sesi
+              - generic [ref=f19e148]:
+                - generic [ref=f19e150]: Aksi
+                - generic [ref=f19e151]:
+                  - button [active] [ref=f19e166]:
+                    - text: Terima Pengajuan
+                    - img
+                  - button [ref=f19e167]: Tolak Pengajuan
+                  - button [ref=f19e168]: Minta Penjadwalan Ulang
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f19e18] [cursor=pointer]:
+    - img [ref=f19e19]
+  - alert [ref=f19e22]
+  - dialog "Terima Pengajuan" [ref=f19e172]:
+    - heading "Terima Pengajuan" [level=2] [ref=f19e174]
+    - generic [ref=f19e175]:
+      - paragraph [ref=f19e176]: Anda yakin ingin melakukan aksi ini?
+      - textbox "Catatan (opsional)..." [ref=f19e177]
+    - generic [ref=f19e178]:
+      - button "Batal" [ref=f19e179]
+      - button "Konfirmasi" [ref=f19e180]
+    - button "Close" [ref=f19e181]:
+      - img
+      - generic [ref=f19e182]: Close

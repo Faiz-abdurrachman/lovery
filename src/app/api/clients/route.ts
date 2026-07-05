@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
 import { listClients } from "@/lib/data"
-import { supabase } from "@/lib/supabase"
 
 export async function GET(request: NextRequest) {
   try {

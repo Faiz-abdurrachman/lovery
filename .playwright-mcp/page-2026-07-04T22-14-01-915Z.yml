@@ -1,0 +1,97 @@
+- generic [active] [ref=f6e1]:
+  - generic [ref=f6e2]:
+    - complementary [ref=f6e3]:
+      - link "Lovery Photography" [ref=f6e4] [cursor=pointer]:
+        - /url: /admin
+        - img [ref=f6e6]
+        - generic [ref=f6e9]: Lovery Photography
+      - navigation [ref=f6e10]:
+        - link "Dashboard" [ref=f6e11] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=f6e12]
+          - generic [ref=f6e17]: Dashboard
+        - link "Pengajuan" [ref=f6e18] [cursor=pointer]:
+          - /url: /admin/pengajuan
+          - img [ref=f6e19]
+          - generic [ref=f6e22]: Pengajuan
+        - link "Invoice" [ref=f6e23] [cursor=pointer]:
+          - /url: /admin/invoice
+          - img [ref=f6e24]
+          - generic [ref=f6e27]: Invoice
+        - link "Kalender" [ref=f6e28] [cursor=pointer]:
+          - /url: /admin/kalender
+          - img [ref=f6e29]
+          - generic [ref=f6e31]: Kalender
+        - link "Pendapatan" [ref=f6e32] [cursor=pointer]:
+          - /url: /admin/pendapatan
+          - img [ref=f6e33]
+          - generic [ref=f6e35]: Pendapatan
+        - link "Klien" [ref=f6e36] [cursor=pointer]:
+          - /url: /admin/klien
+          - img [ref=f6e37]
+          - generic [ref=f6e42]: Klien
+        - link "Pengaturan" [ref=f6e43] [cursor=pointer]:
+          - /url: /admin/pengaturan
+          - img [ref=f6e44]
+          - generic [ref=f6e47]: Pengaturan
+    - generic [ref=f6e48]:
+      - banner [ref=f6e49]:
+        - generic [ref=f6e51]: Lovery Photography
+        - button "AL Admin Lovery" [ref=f6e52]:
+          - button "AL Admin Lovery" [ref=f6e53]:
+            - generic [ref=f6e55]: AL
+            - generic [ref=f6e56]: Admin Lovery
+      - main [ref=f6e57]:
+        - generic [ref=f6e58]:
+          - generic [ref=f6e59]:
+            - generic [ref=f6e60]:
+              - heading "Pendapatan" [level=1] [ref=f6e61]
+              - paragraph [ref=f6e62]: Monitoring cashflow studio.
+            - button "Export Excel" [disabled]:
+              - img
+              - text: Export Excel
+          - generic [ref=f6e63]:
+            - button "Jan" [ref=f6e64]
+            - button "Feb" [ref=f6e65]
+            - button "Mar" [ref=f6e66]
+            - button "Apr" [ref=f6e67]
+            - button "Mei" [ref=f6e68]
+            - button "Jun" [ref=f6e69]
+            - button "Jul" [ref=f6e70]
+            - button "Agu" [ref=f6e71]
+            - button "Sep" [ref=f6e72]
+            - button "Okt" [ref=f6e73]
+            - button "Nov" [ref=f6e74]
+            - button "Des" [ref=f6e75]
+          - generic [ref=f6e76]:
+            - generic [ref=f6e79]:
+              - img [ref=f6e81]
+              - generic [ref=f6e84]:
+                - paragraph [ref=f6e85]: Total Juli
+                - paragraph [ref=f6e86]: Rp 0
+            - generic [ref=f6e89]:
+              - img [ref=f6e91]
+              - generic [ref=f6e94]:
+                - paragraph [ref=f6e95]: DP
+                - paragraph [ref=f6e96]: Rp 0
+            - generic [ref=f6e99]:
+              - img [ref=f6e101]
+              - generic [ref=f6e104]:
+                - paragraph [ref=f6e105]: Pelunasan
+                - paragraph [ref=f6e106]: Rp 0
+          - img [ref=f6e109]
+  - region "Notifications alt+T"
+  - generic [ref=f6e115] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=f6e116]:
+      - img [ref=f6e117]
+    - generic [ref=f6e120]:
+      - button "Open issues overlay" [ref=f6e121]:
+        - generic [ref=f6e122]:
+          - generic [ref=f6e123]: "2"
+          - generic [ref=f6e124]: "3"
+        - generic [ref=f6e125]:
+          - text: Issue
+          - generic [ref=f6e126]: s
+      - button "Collapse issues badge" [ref=f6e127]:
+        - img [ref=f6e128]
+  - alert [ref=f6e130]

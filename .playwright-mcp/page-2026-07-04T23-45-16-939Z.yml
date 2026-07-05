@@ -1,0 +1,47 @@
+- generic [active] [ref=f18e1]:
+  - generic [ref=f18e2]:
+    - complementary [ref=f18e3]:
+      - link "Lovery Photography" [ref=f18e4] [cursor=pointer]:
+        - /url: /admin
+        - img [ref=f18e6]
+        - generic [ref=f18e9]: Lovery Photography
+      - navigation [ref=f18e10]:
+        - link "Dashboard" [ref=f18e11] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=f18e12]
+          - generic [ref=f18e17]: Dashboard
+        - link "Pengajuan" [ref=f18e18] [cursor=pointer]:
+          - /url: /admin/pengajuan
+          - img [ref=f18e19]
+          - generic [ref=f18e22]: Pengajuan
+        - link "Invoice" [ref=f18e23] [cursor=pointer]:
+          - /url: /admin/invoice
+          - img [ref=f18e24]
+          - generic [ref=f18e27]: Invoice
+        - link "Kalender" [ref=f18e28] [cursor=pointer]:
+          - /url: /admin/kalender
+          - img [ref=f18e29]
+          - generic [ref=f18e31]: Kalender
+        - link "Pendapatan" [ref=f18e32] [cursor=pointer]:
+          - /url: /admin/pendapatan
+          - img [ref=f18e33]
+          - generic [ref=f18e35]: Pendapatan
+        - link "Klien" [ref=f18e36] [cursor=pointer]:
+          - /url: /admin/klien
+          - img [ref=f18e37]
+          - generic [ref=f18e42]: Klien
+        - link "Pengaturan" [ref=f18e43] [cursor=pointer]:
+          - /url: /admin/pengaturan
+          - img [ref=f18e44]
+          - generic [ref=f18e47]: Pengaturan
+    - generic [ref=f18e48]:
+      - banner [ref=f18e49]:
+        - generic [ref=f18e51]: Lovery Photography
+        - button "A Admin" [ref=f18e52] [cursor=pointer]:
+          - generic [ref=f18e54]: A
+          - generic [ref=f18e55]: Admin
+      - main [ref=f18e56]:
+        - img [ref=f18e58]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f18e65] [cursor=pointer]:
+    - img [ref=f18e66]

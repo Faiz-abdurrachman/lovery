@@ -5,13 +5,12 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
     const number = searchParams.get("number")
-    const phone = searchParams.get("phone")
 
-    if (!number || !phone) {
-      return NextResponse.json({ success: false, message: "Nomor pengajuan dan WhatsApp wajib diisi" }, { status: 400 })
+    if (!number) {
+      return NextResponse.json({ success: false, message: "Nomor pengajuan wajib diisi" }, { status: 400 })
     }
 
-    const data = await trackSubmission(number, phone)
+    const data = await trackSubmission(number)
 
     if (!data) {
       return NextResponse.json({ success: false, message: "Pengajuan tidak ditemukan" }, { status: 404 })

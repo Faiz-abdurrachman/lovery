@@ -1,44 +1,52 @@
 import Link from "next/link"
-import { Camera } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white py-16">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <footer className="bg-black text-white py-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-lovery-pink flex items-center justify-center">
-                <Camera className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-lg font-semibold">Lovery Photography</span>
+            <div className="flex items-center justify-center w-24 h-24 mb-6 overflow-hidden relative">
+              <Image
+                src="/LOGO.png"
+                alt="Lovery Photography"
+                width={160}
+                height={160}
+                className="object-contain h-full w-full scale-[2.5] sm:scale-[3] brightness-0 invert"
+              />
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              Studio fotografi profesional di Yogyakarta. Mengabadikan momen spesial Anda dengan profesional, hangat, dan personal.
+            <p className="text-base text-gray-400 leading-relaxed max-w-sm">
+              Studio fotografi premium di Yogyakarta. Mengabadikan setiap momen spesial Anda dengan elegan, profesional, dan personal.
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Navigasi</h3>
-            <div className="space-y-2 text-sm text-gray-400">
-              <Link href="/" className="block hover:text-white transition-colors">Beranda</Link>
-              <Link href="/#portfolio" className="block hover:text-white transition-colors">Portfolio</Link>
-              <Link href="/#layanan" className="block hover:text-white transition-colors">Layanan</Link>
-              <Link href="/ajukan-sesi" className="block hover:text-white transition-colors">Ajukan Sesi</Link>
-              <Link href="/status" className="block hover:text-white transition-colors">Status Pengajuan</Link>
+            <h3 className="font-heading font-bold text-lg mb-6 text-lovery-pink">Navigasi</h3>
+            <div className="flex flex-col space-y-4 text-gray-400">
+              <Link href="/" className="hover:text-white transition-colors w-fit">Beranda</Link>
+              <Link href="/#portfolio" className="hover:text-white transition-colors w-fit">Portfolio</Link>
+              <Link href="/#layanan" className="hover:text-white transition-colors w-fit">Layanan</Link>
+              <Link href="/ajukan-sesi" className="hover:text-white transition-colors w-fit">Booking Sesi</Link>
+              <Link href="/status" className="hover:text-white transition-colors w-fit">Status Pengajuan</Link>
             </div>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Kontak</h3>
-            <div className="space-y-2 text-sm text-gray-400">
+            <h3 className="font-heading font-bold text-lg mb-6 text-lovery-pink">Hubungi Kami</h3>
+            <div className="space-y-4 text-gray-400">
               <p>Yogyakarta, Indonesia</p>
+              <p>Instagram: @lovery.photography</p>
+              <p>WhatsApp: +62 857-0183-2169</p>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-6 text-center text-xs text-gray-600">
-          &copy; {new Date().getFullYear()} Lovery Photography. All rights reserved.
+        <div className="border-t border-white/10 mt-16 pt-8 text-center text-sm text-gray-600 flex flex-col sm:flex-row items-center justify-between">
+          <p>&copy; {new Date().getFullYear()} Lovery Photography. All rights reserved.</p>
+          <div className="mt-4 sm:mt-0 flex gap-4">
+            <Link href="/syarat-ketentuan" className="hover:text-white transition-colors">Syarat & Ketentuan</Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -15,15 +15,9 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { format } from "date-fns"
 import { Download, TrendingUp, Loader2 } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, formatRupiah } from "@/lib/utils"
 import type { PaymentType } from "@prisma/client"
 import * as XLSX from "xlsx"
-
-function formatRupiah(n: number) {
-  return new Intl.NumberFormat("id-ID", {
-    style: "currency", currency: "IDR", minimumFractionDigits: 0,
-  }).format(n)
-}
 
 interface RevenueData {
   payments: {
@@ -47,10 +41,11 @@ interface RevenueData {
 
 export default function AdminPendapatanPage() {
   const [month, setMonth] = useState(() => new Date().getMonth())
-  const [year] = useState(() => new Date().getFullYear())
+  const year = useMemo(() => new Date().getFullYear(), [])
 
-  const startDate = new Date(Date.UTC(year, month, 1, -7, 0, 0))
-  const endDate = new Date(Date.UTC(year, month + 1, 0, 16, 59, 59))
+  // Pake next month first day 00:00 UTC biar gak ada transaksi kelewat
+  const startDate = new Date(Date.UTC(year, month, 1))
+  const endDate = new Date(Date.UTC(year, month + 1, 1))
 
   const { data, isLoading } = useQuery<RevenueData>({
     queryKey: ["revenue", month, year],
@@ -111,12 +106,12 @@ export default function AdminPendapatanPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-black">Pendapatan</h1>
+          <h1 className="text-2xl font-heading font-black text-black uppercase tracking-widest drop-shadow-[4px_4px_0_#E89CC9]">Pendapatan</h1>
           <p className="text-gray-500 mt-1">Monitoring cashflow studio.</p>
         </div>
         <Button
           variant="outline"
-          className="rounded-xl gap-2"
+          className="rounded-none border-2 border-black hover:-translate-y-1 hover:shadow-[4px_4px_0_0_#111111] transition-transform gap-2"
           onClick={exportExcel}
           disabled={!data?.payments.length}
         >
@@ -129,7 +124,7 @@ export default function AdminPendapatanPage() {
         <Button
           variant={month === 0 ? "default" : "outline"}
           className={cn(
-            "rounded-xl text-sm",
+            "rounded-none border-2 border-black hover:-translate-y-1 hover:shadow-[4px_4px_0_0_#111111] transition-all text-sm",
             month === 0 && "bg-lovery-pink hover:bg-lovery-pink-dark text-white"
           )}
           onClick={() => setMonth(0)}
@@ -141,7 +136,7 @@ export default function AdminPendapatanPage() {
             key={m}
             variant={month === i + 1 ? "default" : "outline"}
             className={cn(
-              "rounded-xl text-sm",
+              "rounded-none border-2 border-black hover:-translate-y-1 hover:shadow-[4px_4px_0_0_#111111] transition-all text-sm",
               month === i + 1 && "bg-lovery-pink hover:bg-lovery-pink-dark text-white"
             )}
             onClick={() => setMonth(i + 1)}
@@ -157,15 +152,15 @@ export default function AdminPendapatanPage() {
           { label: "DP", value: stats.dp, color: "bg-info" },
           { label: "Pelunasan", value: stats.pelunasan, color: "bg-success" },
         ].map((card) => (
-          <Card key={card.label} className="border-0 shadow-sm">
+          <Card key={card.label} className="border-4 border-black rounded-none shadow-[8px_8px_0_0_#111111] bg-white">
             <CardContent className="p-5">
               <div className="flex items-center gap-3">
-                <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center", card.color + "/10")}>
+                <div className={cn("w-10 h-10 flex items-center justify-center", card.color + "/10")}>
                   <TrendingUp className={cn("h-5 w-5", card.color.replace("bg-", "text-"))} />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500">{card.label}</p>
-                  <p className="text-xl font-bold text-black">{formatRupiah(card.value)}</p>
+                  <p className="font-accent font-bold text-black uppercase tracking-widest border-b-4 border-black pb-2 mb-2 block">{card.label}</p>
+                  <p className="font-heading font-black text-3xl text-black">{formatRupiah(card.value)}</p>
                 </div>
               </div>
             </CardContent>
@@ -173,53 +168,63 @@ export default function AdminPendapatanPage() {
         ))}
       </div>
 
-      <Card className="border-0 shadow-sm">
+      <Card className="border-4 border-black rounded-none shadow-[8px_8px_0_0_#111111] bg-white">
         {isLoading ? (
           <CardContent className="flex items-center justify-center py-16">
             <Loader2 className="h-8 w-8 animate-spin text-lovery-pink" />
           </CardContent>
         ) : !data?.payments.length ? (
-          <CardContent className="text-center py-16">
-            <p className="text-gray-400">Belum ada transaksi di bulan ini.</p>
+          <CardContent className="flex items-center justify-center py-16">
+            <div className="font-accent font-bold uppercase tracking-widest text-black bg-lovery-pink px-4 py-2 border-4 border-black shadow-[4px_4px_0_0_#111111]">
+              Belum ada transaksi di bulan ini.
+            </div>
           </CardContent>
         ) : (
           <div className="overflow-x-auto">
             <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>No. Transaksi</TableHead>
-                  <TableHead>Klien</TableHead>
-                  <TableHead>Paket</TableHead>
-                  <TableHead>Tipe</TableHead>
-                  <TableHead>Nominal</TableHead>
-                  <TableHead>Tanggal</TableHead>
-                  <TableHead>Status</TableHead>
+              <TableHeader className="bg-black">
+                <TableRow className="border-b-2 border-black hover:bg-transparent">
+                  <TableHead className="text-white font-heading font-black">No. Transaksi</TableHead>
+                  <TableHead className="text-white font-heading font-black">Klien</TableHead>
+                  <TableHead className="text-white font-heading font-black">Paket</TableHead>
+                  <TableHead className="text-white font-heading font-black">Tipe</TableHead>
+                  <TableHead className="text-white font-heading font-black">Nominal</TableHead>
+                  <TableHead className="text-white font-heading font-black">Tanggal</TableHead>
+                  <TableHead className="text-white font-heading font-black">Status</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {data.payments.map((p) => (
-                  <TableRow key={p.id}>
-                    <TableCell className="font-mono text-xs">{p.paymentNumber}</TableCell>
-                    <TableCell className="font-medium">{p.invoice?.submission?.client?.name}</TableCell>
-                    <TableCell className="text-sm text-gray-500">{p.invoice?.submission?.package?.name}</TableCell>
+                  <TableRow key={p.id} className="border-b-2 border-black">
+                    <TableCell>
+                      <span className="inline-block font-accent font-bold bg-black text-white px-2 py-1 text-xs shadow-[2px_2px_0_0_#E89CC9]">
+                        {p.paymentNumber}
+                      </span>
+                    </TableCell>
+                    <TableCell className="font-heading font-black text-lg text-black uppercase">{p.invoice?.submission?.client?.name}</TableCell>
+                    <TableCell>
+                      <span className="inline-block font-accent font-bold text-black border-2 border-black px-2 py-1 text-xs uppercase shadow-[2px_2px_0_0_#111111]">
+                        {p.invoice?.submission?.package?.name}
+                      </span>
+                    </TableCell>
                     <TableCell>
                       <Badge
                         className={cn(
-                          "rounded-full",
+                          "rounded-none border-2 border-black shadow-[2px_2px_0_0_#111111] font-accent font-bold uppercase tracking-widest",
                           p.paymentType === "DP" ? "bg-info text-white" : "bg-success text-white"
                         )}
                       >
                         {p.paymentType === "DP" ? "DP" : "Lunas"}
                       </Badge>
                     </TableCell>
-                    <TableCell className="font-medium">{formatRupiah(p.amount)}</TableCell>
-                    <TableCell className="text-sm text-gray-500">
+                    <TableCell className="font-heading font-black text-xl text-black">{formatRupiah(p.amount)}</TableCell>
+                    <TableCell className="font-accent font-bold text-black uppercase tracking-widest text-xs">
                       {p.verifiedAt ? format(new Date(p.verifiedAt), "dd MMM yyyy") : "-"}
                     </TableCell>
                     <TableCell>
                       <Badge
                         className={cn(
-                          "rounded-full",
+                          "rounded-none border-2 border-black shadow-[2px_2px_0_0_#111111] font-accent font-bold uppercase tracking-widest",
                           p.verifiedAt ? "bg-success text-white" : "bg-warning text-white"
                         )}
                       >

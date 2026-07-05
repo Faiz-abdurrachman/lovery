@@ -1,0 +1,82 @@
+- generic [ref=f1e1]:
+  - generic [ref=f1e3]:
+    - generic [ref=f1e4]:
+      - img [ref=f1e6]
+      - heading "Ajukan Sesi" [level=1] [ref=f1e9]
+      - paragraph [ref=f1e10]: Isi formulir di bawah untuk mengajukan sesi fotografi. Admin akan meninjau pengajuan Anda.
+    - generic [ref=f1e11]:
+      - generic [ref=f1e12]:
+        - generic [ref=f1e13]: "1"
+        - generic [ref=f1e14]: Paket
+      - generic [ref=f1e16]:
+        - generic [ref=f1e17]: "2"
+        - generic [ref=f1e18]: Add-On
+      - generic [ref=f1e20]:
+        - generic [ref=f1e21]: "3"
+        - generic [ref=f1e22]: Data Diri
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]: "4"
+        - generic [ref=f1e26]: Acara
+      - generic [ref=f1e28]:
+        - generic [ref=f1e29]: "5"
+        - generic [ref=f1e30]: Konfirmasi
+    - generic [ref=f1e31]:
+      - generic [ref=f1e32]:
+        - generic [ref=f1e35]:
+          - generic [ref=f1e36]:
+            - heading "Pilih Paket" [level=2] [ref=f1e37]
+            - paragraph [ref=f1e38]: Pilih paket yang sesuai dengan kebutuhan Anda.
+          - generic [ref=f1e66]:
+            - heading "Graduation" [level=3] [ref=f1e67]
+            - generic [ref=f1e68]:
+              - button "Graduation Basic Paket foto wisuda basic. Rp 500.000" [active] [ref=f1e69]:
+                - generic [ref=f1e70]:
+                  - generic [ref=f1e71]:
+                    - paragraph [ref=f1e72]: Graduation Basic
+                    - paragraph [ref=f1e73]: Paket foto wisuda basic.
+                  - img [ref=f1e101]
+                - paragraph [ref=f1e74]: Rp 500.000
+              - button "Graduation Premium Paket foto wisuda premium. Rp 750.000" [ref=f1e75]:
+                - generic [ref=f1e77]:
+                  - paragraph [ref=f1e78]: Graduation Premium
+                  - paragraph [ref=f1e79]: Paket foto wisuda premium.
+                - paragraph [ref=f1e80]: Rp 750.000
+          - generic [ref=f1e81]:
+            - heading "Casual" [level=3] [ref=f1e82]
+            - button "Casual Session Paket foto casual. Rp 400.000" [ref=f1e84]:
+              - generic [ref=f1e86]:
+                - paragraph [ref=f1e87]: Casual Session
+                - paragraph [ref=f1e88]: Paket foto casual.
+              - paragraph [ref=f1e89]: Rp 400.000
+          - generic [ref=f1e90]:
+            - heading "Wedding" [level=3] [ref=f1e91]
+            - button "Wedding Package Paket foto pernikahan lengkap. Rp 2.000.000" [ref=f1e93]:
+              - generic [ref=f1e95]:
+                - paragraph [ref=f1e96]: Wedding Package
+                - paragraph [ref=f1e97]: Paket foto pernikahan lengkap.
+              - paragraph [ref=f1e98]: Rp 2.000.000
+        - generic [ref=f1e40]:
+          - button "Kembali" [disabled]:
+            - img
+            - text: Kembali
+          - button "Selanjutnya" [ref=f1e103]:
+            - text: Selanjutnya
+            - img
+      - generic [ref=f1e42]:
+        - generic [ref=f1e44]: Ringkasan Harga
+        - generic [ref=f1e45]:
+          - generic [ref=f1e46]:
+            - generic [ref=f1e47]: Paket
+            - generic [ref=f1e48]: Rp 500.000
+          - separator [ref=f1e49]
+          - generic [ref=f1e50]:
+            - generic [ref=f1e51]: Total
+            - generic [ref=f1e52]: Rp 500.000
+          - generic [ref=f1e53]:
+            - generic [ref=f1e54]: Estimasi DP
+            - generic [ref=f1e55]: Rp 50.000
+          - paragraph [ref=f1e56]: "* DP minimum ditentukan berdasarkan paket dan add-on yang dipilih. Pembayaran dilakukan setelah admin menerima pengajuan."
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f1e62] [cursor=pointer]:
+    - img [ref=f1e63]
+  - alert [ref=f1e99]

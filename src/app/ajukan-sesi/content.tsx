@@ -26,6 +26,7 @@ import { StepThreeProfile } from "./components/step-three-profile"
 import { StepFourEvent } from "./components/step-four-event"
 import { StepFiveFinal } from "./components/step-five-final"
 import { PriceSummary } from "./components/price-summary"
+import { AnimatedMeshBg } from "../components/animated-mesh"
 
 const STEPS = [
   { label: "Paket", icon: "1" },
@@ -39,12 +40,13 @@ export default function AjukanSesiContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [step, setStep] = useState(0)
+  const [submitError, setSubmitError] = useState("")
   const form = useForm<SubmissionFormData>({
     resolver: zodResolver(submissionSchema),
     defaultValues: {
       addonIds: [],
       allowPublish: true,
-      agreedTerms: true as unknown as true,
+      agreedTerms: true,
     },
     mode: "onChange",
   })
@@ -100,18 +102,11 @@ export default function AjukanSesiContent() {
 
   const canNext = useCallback(() => {
     if (step === 0) return !!watchedPackageId
-    if (step === 2) {
-      const values = form.getValues()
-      return !!values.name && !!values.phone
-    }
-    if (step === 3) {
-      const values = form.getValues()
-      return !!values.eventName && !!values.eventDate && !!values.eventTime && !!values.location
-    }
     return true
-  }, [step, watchedPackageId, form])
+  }, [step, watchedPackageId])
 
   async function onSubmit(data: SubmissionFormData) {
+    setSubmitError("")
     try {
       const result = await createSubmission.mutateAsync(data)
       router.push(`/status?number=${result.submissionNumber}`)
@@ -120,36 +115,68 @@ export default function AjukanSesiContent() {
     }
   }
 
-  function handleNext() {
+  async function handleNext() {
+    setSubmitError("")
+    // Validasi field per step sebelum lanjut
+    const stepFields: Record<number, (keyof SubmissionFormData)[]> = {
+      0: ["packageId"],
+      2: ["name", "phone", "instagram"],
+      3: ["eventName", "eventDate", "eventTime", "location"],
+    }
+    const fieldsToValidate = stepFields[step]
+    if (fieldsToValidate) {
+      const valid = await form.trigger(fieldsToValidate)
+      if (!valid) {
+        const errors = form.formState.errors
+        const fieldLabels: Record<string, string> = {
+          name: "Nama", phone: "Nomor WhatsApp", packageId: "Paket",
+          eventName: "Nama acara", eventDate: "Tanggal", eventTime: "Jam",
+          location: "Lokasi",
+        }
+        const firstKey = fieldsToValidate.find((f) => errors[f])
+        const msg = firstKey ? (errors[firstKey]?.message as string) || `${fieldLabels[firstKey]} tidak valid` : "Data belum lengkap"
+        setSubmitError(msg)
+        return
+      }
+    }
+
     if (step < 4) {
       setStep((s) => s + 1)
     } else {
-      form.handleSubmit(onSubmit)()
+      form.handleSubmit(onSubmit, (errors) => {
+        const fieldLabels: Record<string, string> = {
+          name: "Nama", phone: "Nomor WhatsApp", packageId: "Paket",
+          eventName: "Nama acara", eventDate: "Tanggal", eventTime: "Jam",
+          location: "Lokasi", agreedTerms: "Syarat & Ketentuan",
+        }
+        const firstKey = Object.keys(errors)[0]
+        const label = fieldLabels[firstKey] || firstKey
+        setSubmitError(`Data belum lengkap: ${label}. Silakan periksa kembali form Anda.`)
+      })()
     }
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-5xl mx-auto px-4 py-8 lg:py-12">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-lovery-pink/20 mb-4">
-            <Camera className="h-6 w-6 text-lovery-pink" />
-          </div>
-          <h1 className="text-2xl lg:text-3xl font-bold text-black">
-            Ajukan Sesi
+    <div className="min-h-screen relative overflow-hidden z-0">
+      <AnimatedMeshBg />
+      <div className="max-w-5xl mx-auto px-4 py-12 lg:py-20 relative z-10">
+        <div className="mb-12">
+          <h1 className="text-5xl lg:text-7xl font-heading font-black text-white bg-black w-fit px-8 py-2 -skew-x-12 shadow-[8px_8px_0_0_#E89CC9] border-2 border-black">
+            RESERVASI
           </h1>
-          <p className="text-gray-500 mt-2 max-w-md mx-auto">
-            Isi formulir di bawah untuk mengajukan sesi fotografi. Admin akan meninjau pengajuan Anda.
-          </p>
+          <h1 className="text-4xl lg:text-6xl font-heading font-black text-black ml-8 mt-2 uppercase tracking-tighter drop-shadow-[4px_4px_0_#E89CC9]">
+            JADWAL SESI
+          </h1>
         </div>
 
         <StepIndicator steps={STEPS} currentStep={step} />
 
         <FormProvider {...form}>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
             <div className="lg:col-span-2">
-              <Card className="border-0 shadow-sm">
-                <CardContent className="p-6">
+              <div className="border border-white/50 bg-white/40 backdrop-blur-3xl shadow-[12px_12px_0_0_#111111] p-6 lg:p-10 relative">
+                {/* Brutalist Corner Accent */}
+                <div className="absolute top-0 right-0 w-8 h-8 bg-lovery-pink border-l border-b border-white/50" />
                   {step === 0 && (
                     <StepOneCategory
                       packages={packages}
@@ -180,15 +207,14 @@ export default function AjukanSesiContent() {
                       dpAmount={dpAmount}
                     />
                   )}
-                </CardContent>
-              </Card>
+              </div>
 
-              <div className="flex items-center justify-between mt-6">
+              <div className="flex items-center justify-between mt-8">
                 <Button
                   variant="outline"
                   onClick={() => setStep((s) => s - 1)}
                   disabled={step === 0}
-                  className="rounded-xl"
+                  className="rounded-none border-4 border-black font-accent font-bold uppercase tracking-widest hover:bg-gray-100 shadow-[4px_4px_0_0_#111111] px-6 py-6"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Kembali
@@ -197,7 +223,7 @@ export default function AjukanSesiContent() {
                 <Button
                   onClick={handleNext}
                   disabled={!canNext() || createSubmission.isPending}
-                  className="rounded-xl bg-lovery-pink hover:bg-lovery-pink-dark text-white"
+                  className="rounded-none border-4 border-black bg-lovery-pink text-black hover:bg-white font-accent font-bold uppercase tracking-widest shadow-[6px_6px_0_0_#111111] hover:-translate-y-1 hover:shadow-[10px_10px_0_0_#111111] transition-all px-8 py-6"
                 >
                   {createSubmission.isPending && (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -205,11 +231,11 @@ export default function AjukanSesiContent() {
                   {step === 4 ? (
                     <>
                       <Check className="mr-2 h-4 w-4" />
-                      Kirim Pengajuan
+                      Kirim
                     </>
                   ) : (
                     <>
-                      Selanjutnya
+                      Lanjut
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </>
                   )}
@@ -228,6 +254,12 @@ export default function AjukanSesiContent() {
             </div>
           </div>
         </FormProvider>
+
+        {submitError && (
+          <div className="mt-6 p-4 rounded-xl bg-error/10 text-error text-sm">
+            <p className="font-medium">{submitError}</p>
+          </div>
+        )}
 
         {createSubmission.isError && (
           <div className="mt-6 p-4 rounded-xl bg-error/10 text-error text-sm space-y-2">

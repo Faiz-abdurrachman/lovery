@@ -1,0 +1,115 @@
+- generic [active] [ref=f19e1]:
+  - generic [ref=f19e23]:
+    - complementary [ref=f19e24]:
+      - link "Lovery Photography" [ref=f19e184] [cursor=pointer]:
+        - /url: /admin
+        - img [ref=f19e27]
+        - generic [ref=f19e30]: Lovery Photography
+      - navigation [ref=f19e31]:
+        - link "Dashboard" [ref=f19e185] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=f19e33]
+          - generic [ref=f19e38]: Dashboard
+        - link "Pengajuan" [ref=f19e186] [cursor=pointer]:
+          - /url: /admin/pengajuan
+          - img [ref=f19e40]
+          - generic [ref=f19e43]: Pengajuan
+        - link "Invoice" [ref=f19e187] [cursor=pointer]:
+          - /url: /admin/invoice
+          - img [ref=f19e45]
+          - generic [ref=f19e48]: Invoice
+        - link "Kalender" [ref=f19e188] [cursor=pointer]:
+          - /url: /admin/kalender
+          - img [ref=f19e50]
+          - generic [ref=f19e52]: Kalender
+        - link "Pendapatan" [ref=f19e189] [cursor=pointer]:
+          - /url: /admin/pendapatan
+          - img [ref=f19e54]
+          - generic [ref=f19e56]: Pendapatan
+        - link "Klien" [ref=f19e190] [cursor=pointer]:
+          - /url: /admin/klien
+          - img [ref=f19e58]
+          - generic [ref=f19e63]: Klien
+        - link "Pengaturan" [ref=f19e191] [cursor=pointer]:
+          - /url: /admin/pengaturan
+          - img [ref=f19e65]
+          - generic [ref=f19e68]: Pengaturan
+    - generic [ref=f19e69]:
+      - banner [ref=f19e70]:
+        - generic [ref=f19e72]: Lovery Photography
+        - button "AL Admin Lovery" [ref=f19e192] [cursor=pointer]:
+          - generic [ref=f19e75]: AL
+          - generic [ref=f19e76]: Admin Lovery
+      - main [ref=f19e77]:
+        - generic [ref=f19e78]:
+          - generic [ref=f19e79]:
+            - link "Kembali" [ref=f19e193] [cursor=pointer]:
+              - /url: /admin/pengajuan
+              - img [ref=f19e81]
+              - text: Kembali
+            - generic [ref=f19e83]:
+              - heading "LVR-0F9NJ-2026" [level=1] [ref=f19e194]
+              - generic [ref=f19e85]: Menunggu DP
+          - generic [ref=f19e86]:
+            - generic [ref=f19e87]:
+              - generic [ref=f19e88]:
+                - generic [ref=f19e90]:
+                  - img [ref=f19e91]
+                  - text: Info Klien
+                - generic [ref=f19e94]:
+                  - generic [ref=f19e95]:
+                    - generic [ref=f19e96]: Nama
+                    - generic [ref=f19e97]: Ka Faizah
+                  - generic [ref=f19e98]:
+                    - generic [ref=f19e99]: WhatsApp
+                    - generic [ref=f19e100]: "62895324878927"
+              - generic [ref=f19e101]:
+                - generic [ref=f19e103]:
+                  - img [ref=f19e104]
+                  - text: Detail Sesi
+                - generic [ref=f19e107]:
+                  - generic [ref=f19e108]:
+                    - generic [ref=f19e109]: Acara
+                    - generic [ref=f19e110]: Sesi Ka Faizah
+                  - generic [ref=f19e111]:
+                    - generic [ref=f19e112]: Tanggal
+                    - generic [ref=f19e113]: Kamis, 20 Agustus 2026
+                  - generic [ref=f19e114]:
+                    - generic [ref=f19e115]: Jam
+                    - generic [ref=f19e116]: 09:00
+                  - generic [ref=f19e117]:
+                    - generic [ref=f19e118]: Lokasi
+                    - generic [ref=f19e119]: Studio Lovery Jogja
+              - generic [ref=f19e120]:
+                - generic [ref=f19e122]:
+                  - img [ref=f19e123]
+                  - text: Paket & Add-On
+                - generic [ref=f19e128]:
+                  - generic [ref=f19e129]: Graduation Premium
+                  - generic [ref=f19e130]: Rp 750.000
+            - generic [ref=f19e131]:
+              - generic [ref=f19e132]:
+                - generic [ref=f19e134]:
+                  - img [ref=f19e135]
+                  - text: Timeline
+                - generic [ref=f19e139]:
+                  - generic [ref=f19e144]:
+                    - paragraph [ref=f19e145]: 04 Jul, 23:46
+                    - paragraph [ref=f19e146]: Pengajuan dibuat
+                    - paragraph [ref=f19e147]: Klien mengirim pengajuan sesi
+                  - generic [ref=f19e199]:
+                    - paragraph [ref=f19e200]: 04 Jul, 23:46
+                    - paragraph [ref=f19e201]: Pengajuan diterima
+                  - generic [ref=f19e206]:
+                    - paragraph [ref=f19e207]: 04 Jul, 23:46
+                    - paragraph [ref=f19e208]: Invoice dibuat
+                    - paragraph [ref=f19e209]: Invoice INVG2L853626 (Revisi 1)
+              - generic [ref=f19e148]:
+                - generic [ref=f19e150]: Aksi
+                - generic [ref=f19e151]:
+                  - button "Ubah ke DP_PAID" [ref=f19e210]
+                  - button "Batalkan Pengajuan" [ref=f19e211]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f19e18] [cursor=pointer]:
+    - img [ref=f19e19]
+  - alert [ref=f19e22]

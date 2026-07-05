@@ -1,0 +1,161 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - complementary [ref=f3e3]:
+      - link "Lovery Photography Lovery Photography" [ref=f3e188] [cursor=pointer]:
+        - /url: /admin
+        - img "Lovery Photography" [ref=f3e189]
+        - generic [ref=f3e6]: Lovery Photography
+      - navigation [ref=f3e7]:
+        - link "Dashboard" [ref=f3e190] [cursor=pointer]:
+          - /url: /admin
+          - img [ref=f3e9]
+          - generic [ref=f3e14]: Dashboard
+        - link "Sesi" [ref=f3e191] [cursor=pointer]:
+          - /url: /admin/pengajuan
+          - img [ref=f3e16]
+          - generic [ref=f3e19]: Sesi
+        - link "Kalender" [ref=f3e192] [cursor=pointer]:
+          - /url: /admin/kalender
+          - img [ref=f3e21]
+          - generic [ref=f3e23]: Kalender
+        - link "Pendapatan" [ref=f3e193] [cursor=pointer]:
+          - /url: /admin/pendapatan
+          - img [ref=f3e25]
+          - generic [ref=f3e27]: Pendapatan
+        - link "Klien" [ref=f3e194] [cursor=pointer]:
+          - /url: /admin/klien
+          - img [ref=f3e29]
+          - generic [ref=f3e34]: Klien
+        - link "Pengaturan" [ref=f3e195] [cursor=pointer]:
+          - /url: /admin/pengaturan
+          - img [ref=f3e36]
+          - generic [ref=f3e39]: Pengaturan
+    - generic [ref=f3e40]:
+      - banner [ref=f3e41]:
+        - generic [ref=f3e43]: Lovery Photography
+        - button "AL Admin Lovery" [ref=f3e196] [cursor=pointer]:
+          - generic [ref=f3e46]: AL
+          - generic [ref=f3e47]: Admin Lovery
+      - main [ref=f3e48]:
+        - generic [ref=f3e49]:
+          - generic [ref=f3e63]:
+            - link "Kembali" [ref=f3e197] [cursor=pointer]:
+              - /url: /admin/pengajuan
+              - img [ref=f3e65]
+              - text: Kembali
+            - generic [ref=f3e67]:
+              - heading "LVR-MVAKA-2026" [level=1] [ref=f3e198]
+              - generic [ref=f3e69]: Menunggu DP
+          - generic [ref=f3e70]:
+            - generic [ref=f3e71]:
+              - generic [ref=f3e72]:
+                - generic [ref=f3e74]:
+                  - img [ref=f3e75]
+                  - text: Info Klien
+                - generic [ref=f3e78]:
+                  - generic [ref=f3e79]:
+                    - generic [ref=f3e80]: Nama
+                    - generic [ref=f3e81]: ka faiza
+                  - generic [ref=f3e82]:
+                    - generic [ref=f3e83]: WhatsApp
+                    - generic [ref=f3e84]: "62895324878927"
+                  - generic [ref=f3e85]:
+                    - generic [ref=f3e86]: Instagram
+                    - generic [ref=f3e87]: "@faizah.arsy"
+              - generic [ref=f3e88]:
+                - generic [ref=f3e90]:
+                  - img [ref=f3e91]
+                  - text: Detail Sesi
+                - generic [ref=f3e94]:
+                  - generic [ref=f3e95]:
+                    - generic [ref=f3e96]: Acara
+                    - generic [ref=f3e97]: Wisuda nisa
+                  - generic [ref=f3e98]:
+                    - generic [ref=f3e99]: Tanggal
+                    - generic [ref=f3e100]: Kamis, 16 Juli 2026
+                  - generic [ref=f3e101]:
+                    - generic [ref=f3e102]: Jam
+                    - generic [ref=f3e103]: 22:09
+                  - generic [ref=f3e104]:
+                    - generic [ref=f3e105]: Lokasi
+                    - generic [ref=f3e106]: Sleman
+              - generic [ref=f3e107]:
+                - generic [ref=f3e109]:
+                  - img [ref=f3e110]
+                  - text: Paket & Add-On
+                - generic [ref=f3e115]:
+                  - generic [ref=f3e116]: Graduation Premium
+                  - generic [ref=f3e117]: Rp 750.000
+            - generic [ref=f3e118]:
+              - generic [ref=f3e119]:
+                - generic [ref=f3e121]:
+                  - img [ref=f3e122]
+                  - text: Timeline
+                - generic [ref=f3e126]:
+                  - generic [ref=f3e131]:
+                    - paragraph [ref=f3e132]: 05 Jul, 10:14
+                    - paragraph [ref=f3e133]: Pengajuan dibuat
+                    - paragraph [ref=f3e134]: Klien mengirim pengajuan sesi
+                  - generic [ref=f3e203]:
+                    - paragraph [ref=f3e204]: 05 Jul, 10:15
+                    - paragraph [ref=f3e205]: Pengajuan diterima
+                  - generic [ref=f3e210]:
+                    - paragraph [ref=f3e211]: 05 Jul, 10:15
+                    - paragraph [ref=f3e212]: Invoice dibuat
+                    - paragraph [ref=f3e213]: Invoice INVWXM289226 (Revisi 1)
+              - generic [ref=f3e214]:
+                - generic [ref=f3e216]:
+                  - img [ref=f3e217]
+                  - text: Invoice
+                  - generic [ref=f3e220]: Aktif
+                - generic [ref=f3e221]:
+                  - paragraph [ref=f3e222]: INVWXM289226
+                  - generic [ref=f3e223]:
+                    - generic [ref=f3e224]:
+                      - generic [ref=f3e225]: Total
+                      - generic [ref=f3e226]: Rp 750.000
+                    - generic [ref=f3e227]:
+                      - generic [ref=f3e228]: DP
+                      - generic [ref=f3e229]: Rp 50.000
+                    - generic [ref=f3e230]:
+                      - generic [ref=f3e231]: Sisa
+                      - generic [ref=f3e232]: Rp 700.000
+                    - generic [ref=f3e233]:
+                      - generic [ref=f3e234]: Terkumpul
+                      - generic [ref=f3e235]: Rp 0
+                  - generic [ref=f3e236]:
+                    - button "PDF" [ref=f3e237]:
+                      - img
+                      - text: PDF
+                    - button "Bayar" [ref=f3e238]:
+                      - img
+                      - text: Bayar
+              - generic [ref=f3e135]:
+                - generic [ref=f3e137]:
+                  - img [ref=f3e138]
+                  - text: WhatsApp
+                - generic [ref=f3e140]:
+                  - paragraph [ref=f3e141]: ka faiza • 62895324878927
+                  - generic [ref=f3e142]:
+                    - button "Invoice" [ref=f3e239]:
+                      - img
+                      - text: Invoice
+                    - button "Pengingat" [ref=f3e240]:
+                      - img
+                      - text: Pengingat
+                  - generic [ref=f3e145]:
+                    - button "Buka Chat" [ref=f3e241]:
+                      - img
+                      - text: Buka Chat
+                    - button "PDF" [ref=f3e242]:
+                      - img
+                      - text: PDF
+              - generic [ref=f3e148]:
+                - generic [ref=f3e150]: Aksi
+                - generic [ref=f3e151]:
+                  - button "Ubah ke DP_PAID" [ref=f3e243]
+                  - button "Batalkan Pengajuan" [ref=f3e244]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=f3e57] [cursor=pointer]:
+    - img [ref=f3e58]
+  - alert [ref=f3e61]

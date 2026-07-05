@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { supabase } from "@/lib/supabase"
+import { supabaseAdmin as supabase } from "@/lib/supabase-server"
 import { submissionSchema } from "@/features/submission/schemas/submission.schema"
-
-function generateNumber(prefix: string, year: number, seq: number): string {
-  return `${prefix}-${String(seq).padStart(4, "0")}-${year}`
-}
 
 export async function POST(request: NextRequest) {
   try {
@@ -81,24 +77,18 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, message: "Gagal membuat data klien" }, { status: 500 })
     }
 
-    // Update client number for new clients
+    // Update client number — pake timestamp biar unique
     if (!client.clientNumber || client.clientNumber === "") {
-      const { count } = await supabase
-        .from("clients")
-        .select("*", { count: "exact", head: true })
-
+      const ts = Date.now().toString(36).toUpperCase().slice(-5)
       await supabase
         .from("clients")
-        .update({ clientNumber: `CLI-${String((count || 0)).padStart(5, "0")}` })
+        .update({ clientNumber: `CLI-${ts}` })
         .eq("id", client.id)
     }
 
-    // Generate submission number
-    const { count: subCount } = await supabase
-      .from("submissions")
-      .select("*", { count: "exact", head: true })
-
-    const subNumber = generateNumber("LVR", year, (subCount || 0) + 1)
+    // Generate submission number — pake timestamp biar unique
+    const ts = Date.now().toString(36).toUpperCase().slice(-5)
+    const subNumber = `LVR-${ts}-${year}`
 
     // Get addon prices
     let addonPrices: Record<string, number> = {}

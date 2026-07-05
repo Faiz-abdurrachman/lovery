@@ -1,0 +1,86 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - img [ref=e6]
+      - heading "Ajukan Sesi" [level=1] [ref=e9]
+      - paragraph [ref=e10]: Isi formulir di bawah untuk mengajukan sesi fotografi. Admin akan meninjau pengajuan Anda.
+    - generic [ref=e11]:
+      - generic [ref=e12]:
+        - img [ref=e104]
+        - generic [ref=e14]: Paket
+      - generic [ref=e16]:
+        - generic [ref=e17]: "2"
+        - generic [ref=e18]: Add-On
+      - generic [ref=e20]:
+        - generic [ref=e21]: "3"
+        - generic [ref=e22]: Data Diri
+      - generic [ref=e24]:
+        - generic [ref=e25]: "4"
+        - generic [ref=e26]: Acara
+      - generic [ref=e28]:
+        - generic [ref=e29]: "5"
+        - generic [ref=e30]: Konfirmasi
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - heading "Add-On (Opsional)" [level=2] [ref=e108]
+            - paragraph [ref=e109]:
+              - text: Tambahkan layanan ekstra sesuai kebutuhan. Jika tidak ada yang dipilih, langsung klik
+              - strong [ref=e110]: Selanjutnya
+              - text: .
+          - generic [ref=e111]:
+            - button "Cetak Album Album cetak 20x30 cm. +Rp 200.000" [ref=e112]:
+              - generic [ref=e114]:
+                - paragraph [ref=e115]: Cetak Album
+                - paragraph [ref=e116]: Album cetak 20x30 cm.
+              - paragraph [ref=e117]: +Rp 200.000
+            - button "Drone Foto dan video udara. +Rp 300.000" [ref=e118]:
+              - generic [ref=e120]:
+                - paragraph [ref=e121]: Drone
+                - paragraph [ref=e122]: Foto dan video udara.
+              - paragraph [ref=e123]: +Rp 300.000
+            - button "Extra Foto Tambahan 20 file foto. +Rp 100.000" [ref=e124]:
+              - generic [ref=e126]:
+                - paragraph [ref=e127]: Extra Foto
+                - paragraph [ref=e128]: Tambahan 20 file foto.
+              - paragraph [ref=e129]: +Rp 100.000
+            - button "Extra Jam Tambahan 1 jam sesi. +Rp 150.000" [ref=e130]:
+              - generic [ref=e132]:
+                - paragraph [ref=e133]: Extra Jam
+                - paragraph [ref=e134]: Tambahan 1 jam sesi.
+              - paragraph [ref=e135]: +Rp 150.000
+            - button "Video Highlight Video highlight 1-2 menit. +Rp 250.000" [ref=e136]:
+              - generic [ref=e138]:
+                - paragraph [ref=e139]: Video Highlight
+                - paragraph [ref=e140]: Video highlight 1-2 menit.
+              - paragraph [ref=e141]: +Rp 250.000
+          - paragraph [ref=e142]:
+            - text: Tidak ada add-on yang dipilih. Klik
+            - strong [ref=e143]: Selanjutnya
+            - text: untuk melanjutkan.
+        - generic [ref=e40]:
+          - button "Kembali" [ref=e144]:
+            - img
+            - text: Kembali
+          - button "Selanjutnya" [active] [ref=e103]:
+            - text: Selanjutnya
+            - img
+      - generic [ref=e42]:
+        - generic [ref=e44]: Ringkasan Harga
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: Paket
+            - generic [ref=e48]: Rp 750.000
+          - separator [ref=e49]
+          - generic [ref=e50]:
+            - generic [ref=e51]: Total
+            - generic [ref=e52]: Rp 750.000
+          - generic [ref=e53]:
+            - generic [ref=e54]: Estimasi DP
+            - generic [ref=e55]: Rp 50.000
+          - paragraph [ref=e56]: "* DP minimum ditentukan berdasarkan paket dan add-on yang dipilih. Pembayaran dilakukan setelah admin menerima pengajuan."
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e62] [cursor=pointer]:
+    - img [ref=e63]
+  - alert [ref=e66]

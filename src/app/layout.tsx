@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
-import { Geist, Public_Sans } from "next/font/google"
+import { Questrial, Public_Sans, Outfit } from "next/font/google"
 import "./globals.css"
 import { Providers } from "@/providers"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
-const geistSans = Geist({
+const questrial = Questrial({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-heading",
 })
 
 const publicSans = Public_Sans({
@@ -14,10 +15,20 @@ const publicSans = Public_Sans({
   variable: "--font-body",
 })
 
+// Gunakan Outfit sebagai fallback sementara untuk TT Hoves (karakter teknikal/geometris yang mirip)
+const ttHovesFallback = Outfit({
+  subsets: ["latin"],
+  variable: "--font-accent",
+})
+
 export const metadata: Metadata = {
   title: "Lovery Photography",
   description:
     "Studio fotografi profesional untuk momen spesial Anda. Graduation, Wedding, Casual, dan Event.",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 }
 
 export default function RootLayout({
@@ -28,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${publicSans.variable} h-full antialiased`}
+      className={`${questrial.variable} ${publicSans.variable} ${ttHovesFallback.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <TooltipProvider>
