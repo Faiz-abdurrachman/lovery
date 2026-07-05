@@ -61,70 +61,80 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <Card className="w-full max-w-sm border-gray-200 shadow-sm">
-        <CardHeader className="text-center space-y-3">
-          <div className="mx-auto w-16 h-16 rounded-xl flex items-center justify-center">
-            <img src="/logo lovery bulat.jpg" alt="Lovery" className="w-14 h-14 rounded-full object-cover" />
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 bg-[radial-gradient(#111111_1px,transparent_1px)] [background-size:20px_20px] px-4">
+      <div className="w-full max-w-md bg-white border-4 border-black shadow-[12px_12px_0_0_#111111] p-8 md:p-10 relative overflow-hidden">
+        {/* Tape decor */}
+        <div className="absolute top-0 right-0 w-24 h-6 bg-lovery-pink transform rotate-45 translate-x-6 -translate-y-2 border-y-2 border-black z-10" />
+
+        <div className="text-center space-y-4 mb-10">
+          <div className="mx-auto w-24 h-24 bg-lovery-pink border-4 border-black shadow-[6px_6px_0_0_#111111] flex items-center justify-center p-3 -skew-y-3">
+            <img src="/LOGO.png" alt="Lovery" className="w-full h-full object-contain" />
           </div>
-          <div>
-            <CardTitle className="text-xl text-black">
-              Lovery Photography
-            </CardTitle>
-            <CardDescription className="text-gray-500 mt-1">
-              Masuk ke dashboard operasional
-            </CardDescription>
+          <div className="pt-4">
+            <h1 className="text-2xl md:text-3xl font-heading font-black text-black uppercase tracking-widest">
+              Lovery
+            </h1>
+            <h2 className="text-xl md:text-2xl font-heading font-black text-white bg-black inline-block px-3 py-1 uppercase tracking-widest -skew-x-6 mt-2 border-2 border-black shadow-[4px_4px_0_0_#E89CC9]">
+              Admin Login
+            </h2>
           </div>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            {error && (
-              <div className="rounded-xl bg-error/10 px-4 py-3 text-sm text-error">
-                {error}
-              </div>
+        </div>
+        
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+          {error && (
+            <div className="bg-red-500 border-4 border-black shadow-[4px_4px_0_0_#111111] px-4 py-3 text-sm font-bold text-white uppercase tracking-widest text-center">
+              {error}
+            </div>
+          )}
+
+          <div className="space-y-3">
+            <Label htmlFor="email" className="font-accent font-black uppercase tracking-widest text-sm text-black inline-block mb-1 bg-white border-2 border-black px-2 py-1 shadow-[2px_2px_0_0_#111111]">
+              Email
+            </Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="ADMIN@LOVERY.COM"
+              autoComplete="email"
+              className="rounded-none border-4 border-black bg-white shadow-[6px_6px_0_0_#111111] focus:bg-white focus:ring-0 focus:border-black focus:shadow-[6px_6px_0_0_#E89CC9] transition-all h-14 px-4 text-black font-body font-bold text-base placeholder:text-gray-400 placeholder:font-bold"
+              {...register("email")}
+              aria-invalid={!!errors.email}
+            />
+            {errors.email && (
+              <p className="text-xs font-black text-white bg-black px-2 py-1 uppercase inline-block shadow-[2px_2px_0_0_#E89CC9] mt-2">{errors.email.message}</p>
             )}
+          </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="admin@lovery.com"
-                autoComplete="email"
-                {...register("email")}
-                aria-invalid={!!errors.email}
-              />
-              {errors.email && (
-                <p className="text-xs text-error">{errors.email.message}</p>
-              )}
-            </div>
+          <div className="space-y-3">
+            <Label htmlFor="password" className="font-accent font-black uppercase tracking-widest text-sm text-black inline-block mb-1 bg-white border-2 border-black px-2 py-1 shadow-[2px_2px_0_0_#111111]">
+              Password
+            </Label>
+            <Input
+              id="password"
+              type="password"
+              placeholder="••••••••"
+              autoComplete="current-password"
+              className="rounded-none border-4 border-black bg-white shadow-[6px_6px_0_0_#111111] focus:bg-white focus:ring-0 focus:border-black focus:shadow-[6px_6px_0_0_#E89CC9] transition-all h-14 px-4 text-black font-body font-bold text-base placeholder:text-gray-400"
+              {...register("password")}
+              aria-invalid={!!errors.password}
+            />
+            {errors.password && (
+              <p className="text-xs font-black text-white bg-black px-2 py-1 uppercase inline-block shadow-[2px_2px_0_0_#E89CC9] mt-2">{errors.password.message}</p>
+            )}
+          </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                autoComplete="current-password"
-                {...register("password")}
-                aria-invalid={!!errors.password}
-              />
-              {errors.password && (
-                <p className="text-xs text-error">{errors.password.message}</p>
-              )}
-            </div>
-
+          <div className="pt-2">
             <Button
               type="submit"
-              className="w-full bg-lovery-pink hover:bg-lovery-pink-dark text-white rounded-xl"
+              className="w-full bg-black hover:bg-lovery-pink text-white hover:text-black border-4 border-black rounded-none shadow-[8px_8px_0_0_#E89CC9] hover:shadow-[8px_8px_0_0_#111111] h-16 font-accent font-black text-xl uppercase tracking-widest transition-all"
               disabled={isSubmitting}
             >
-              {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Masuk
+              {isSubmitting && <Loader2 className="mr-3 h-6 w-6 animate-spin" />}
+              MASUK AREA ADMIN
             </Button>
-          </form>
-        </CardContent>
-      </Card>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
