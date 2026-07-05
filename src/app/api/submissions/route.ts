@@ -54,7 +54,8 @@ export async function POST(request: NextRequest) {
         updatedAt: new Date().toISOString(),
       }).eq("id", client.id).select().single()
     } else {
-      // Create new client with UUID
+      // Create new client with UUID and generated clientNumber
+      const tsClient = Date.now().toString(36).toUpperCase().slice(-5)
       const { data: newClient, error: clientError } = await supabase
         .from("clients")
         .insert({
@@ -63,7 +64,7 @@ export async function POST(request: NextRequest) {
           name: data.name,
           instagram: data.instagram || null,
           allowPublish: data.allowPublish,
-          clientNumber: "",
+          clientNumber: `CLI-${tsClient}`,
           updatedAt: new Date().toISOString(),
         })
         .select()
@@ -75,15 +76,6 @@ export async function POST(request: NextRequest) {
 
     if (!client) {
       return NextResponse.json({ success: false, message: "Gagal membuat data klien" }, { status: 500 })
-    }
-
-    // Update client number — pake timestamp biar unique
-    if (!client.clientNumber || client.clientNumber === "") {
-      const ts = Date.now().toString(36).toUpperCase().slice(-5)
-      await supabase
-        .from("clients")
-        .update({ clientNumber: `CLI-${ts}` })
-        .eq("id", client.id)
     }
 
     // Generate submission number — pake timestamp biar unique
