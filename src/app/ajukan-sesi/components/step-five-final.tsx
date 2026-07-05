@@ -24,80 +24,89 @@ export function StepFiveFinal({ selectedPackage, selectedAddOns, totalPrice, dpA
 
   return (
     <React.Fragment>
-    <div className="space-y-6">
+    <div className="space-y-10">
       <div>
-        <h2 className="text-lg font-semibold text-black">Konfirmasi Pengajuan</h2>
-        <p className="text-sm text-gray-500 mt-1">Periksa kembali ringkasan pengajuan Anda sebelum dikirim.</p>
+        <h2 className="text-2xl font-heading font-black text-black uppercase tracking-widest border-b-4 border-black pb-4 inline-block">Konfirmasi Pengajuan</h2>
+        <br />
+        <p className="text-xs sm:text-sm font-bold font-accent uppercase tracking-widest text-black mt-4 bg-lovery-pink inline-block px-2 py-1 border-2 border-black">Periksa kembali ringkasan pengajuan Anda sebelum dikirim.</p>
       </div>
 
-      <div className="rounded-xl bg-gray-50 p-4 space-y-3">
-        <div className="flex justify-between text-sm">
-          <span className="text-gray-500">Paket</span>
-          <span className="font-medium text-black">{selectedPackage?.name || "-"}</span>
+      <div className="bg-gray-100 border-4 border-black shadow-[8px_8px_0_0_#111111] p-6 space-y-4 relative overflow-hidden">
+        {/* Tape decor */}
+        <div className="absolute -top-4 -right-4 w-16 h-8 bg-lovery-pink transform rotate-45 border-y-2 border-black z-10" />
+
+        <div className="flex justify-between items-center text-sm sm:text-base">
+          <span className="text-black font-bold font-accent uppercase tracking-widest">Paket</span>
+          <span className="font-black text-black bg-white border-2 border-black px-2 py-1 shadow-[2px_2px_0_0_#111111]">{selectedPackage?.name || "-"}</span>
         </div>
+        
         {selectedAddOns.length > 0 && (
-          <div>
-            <p className="text-sm text-gray-500 mb-1">Add-On</p>
+          <div className="bg-white border-4 border-black p-4 shadow-[4px_4px_0_0_#111111] mt-4">
+            <p className="text-[10px] sm:text-xs text-white bg-black px-2 py-1 font-bold font-accent uppercase tracking-widest inline-block mb-3">ADD-ON</p>
             {selectedAddOns.map((a) => (
-              <div key={a.id} className="flex justify-between text-sm ml-2">
-                <span className="text-gray-600">{a.name}</span>
-                <span className="text-gray-600">{formatRupiah(a.price)}</span>
+              <div key={a.id} className="flex justify-between text-sm mb-2 last:mb-0">
+                <span className="text-black font-bold uppercase tracking-wider">{a.name}</span>
+                <span className="text-black font-accent font-black">{formatRupiah(a.price)}</span>
               </div>
             ))}
           </div>
         )}
-        <div className="border-t border-gray-200 pt-3 flex justify-between">
-          <span className="font-medium text-black">Total</span>
-          <span className="font-bold text-lovery-pink">{formatRupiah(totalPrice)}</span>
+
+        <div className="border-t-4 border-black border-dashed my-4" />
+        
+        <div className="flex justify-between items-center bg-black p-4 border-4 border-black shadow-[4px_4px_0_0_#E89CC9] -skew-x-2">
+          <span className="font-black text-white font-accent uppercase tracking-widest text-base sm:text-lg">Total</span>
+          <span className="font-black text-lovery-pink text-xl sm:text-2xl font-accent">{formatRupiah(totalPrice)}</span>
         </div>
-        <div className="flex justify-between text-sm">
-          <span className="text-gray-500">Estimasi DP</span>
-          <span className="font-medium text-black">{formatRupiah(dpAmount)}</span>
+
+        <div className="flex justify-between items-center text-sm bg-lovery-pink p-3 border-4 border-black shadow-[4px_4px_0_0_#111111] mt-4">
+          <span className="text-black font-bold font-accent uppercase tracking-widest">Estimasi DP</span>
+          <span className="font-black text-black text-lg font-accent">{formatRupiah(dpAmount)}</span>
         </div>
       </div>
 
-      <div className="space-y-4">
-        <div className="space-y-3">
-          <p className="text-sm font-medium text-black">Publikasi Hasil Foto</p>
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <p className="text-lg font-black font-heading text-black uppercase tracking-widest border-l-8 border-lovery-pink pl-3">Publikasi Hasil Foto</p>
           <Controller
             name="allowPublish"
             control={control}
             render={({ field }) => (
-              <>
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input type="radio" name="allowPublish" checked={field.value === true} onChange={() => field.onChange(true)} className="mt-1 accent-lovery-pink" />
-                  <span className="text-sm text-gray-600">Saya mengizinkan Lovery Photography mempublikasikan hasil foto pada portfolio dan media sosial.</span>
+              <div className="flex flex-col gap-3">
+                <label className={`flex items-start gap-4 p-4 border-4 border-black cursor-pointer transition-all ${field.value === true ? 'bg-lovery-pink shadow-[6px_6px_0_0_#111111]' : 'bg-white hover:bg-gray-50'}`}>
+                  <input type="radio" name="allowPublish" checked={field.value === true} onChange={() => field.onChange(true)} className="mt-1 w-5 h-5 accent-black cursor-pointer shrink-0" />
+                  <span className="text-xs sm:text-sm font-bold text-black uppercase tracking-wider leading-relaxed">Saya mengizinkan Lovery Photography mempublikasikan hasil foto pada portfolio dan media sosial.</span>
                 </label>
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input type="radio" name="allowPublish" checked={field.value === false} onChange={() => field.onChange(false)} className="mt-1 accent-lovery-pink" />
-                  <span className="text-sm text-gray-600">Saya tidak mengizinkan publikasi hasil foto.</span>
+                <label className={`flex items-start gap-4 p-4 border-4 border-black cursor-pointer transition-all ${field.value === false ? 'bg-gray-300 shadow-[6px_6px_0_0_#111111]' : 'bg-white hover:bg-gray-50'}`}>
+                  <input type="radio" name="allowPublish" checked={field.value === false} onChange={() => field.onChange(false)} className="mt-1 w-5 h-5 accent-black cursor-pointer shrink-0" />
+                  <span className="text-xs sm:text-sm font-bold text-black uppercase tracking-wider leading-relaxed">Saya tidak mengizinkan publikasi hasil foto.</span>
                 </label>
-              </>
+              </div>
             )}
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="pt-4">
           <Controller
             name="agreedTerms"
             control={control}
             render={({ field }) => (
-              <label className="flex items-start gap-3 cursor-pointer">
+              <label className="flex items-start gap-4 p-4 bg-white border-4 border-black shadow-[8px_8px_0_0_#111111] cursor-pointer">
                 <input
                   type="checkbox"
                   checked={field.value === true}
                   onChange={(e) => field.onChange(e.target.checked)}
-                  className="mt-1 accent-lovery-pink"
+                  className="mt-1 w-6 h-6 accent-lovery-pink cursor-pointer shrink-0"
                 />
-                <span>
-                  <span className="text-sm text-gray-600">
+                <span className="flex-1">
+                  <span className="text-xs sm:text-sm font-bold text-black uppercase tracking-wider leading-relaxed">
                     Saya telah membaca dan menyetujui{" "}
-                    <button type="button" onClick={() => setShowSK(true)} className="text-lovery-pink underline font-medium cursor-pointer">
+                    <button type="button" onClick={() => setShowSK(true)} className="text-white bg-black px-2 py-1 mx-1 underline decoration-lovery-pink decoration-4 underline-offset-4 cursor-pointer hover:bg-lovery-pink hover:text-black transition-colors mt-2 sm:mt-0 inline-block">
                       Syarat & Ketentuan
                     </button>{" "}
                     Lovery Photography.
                   </span>
-                  {errors.agreedTerms && <p className="text-xs text-error mt-1">{String(errors.agreedTerms?.message)}</p>}
+                  {errors.agreedTerms && <div className="block"><p className="text-[10px] sm:text-xs font-black text-white bg-red-600 px-2 py-1 uppercase mt-3 inline-block shadow-[2px_2px_0_0_#111111]">{String(errors.agreedTerms?.message)}</p></div>}
                 </span>
               </label>
             )}
