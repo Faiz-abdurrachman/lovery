@@ -145,6 +145,9 @@ export default function AdminDetailPengajuanPage() {
       } else if (status === "REJECTED") {
         const msg = WhatsAppTemplates.submissionRejected(clientName, adminNote || "Tidak ada alasan")
         openWhatsApp(clientPhone, msg)
+      } else if (status === "RESCHEDULE") {
+        const msg = WhatsAppTemplates.rescheduleRequested(clientName)
+        openWhatsApp(clientPhone, msg)
       } else if (status === "CANCELLED") {
         const msg = `Halo ${clientName},\n\nPengajuan ${sub.submissionNumber} telah dibatalkan.\n\nTerima kasih,\nLovery Photography`
         openWhatsApp(clientPhone, msg)
@@ -505,7 +508,7 @@ export default function AdminDetailPengajuanPage() {
                         let y = m
 
                         // ── LOGO ──
-                        const logo = await loadImageDataURL("/LOGO.png")
+                        const logo = await loadImageDataURL("/logo bulat.png")
                         if (logo) {
                           const logoW = 32
                           const logoH = (logo.height / logo.width) * logoW

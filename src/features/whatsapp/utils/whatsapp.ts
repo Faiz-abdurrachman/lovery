@@ -31,4 +31,7 @@ export const WhatsAppTemplates = {
 
   thankYou: (name: string) =>
     `Halo ${name},\n\nTerima kasih telah memilih Lovery Photography!\n\nKami senang bisa menjadi bagian dari momen spesial Anda. Sampai jumpa di sesi berikutnya. 💕`,
+
+  rescheduleRequested: (name: string) =>
+    `Halo ${name},\n\nMenindaklanjuti pengajuan sesi Anda, mohon maaf jadwal yang Anda pilih saat ini belum tersedia.\n\nApakah Anda berkenan untuk menjadwalkan ulang sesi ke hari atau jam lain? Silakan balas pesan ini untuk berdiskusi lebih lanjut.\n\nTerima kasih,\nLovery Photography`,
 }
