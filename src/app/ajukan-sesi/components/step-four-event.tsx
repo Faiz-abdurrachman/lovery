@@ -106,9 +106,10 @@ export function StepFourEvent() {
                       onChange={(e) => field.onChange(`${h || "09"}:${e.target.value}`)}
                     >
                       <option value="" disabled>Mnt</option>
-                      {["00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"].map((min) => (
-                        <option key={min} value={min}>{min}</option>
-                      ))}
+                      {Array.from({ length: 60 }).map((_, i) => {
+                        const min = i.toString().padStart(2, "0")
+                        return <option key={min} value={min}>{min}</option>
+                      })}
                     </select>
                   </div>
                 )

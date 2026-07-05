@@ -25,7 +25,7 @@ export function PriceSummary({ selectedPackage, selectedAddOns, totalAddOnPrice,
       </div>
       
       <div className="space-y-6">
-        <div className="flex justify-between text-base items-end">
+        <div className="flex justify-between text-base items-center">
           <span className="text-black font-bold font-accent uppercase tracking-widest">Paket</span>
           <span className="font-black text-black font-accent text-xl bg-gray-100 border-2 border-black px-2 py-1">
             {selectedPackage ? formatRupiah(selectedPackage.price) : "-"}
@@ -52,7 +52,7 @@ export function PriceSummary({ selectedPackage, selectedAddOns, totalAddOnPrice,
 
         <div className="border-t-4 border-black border-dashed my-6" />
 
-        <div className="flex justify-between items-end">
+        <div className="flex justify-between items-center">
           <span className="font-black text-black font-accent uppercase tracking-widest text-lg">Total</span>
           <span className="font-black text-black text-2xl sm:text-3xl font-accent bg-lovery-pink border-4 border-black px-2 py-1 sm:px-3 shadow-[4px_4px_0_0_#111111]">
             {totalPrice > 0 ? formatRupiah(totalPrice) : "-"}
