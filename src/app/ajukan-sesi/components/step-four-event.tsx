@@ -80,13 +80,20 @@ export function StepFourEvent() {
             <Label htmlFor="eventTime" className={labelClass}>
               Jam <span className="text-lovery-pink ml-1">*</span>
             </Label>
-            <Input
+            <select
               id="eventTime"
-              type="time"
-              className={inputClass}
+              className={inputClass + " appearance-none cursor-pointer"}
               {...register("eventTime")}
               aria-invalid={!!errors.eventTime}
-            />
+            >
+              <option value="" disabled>-- Pilih Jam --</option>
+              {Array.from({ length: 33 }).map((_, i) => {
+                const h = Math.floor(i / 2) + 6
+                const m = i % 2 === 0 ? "00" : "30"
+                const t = `${h.toString().padStart(2, "0")}:${m}`
+                return <option key={t} value={t}>{t}</option>
+              })}
+            </select>
             {errors.eventTime && (
               <p className={errorClass}>{errors.eventTime.message}</p>
             )}
