@@ -146,7 +146,9 @@ export function StatusContent() {
                         <div className="w-1 flex-1 bg-black absolute top-4 bottom-[-24px] left-[6px]" />
                       </div>
                       <div className="pb-6 w-full">
-                        <p className="text-xs font-accent font-bold uppercase tracking-widest text-gray-500 bg-gray-100 inline-block px-2 py-0.5 border border-black mb-1">{format(new Date(t.createdAt), "dd MMM, HH:mm")}</p>
+                        <p className="text-xs font-accent font-bold uppercase tracking-widest text-white bg-black inline-block px-2 py-0.5 border-2 border-black mb-2 shadow-[2px_2px_0_0_#E89CC9]">
+                          {new Date(t.createdAt).toLocaleDateString('id-ID', { timeZone: 'Asia/Jakarta', day: '2-digit', month: 'short' }).toUpperCase() + ", " + new Date(t.createdAt).toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit', hour12: false }).replace(/\./g, ':')} WIB
+                        </p>
                         <p className="text-lg font-heading font-black text-black uppercase">{t.activity}</p>
                         {t.description && <p className="text-sm font-accent font-bold text-gray-600 mt-1 uppercase border-l-4 border-black pl-3">{t.description}</p>}
                       </div>
