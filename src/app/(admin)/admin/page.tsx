@@ -67,7 +67,11 @@ export default async function AdminDashboardPage() {
   const todayPayments = todayPaymentsRaw || []
   const monthPayments = monthPaymentsRaw || []
   const dpToday = dpTodayRaw || []
-  const pendingReminders = pendingRemindersRaw || []
+  const pendingReminders = (pendingRemindersRaw || []).filter((r: any) => {
+    if (!r.submission) return false
+    const s = r.submission.status
+    return s !== "COMPLETED" && s !== "REJECTED" && s !== "CANCELLED"
+  })
   const outstandingAmount = (outstandingInvoiceData || []).reduce((s: number, i: { remainingAmount: number }) => s + i.remainingAmount, 0)
   const todayRevenue = todayPayments.reduce((s: number, p: { amount: number }) => s + p.amount, 0)
   const monthRevenue = monthPayments.reduce((s: number, p: { amount: number }) => s + p.amount, 0)

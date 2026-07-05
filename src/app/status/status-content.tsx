@@ -20,7 +20,7 @@ import { format } from "date-fns"
 import type { SubmissionStatus } from "@prisma/client"
 
 const trackSchema = z.object({
-  number: z.string().min(1, "Nomor pengajuan wajib diisi"),
+  number: z.string().trim().min(1, "Nomor pengajuan wajib diisi"),
 })
 
 export function StatusContent() {

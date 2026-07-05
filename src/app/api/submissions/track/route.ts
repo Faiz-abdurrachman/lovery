@@ -4,7 +4,8 @@ import { trackSubmission } from "@/lib/data"
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
-    const number = searchParams.get("number")
+    const numberRaw = searchParams.get("number")
+    const number = numberRaw ? numberRaw.trim() : null
 
     if (!number) {
       return NextResponse.json({ success: false, message: "Nomor pengajuan wajib diisi" }, { status: 400 })
