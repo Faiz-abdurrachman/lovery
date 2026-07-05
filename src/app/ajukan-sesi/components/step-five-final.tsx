@@ -116,39 +116,39 @@ export function StepFiveFinal({ selectedPackage, selectedAddOns, totalPrice, dpA
     </div>
 
       <Dialog open={showSK} onOpenChange={setShowSK}>
-        <DialogContent className="bg-white border-4 border-black shadow-[12px_12px_0_0_#E89CC9] sm:rounded-none max-w-lg max-h-[80vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-3 font-heading font-black text-2xl uppercase tracking-tighter text-black">
-              <FileText className="h-6 w-6 text-lovery-pink" /> SYARAT & KETENTUAN
+        <DialogContent className="bg-gray-100 border-4 border-black shadow-[12px_12px_0_0_#E89CC9] sm:rounded-none max-w-2xl max-h-[85vh] overflow-y-auto p-6 sm:p-8">
+          <DialogHeader className="mb-6 border-b-4 border-black pb-4">
+            <DialogTitle className="flex items-center gap-3 font-heading font-black text-2xl sm:text-3xl uppercase tracking-tighter text-black">
+              <FileText className="h-8 w-8 text-white bg-black p-1 border-2 border-black" /> SYARAT & KETENTUAN
             </DialogTitle>
           </DialogHeader>
-          <div className="space-y-4 text-sm text-gray-600">
-            <div>
-              <h3 className="font-semibold text-black">1. Pengajuan Sesi</h3>
-              <p className="mt-1">Pengajuan sesi tidak menjamin ketersediaan jadwal. Admin akan melakukan peninjauan dan konfirmasi melalui WhatsApp.</p>
+          <div className="space-y-6 text-sm text-black font-body">
+            <div className="bg-white border-4 border-black p-4 shadow-[4px_4px_0_0_#111111]">
+              <h3 className="font-black text-white bg-black uppercase tracking-widest px-3 py-1 inline-block mb-2 text-sm sm:text-base border-2 border-black">1. Pengajuan Sesi</h3>
+              <p className="mt-2 font-bold leading-relaxed">Pengajuan sesi tidak menjamin ketersediaan jadwal. Admin akan melakukan peninjauan dan konfirmasi melalui WhatsApp.</p>
             </div>
-            <div>
-              <h3 className="font-semibold text-black">2. Pembayaran</h3>
-              <p className="mt-1">DP wajib dibayarkan untuk mengamankan jadwal. Pelunasan maksimal H-1 sebelum sesi. Pembayaran dilakukan melalui transfer bank atau QRIS.</p>
+            <div className="bg-white border-4 border-black p-4 shadow-[4px_4px_0_0_#111111]">
+              <h3 className="font-black text-black bg-lovery-pink uppercase tracking-widest px-3 py-1 inline-block mb-2 text-sm sm:text-base border-2 border-black">2. Pembayaran</h3>
+              <p className="mt-2 font-bold leading-relaxed">DP wajib dibayarkan untuk mengamankan jadwal. Pelunasan maksimal H-1 sebelum sesi. Pembayaran dilakukan melalui transfer bank atau QRIS.</p>
             </div>
-            <div>
-              <h3 className="font-semibold text-black">3. Pembatalan</h3>
-              <p className="mt-1">Pembatalan setelah DP dibayarkan akan mengikuti kebijakan refund Lovery Photography. Hubungi admin melalui WhatsApp untuk detail.</p>
+            <div className="bg-white border-4 border-black p-4 shadow-[4px_4px_0_0_#111111]">
+              <h3 className="font-black text-white bg-black uppercase tracking-widest px-3 py-1 inline-block mb-2 text-sm sm:text-base border-2 border-black">3. Pembatalan</h3>
+              <p className="mt-2 font-bold leading-relaxed">Pembatalan setelah DP dibayarkan akan mengikuti kebijakan refund Lovery Photography. Hubungi admin melalui WhatsApp untuk detail.</p>
             </div>
-            <div>
-              <h3 className="font-semibold text-black">4. Hasil Foto</h3>
-              <p className="mt-1">Hasil foto dikirim melalui Google Drive. Link aktif selama 14 hari untuk paket reguler dan 30 hari untuk paket premium.</p>
+            <div className="bg-white border-4 border-black p-4 shadow-[4px_4px_0_0_#111111]">
+              <h3 className="font-black text-black bg-lovery-pink uppercase tracking-widest px-3 py-1 inline-block mb-2 text-sm sm:text-base border-2 border-black">4. Hasil Foto</h3>
+              <p className="mt-2 font-bold leading-relaxed">Hasil foto dikirim melalui Google Drive. Link aktif selama 14 hari untuk paket reguler dan 30 hari untuk paket premium.</p>
             </div>
-            <div>
-              <h3 className="font-semibold text-black">5. Biaya Transportasi</h3>
-              <p className="mt-1">Untuk area dalam kota dan kampus, transportasi gratis. Untuk area luar kota (contoh: Gunungkidul, Kulon Progo, Bantul ujung) akan dikenakan biaya transportasi yang akan didiskusikan dengan admin.</p>
+            <div className="bg-white border-4 border-black p-4 shadow-[4px_4px_0_0_#111111]">
+              <h3 className="font-black text-white bg-black uppercase tracking-widest px-3 py-1 inline-block mb-2 text-sm sm:text-base border-2 border-black">5. Biaya Transportasi</h3>
+              <p className="mt-2 font-bold leading-relaxed">Untuk area dalam kota dan kampus, transportasi gratis. Untuk area luar kota (contoh: Gunungkidul, Kulon Progo, Bantul ujung) akan dikenakan biaya transportasi yang akan didiskusikan dengan admin.</p>
             </div>
-            <div>
-              <h3 className="font-semibold text-black">6. Publikasi</h3>
-              <p className="mt-1">Dengan menyetujui publikasi, Anda mengizinkan Lovery Photography menggunakan hasil foto untuk portfolio dan media sosial.</p>
+            <div className="bg-white border-4 border-black p-4 shadow-[4px_4px_0_0_#111111]">
+              <h3 className="font-black text-black bg-lovery-pink uppercase tracking-widest px-3 py-1 inline-block mb-2 text-sm sm:text-base border-2 border-black">6. Publikasi</h3>
+              <p className="mt-2 font-bold leading-relaxed">Dengan menyetujui publikasi, Anda mengizinkan Lovery Photography menggunakan hasil foto untuk portfolio dan media sosial.</p>
             </div>
           </div>
-          <Button className="w-full rounded-none bg-black hover:bg-lovery-pink text-white hover:text-black border-2 border-transparent hover:border-black font-accent font-bold uppercase tracking-widest mt-6 transition-colors shadow-[4px_4px_0_0_#111111]" onClick={() => setShowSK(false)}>
+          <Button className="w-full rounded-none bg-black hover:bg-lovery-pink text-white hover:text-black border-4 border-black hover:border-black font-accent font-black uppercase tracking-widest mt-8 transition-colors shadow-[6px_6px_0_0_#E89CC9] h-14 text-lg" onClick={() => setShowSK(false)}>
             Mengerti & Tutup
           </Button>
         </DialogContent>
