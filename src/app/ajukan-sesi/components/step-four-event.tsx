@@ -80,20 +80,40 @@ export function StepFourEvent() {
             <Label htmlFor="eventTime" className={labelClass}>
               Jam <span className="text-lovery-pink ml-1">*</span>
             </Label>
-            <select
-              id="eventTime"
-              className={inputClass + " appearance-none cursor-pointer"}
-              {...register("eventTime")}
-              aria-invalid={!!errors.eventTime}
-            >
-              <option value="" disabled>-- Pilih Jam --</option>
-              {Array.from({ length: 33 }).map((_, i) => {
-                const h = Math.floor(i / 2) + 6
-                const m = i % 2 === 0 ? "00" : "30"
-                const t = `${h.toString().padStart(2, "0")}:${m}`
-                return <option key={t} value={t}>{t}</option>
-              })}
-            </select>
+            <Controller
+              name="eventTime"
+              control={control}
+              render={({ field }) => {
+                const val = field.value || ""
+                const [h, m] = val.split(":")
+                return (
+                  <div className="flex items-center gap-3">
+                    <select
+                      className={inputClass + " appearance-none cursor-pointer flex-1 text-center font-bold text-lg"}
+                      value={h || ""}
+                      onChange={(e) => field.onChange(`${e.target.value}:${m || "00"}`)}
+                    >
+                      <option value="" disabled>Jam</option>
+                      {Array.from({ length: 24 }).map((_, i) => {
+                        const hour = i.toString().padStart(2, "0")
+                        return <option key={hour} value={hour}>{hour}</option>
+                      })}
+                    </select>
+                    <span className="font-black text-2xl">:</span>
+                    <select
+                      className={inputClass + " appearance-none cursor-pointer flex-1 text-center font-bold text-lg"}
+                      value={m || ""}
+                      onChange={(e) => field.onChange(`${h || "09"}:${e.target.value}`)}
+                    >
+                      <option value="" disabled>Mnt</option>
+                      {["00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"].map((min) => (
+                        <option key={min} value={min}>{min}</option>
+                      ))}
+                    </select>
+                  </div>
+                )
+              }}
+            />
             {errors.eventTime && (
               <p className={errorClass}>{errors.eventTime.message}</p>
             )}
