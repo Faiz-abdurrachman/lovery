@@ -2,9 +2,10 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, ArrowLeft, Presentation, Zap, Code2, PenTool, CheckCircle2, Rocket } from "lucide-react"
+import { ArrowRight, ArrowLeft, Presentation, Zap, Code2, PenTool, CheckCircle2, Rocket, Users, Route, Bug, ExternalLink, MessageSquare } from "lucide-react"
 
 const slides = [
+  // SLIDE 1: PEMBUKAAN
   {
     id: "pembukaan",
     title: "LOVERY PHOTOGRAPHY",
@@ -15,129 +16,221 @@ const slides = [
         <p className="text-xl md:text-2xl font-bold bg-lovery-pink inline-block px-4 py-2 border-2 border-black shadow-[4px_4px_0_0_#111111]">
           "Mengotomatisasi Booking & Manajemen Sesi Foto"
         </p>
-        <div className="flex justify-center mt-8">
-          <img src="/logo bulat.png" alt="Lovery" className="w-48 h-48 border-4 border-black shadow-[8px_8px_0_0_#111111] -skew-y-3 hover:skew-y-0 transition-transform duration-300 bg-white" />
+        <div className="flex justify-center mt-8 gap-8 items-center">
+          <img src="/logo bulat.png" alt="Lovery" className="w-40 h-40 border-4 border-black shadow-[8px_8px_0_0_#111111] -skew-y-3 hover:skew-y-0 transition-transform duration-300 bg-white" />
+          <div className="text-left bg-white border-4 border-black p-4 shadow-[8px_8px_0_0_#111111]">
+            <h3 className="font-black text-xl mb-1">Oleh: Faiz & Team</h3>
+            <p className="font-bold text-gray-600">Presentasi Proyek Akhir</p>
+          </div>
         </div>
       </div>
     ),
   },
+
+  // SLIDE 2: LATAR BELAKANG & PROBLEM
   {
-    id: "latar-belakang",
-    title: "LATAR BELAKANG & RISET",
-    subtitle: "Kenapa kita bikin ini?",
+    id: "problem",
+    title: "LATAR BELAKANG",
+    subtitle: "Mengapa kita butuh sistem ini?",
     icon: <Zap className="w-12 h-12 mb-4 text-yellow-400" />,
     content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-        <div className="bg-red-200 border-4 border-black p-6 shadow-[8px_8px_0_0_#111111] rotate-1 hover:rotate-0 transition-transform">
-          <h3 className="font-heading font-black text-2xl uppercase mb-4 bg-white inline-block px-2 border-2 border-black">Problem</h3>
-          <ul className="list-disc ml-6 space-y-2 font-bold text-lg">
-            <li>Booking via WA sering salah format/typo.</li>
-            <li>Admin pusing track jadwal & invoice DP.</li>
-            <li>Status order & file drive tercerai-berai.</li>
+      <div className="bg-red-200 border-4 border-black p-8 shadow-[12px_12px_0_0_#111111] rotate-1 hover:rotate-0 transition-transform">
+        <h3 className="font-heading font-black text-3xl uppercase mb-6 bg-white inline-block px-3 border-2 border-black">The Problem</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ul className="list-disc ml-6 space-y-4 font-bold text-lg">
+            <li><span className="bg-white px-1">Miskomunikasi WA:</span> Format booking manual sering salah, bikin admin pusing nyatet.</li>
+            <li><span className="bg-white px-1">Jadwal Bentrok:</span> Manajemen waktu sesi yang berantakan karena nggak ada kalender terpusat.</li>
           </ul>
-        </div>
-        <div className="bg-green-200 border-4 border-black p-6 shadow-[8px_8px_0_0_#111111] -rotate-1 hover:rotate-0 transition-transform">
-          <h3 className="font-heading font-black text-2xl uppercase mb-4 bg-white inline-block px-2 border-2 border-black">Insight</h3>
-          <ul className="list-disc ml-6 space-y-2 font-bold text-lg">
-            <li>Butuh form mandiri yang tervalidasi (Zod).</li>
-            <li>Butuh Dashboard terpusat untuk kelola status.</li>
-            <li>Klien bisa track status pesanan mandiri.</li>
+          <ul className="list-disc ml-6 space-y-4 font-bold text-lg">
+            <li><span className="bg-white px-1">Tracking DP Susah:</span> Tagihan nyampur sama chat personal, lupa siapa yang belum bayar.</li>
+            <li><span className="bg-white px-1">Client Gelisah:</span> Sering nanya "Foto udah jadi belum min?" tiap hari.</li>
           </ul>
         </div>
       </div>
     ),
   },
+
+  // SLIDE 3: RISET & INSIGHT
   {
-    id: "proses-desain",
-    title: "PROSES DESAIN",
-    subtitle: "Persona, IA & Wireframe",
+    id: "insight",
+    title: "RISET & INSIGHT",
+    subtitle: "Mencari Solusi Terbaik",
+    icon: <Users className="w-12 h-12 mb-4 text-blue-500" />,
+    content: (
+      <div className="bg-blue-200 border-4 border-black p-8 shadow-[12px_12px_0_0_#111111] -rotate-1 hover:rotate-0 transition-transform">
+        <h3 className="font-heading font-black text-3xl uppercase mb-6 bg-white inline-block px-3 border-2 border-black text-black">The Solution</h3>
+        <div className="space-y-4 font-bold text-lg text-black">
+          <p className="flex items-start gap-3">
+            <CheckCircle2 className="w-6 h-6 mt-1 shrink-0" /> 
+            <span><strong>Formulir Pintar (Validasi Otomatis):</strong> Mencegah typo dan memastikan klien memilih paket & waktu yang valid.</span>
+          </p>
+          <p className="flex items-start gap-3">
+            <CheckCircle2 className="w-6 h-6 mt-1 shrink-0" /> 
+            <span><strong>Dashboard Manajemen:</strong> Admin bisa lihat antrean, approve pesanan, dan set tagihan dalam satu klik.</span>
+          </p>
+          <p className="flex items-start gap-3">
+            <CheckCircle2 className="w-6 h-6 mt-1 shrink-0" /> 
+            <span><strong>Live Tracking (Cek Status):</strong> Klien cuma butuh masukin ID Resi buat pantau pesanan mereka sampai selesai.</span>
+          </p>
+        </div>
+      </div>
+    ),
+  },
+
+  // SLIDE 4: PROSES DESAIN (PERSONA & JOURNEY)
+  {
+    id: "persona",
+    title: "PERSONA & STORY",
+    subtitle: "Siapa yang pakai sistem ini?",
     icon: <PenTool className="w-12 h-12 mb-4 text-purple-400" />,
     content: (
-      <div className="space-y-6 text-left">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
         <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0_0_#111111]">
-          <h3 className="font-heading font-black text-xl uppercase mb-2 text-lovery-pink">Persona Utama</h3>
-          <p className="font-bold text-lg">Pasangan Prewed, Wisudawan, dan Keluarga yang butuh reservasi fotografer secara instan, jelas paketnya, dan nggak ribet.</p>
+          <h3 className="font-heading font-black text-xl uppercase mb-4 text-lovery-pink">Rina (Calon Pengantin)</h3>
+          <p className="font-bold text-gray-700 mb-4">"Aku mau prewed bulan depan, sibuk kerja nggak sempat chat panjang-panjang, maunya langsung pilih paket dan bayar."</p>
+          <div className="bg-lovery-pink text-black px-3 py-2 border-2 border-black font-black text-sm inline-block">NEEDS: Booking Cepat & Jelas</div>
         </div>
-        <div className="flex gap-4 overflow-x-auto pb-4">
-          <div className="min-w-[250px] bg-lovery-pink border-4 border-black p-4 shadow-[4px_4px_0_0_#111111]">
-            <h4 className="font-black text-lg bg-white inline-block px-2 border-2 border-black mb-2">Step 1: Pilih Paket</h4>
-            <p className="text-sm font-bold">Client memilih kategori dan paket foto.</p>
+        <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0_0_#111111]">
+          <h3 className="font-heading font-black text-xl uppercase mb-4 text-blue-500">Faiz (Admin Studio)</h3>
+          <p className="font-bold text-gray-700 mb-4">"Gue capek ngingetin klien bayar DP dan ngerekap jadwal mingguan di Excel manual."</p>
+          <div className="bg-blue-300 text-black px-3 py-2 border-2 border-black font-black text-sm inline-block">NEEDS: Dashboard Otomatis</div>
+        </div>
+      </div>
+    ),
+  },
+
+  // SLIDE 5: INFORMATION ARCHITECTURE
+  {
+    id: "ia",
+    title: "INFORMATION ARCHITECTURE",
+    subtitle: "Alur Data Sistem",
+    icon: <Route className="w-12 h-12 mb-4 text-green-500" />,
+    content: (
+      <div className="flex flex-col gap-4">
+        <div className="flex gap-4 overflow-x-auto pb-4 items-center justify-center">
+          <div className="min-w-[200px] bg-white border-4 border-black p-4 shadow-[4px_4px_0_0_#111111] text-center">
+            <h4 className="font-black text-lg text-lovery-pink mb-2">1. Frontend (Client)</h4>
+            <p className="text-sm font-bold">Pilih Paket ➡️ Add-Ons ➡️ Data Diri ➡️ Checkout</p>
           </div>
-          <ArrowRight className="my-auto shrink-0" />
-          <div className="min-w-[250px] bg-yellow-300 border-4 border-black p-4 shadow-[4px_4px_0_0_#111111]">
-            <h4 className="font-black text-lg bg-white inline-block px-2 border-2 border-black mb-2">Step 2: Add-Ons</h4>
-            <p className="text-sm font-bold">Upselling (Extra edit, makeup, dll).</p>
+          <ArrowRight className="shrink-0 w-8 h-8" />
+          <div className="min-w-[200px] bg-black text-white border-4 border-black p-4 shadow-[4px_4px_0_0_#E89CC9] text-center">
+            <h4 className="font-black text-lg mb-2">2. Supabase (DB)</h4>
+            <p className="text-sm font-bold">Relational Data (Clients, Submissions, Timelines)</p>
           </div>
-          <ArrowRight className="my-auto shrink-0" />
-          <div className="min-w-[250px] bg-blue-300 border-4 border-black p-4 shadow-[4px_4px_0_0_#111111]">
-            <h4 className="font-black text-lg bg-white inline-block px-2 border-2 border-black mb-2">Step 3: Dashboard</h4>
-            <p className="text-sm font-bold">Admin approve & client bayar DP.</p>
+          <ArrowRight className="shrink-0 w-8 h-8" />
+          <div className="min-w-[200px] bg-white border-4 border-black p-4 shadow-[4px_4px_0_0_#111111] text-center">
+            <h4 className="font-black text-lg text-blue-500 mb-2">3. Admin Dashboard</h4>
+            <p className="text-sm font-bold">Approval ➡️ Update Timeline ➡️ Completed</p>
           </div>
         </div>
       </div>
     ),
   },
+
+  // SLIDE 6: DEMO PROTOTYPE
   {
-    id: "solusi",
-    title: "SOLUSI HIGH-FIDELITY",
-    subtitle: "Neo-Brutalism Interface",
-    icon: <Code2 className="w-12 h-12 mb-4 text-blue-500" />,
+    id: "prototype",
+    title: "LIVE PROTOTYPE",
+    subtitle: "Mari kita coba langsung!",
+    icon: <ExternalLink className="w-12 h-12 mb-4 text-lovery-pink" />,
     content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-        <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0_0_#111111] hover:-translate-y-2 transition-transform">
-          <h3 className="font-heading font-black text-2xl uppercase mb-4 underline decoration-lovery-pink decoration-4">Sisi Client</h3>
-          <ul className="space-y-3 font-bold">
-            <li className="flex items-center gap-2"><CheckCircle2 className="text-green-500" /> UI/UX sangat ekspresif & berani</li>
-            <li className="flex items-center gap-2"><CheckCircle2 className="text-green-500" /> Form 5-langkah dinamis</li>
-            <li className="flex items-center gap-2"><CheckCircle2 className="text-green-500" /> Halaman Cek Status (Live Tracking)</li>
+      <div className="text-center space-y-8">
+        <p className="text-xl font-bold max-w-2xl mx-auto">
+          "Cerita yang menarik bukan hanya dari fitur, tapi dari pengalaman penggunanya. Silakan audiens mencoba langsung prototipe aplikasi kami."
+        </p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <a href="/ajukan-sesi" target="_blank" className="bg-lovery-pink text-black border-4 border-black px-8 py-4 font-black uppercase text-xl shadow-[6px_6px_0_0_#111111] hover:shadow-[2px_2px_0_0_#111111] hover:translate-y-1 transition-all flex items-center gap-2">
+            Coba Booking Form <ExternalLink className="w-5 h-5" />
+          </a>
+          <a href="/status" target="_blank" className="bg-white text-black border-4 border-black px-8 py-4 font-black uppercase text-xl shadow-[6px_6px_0_0_#111111] hover:shadow-[2px_2px_0_0_#111111] hover:translate-y-1 transition-all flex items-center gap-2">
+            Coba Lacak Status <ExternalLink className="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+    ),
+  },
+
+  // SLIDE 7: ITERASI 1 (UI/UX)
+  {
+    id: "iterasi-ui",
+    title: "ITERASI DESAIN (UI)",
+    subtitle: "Before - After",
+    icon: <Code2 className="w-12 h-12 mb-4 text-orange-500" />,
+    content: (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+        <div className="bg-gray-200 border-4 border-black p-6 grayscale relative">
+          <div className="absolute -top-4 -left-4 bg-black text-white font-black px-4 py-1 border-2 border-black rotate-[-10deg]">BEFORE</div>
+          <h3 className="font-heading font-black text-xl mb-4 text-gray-700">Teks Overlap di Mobile</h3>
+          <p className="font-bold text-gray-600 mb-4">Ukuran font hero terlalu besar dan line-height (leading) terlalu rapat, membuat tulisan bertumpuk tidak terbaca di HP.</p>
+        </div>
+        <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0_0_#111111] relative">
+          <div className="absolute -top-4 -left-4 bg-green-400 text-black font-black px-4 py-1 border-2 border-black rotate-[-10deg]">AFTER</div>
+          <h3 className="font-heading font-black text-xl mb-4 text-lovery-pink">Responsive Typography</h3>
+          <p className="font-bold text-gray-800">Menyesuaikan ukuran font (sm:text-[8rem]) dan merenggangkan line-height khusus layar mobile. Teks sekarang rapi dan tegas.</p>
+        </div>
+      </div>
+    ),
+  },
+
+  // SLIDE 8: ITERASI 2 (BUG FIX)
+  {
+    id: "iterasi-bug",
+    title: "ITERASI SISTEM (BUG FIX)",
+    subtitle: "The Real World Problem",
+    icon: <Bug className="w-12 h-12 mb-4 text-red-500" />,
+    content: (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+        <div className="bg-gray-200 border-4 border-black p-6 grayscale relative">
+           <div className="absolute -top-4 -left-4 bg-black text-white font-black px-4 py-1 border-2 border-black rotate-[-10deg]">BEFORE</div>
+          <h3 className="font-heading font-black text-xl mb-4 text-gray-700">Crash & Data Numpuk</h3>
+          <ul className="list-disc ml-6 space-y-2 font-bold text-gray-600 text-sm">
+            <li><strong>Dashboard:</strong> Pesanan yang sudah selesai (COMPLETED) masih menumpuk di notifikasi admin.</li>
+            <li><strong>API:</strong> Gagal submit barengan karena constraint ID Klien berbenturan (Empty String).</li>
+            <li><strong>Cache:</strong> Cek status mengembalikan error karena cache agresif dari Vercel.</li>
           </ul>
         </div>
-        <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0_0_#111111] hover:-translate-y-2 transition-transform">
-          <h3 className="font-heading font-black text-2xl uppercase mb-4 underline decoration-blue-500 decoration-4">Sisi Admin</h3>
-          <ul className="space-y-3 font-bold">
-            <li className="flex items-center gap-2"><CheckCircle2 className="text-green-500" /> Dashboard Analytics Terpusat</li>
-            <li className="flex items-center gap-2"><CheckCircle2 className="text-green-500" /> Manajemen Invoice & DP</li>
-            <li className="flex items-center gap-2"><CheckCircle2 className="text-green-500" /> Update Timeline sekali klik</li>
+        <div className="bg-white border-4 border-black p-6 shadow-[8px_8px_0_0_#111111] relative">
+          <div className="absolute -top-4 -left-4 bg-lovery-pink text-black font-black px-4 py-1 border-2 border-black rotate-[-10deg]">AFTER</div>
+          <h3 className="font-heading font-black text-xl mb-4 text-blue-500">System Robustness</h3>
+          <ul className="list-disc ml-6 space-y-2 font-bold text-gray-800 text-sm">
+            <li><strong>Dashboard:</strong> Filter data level database. Hanya tampil status APPROVED.</li>
+            <li><strong>API:</strong> Generate UUID dan ID Klien secara presisi sebelum eksekusi Insert.</li>
+            <li><strong>Cache:</strong> Force-dynamic API route agar fetch real-time.</li>
           </ul>
         </div>
       </div>
     ),
   },
-  {
-    id: "testing",
-    title: "TESTING & ITERASI",
-    subtitle: "Bug Hunting & Solusi",
-    icon: <Rocket className="w-12 h-12 mb-4 text-orange-500" />,
-    content: (
-      <div className="space-y-6 text-left">
-        <div className="bg-red-100 border-4 border-red-500 p-6 shadow-[8px_8px_0_0_#111111]">
-          <h3 className="font-heading font-black text-xl uppercase mb-2 text-red-600">Bug 1: Filter Pengingat Dashboard</h3>
-          <p className="font-bold text-lg">Pesanan yang sudah COMPLETED tetap muncul di daftar "Yang Harus Dikerjakan". <br/><br/><span className="bg-green-400 text-black px-2 border-2 border-black">Fix: Modifikasi SQL Query filter di Supabase admin endpoint.</span></p>
-        </div>
-        <div className="bg-red-100 border-4 border-red-500 p-6 shadow-[8px_8px_0_0_#111111]">
-          <h3 className="font-heading font-black text-xl uppercase mb-2 text-red-600">Bug 2: Unique Constraint Client ID</h3>
-          <p className="font-bold text-lg">Gagal submit jika 2 klien baru dimasukkan (karena default clientNumber = ""). <br/><br/><span className="bg-green-400 text-black px-2 border-2 border-black">Fix: Generate Unique CLI-ID sebelum eksekusi Insert.</span></p>
-        </div>
-      </div>
-    ),
-  },
+
+  // SLIDE 9: REFLEKSI
   {
     id: "refleksi",
-    title: "REFLEKSI",
-    subtitle: "Pelajaran yang Didapat",
+    title: "REFLEKSI & PELAJARAN",
+    subtitle: "Apa yang kita pelajari?",
     icon: <Presentation className="w-12 h-12 mb-4 text-green-500" />,
     content: (
       <div className="text-center space-y-6">
         <div className="bg-black text-white border-4 border-lovery-pink p-8 shadow-[12px_12px_0_0_#E89CC9] -skew-x-2">
           <p className="text-xl md:text-2xl font-bold leading-relaxed">
-            "Tech stack modern (Next.js, Tailwind, Supabase) dipadukan dengan desain 
-            <span className="text-lovery-pink mx-2">Neo-Brutalism</span> 
-            menciptakan aplikasi yang nggak cuma fungsional, tapi punya karakter kuat dan sangat berkesan buat pengguna."
+            "Membangun aplikasi nyata bukan cuma soal UI yang cantik, tapi tentang bagaimana sistem merespon di bawah tekanan, menangani *edge-cases*, dan menyajikan pengalaman terbaik bagi klien maupun admin."
           </p>
         </div>
-        <h3 className="text-4xl font-black uppercase mt-12 bg-white inline-block px-6 py-2 border-4 border-black shadow-[6px_6px_0_0_#111111]">
-          Q & A
+      </div>
+    ),
+  },
+
+  // SLIDE 10: QNA
+  {
+    id: "qna",
+    title: "TERIMA KASIH",
+    subtitle: "Silakan bertanya jika ada",
+    icon: <MessageSquare className="w-16 h-16 mb-4 text-lovery-pink animate-bounce" />,
+    content: (
+      <div className="text-center space-y-6 flex flex-col items-center">
+        <h3 className="text-5xl font-black uppercase mt-4 bg-white inline-block px-8 py-4 border-4 border-black shadow-[8px_8px_0_0_#111111] hover:shadow-[4px_4px_0_0_#111111] transition-all">
+          Sesi Q & A
         </h3>
+        <p className="font-bold text-xl text-gray-600 mt-4">"Siapkan pertanyaan terbaik Anda!"</p>
       </div>
     ),
   },
@@ -189,7 +282,7 @@ export default function PresentationPage() {
             animate={{ opacity: 1, x: 0, rotate: 0 }}
             exit={{ opacity: 0, x: -100, rotate: -2 }}
             transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}
-            className="w-full max-w-5xl bg-white border-8 border-black shadow-[16px_16px_0_0_#111111] p-8 md:p-16 flex flex-col items-center justify-center min-h-[60vh] relative"
+            className="w-full max-w-5xl bg-white border-8 border-black shadow-[16px_16px_0_0_#111111] p-8 md:p-16 flex flex-col items-center justify-center min-h-[65vh] relative"
           >
             {/* Corner Decor */}
             <div className="absolute top-0 right-0 w-16 h-16 bg-lovery-pink border-l-8 border-b-8 border-black" />
@@ -197,7 +290,7 @@ export default function PresentationPage() {
 
             <div className="text-center mb-10 flex flex-col items-center">
               {slides[currentSlide].icon}
-              <h1 className="text-4xl md:text-6xl font-heading font-black text-black uppercase tracking-tighter drop-shadow-[4px_4px_0_#E89CC9]">
+              <h1 className="text-4xl md:text-6xl font-heading font-black text-black uppercase tracking-tighter drop-shadow-[4px_4px_0_#E89CC9] leading-tight">
                 {slides[currentSlide].title}
               </h1>
               <h2 className="text-xl md:text-2xl font-bold text-gray-700 mt-2 border-b-4 border-black inline-block pb-1">
@@ -217,17 +310,17 @@ export default function PresentationPage() {
         <button
           onClick={prevSlide}
           disabled={currentSlide === 0}
-          className="disabled:opacity-50 disabled:cursor-not-allowed bg-white hover:bg-gray-200 border-4 border-black p-4 shadow-[4px_4px_0_0_#111111] hover:shadow-[2px_2px_0_0_#111111] hover:translate-y-[2px] transition-all font-bold flex items-center gap-2 uppercase"
+          className="disabled:opacity-50 disabled:cursor-not-allowed bg-white hover:bg-gray-200 border-4 border-black p-3 md:p-4 shadow-[4px_4px_0_0_#111111] hover:shadow-[2px_2px_0_0_#111111] hover:translate-y-[2px] transition-all font-bold flex items-center gap-2 uppercase"
         >
           <ArrowLeft className="w-6 h-6" /> <span className="hidden sm:inline">Sebelumnya</span>
         </button>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 overflow-x-auto max-w-[50vw] px-2 py-2">
           {slides.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentSlide(idx)}
-              className={`w-10 h-10 border-4 border-black font-black flex items-center justify-center transition-all ${
+              className={`w-10 h-10 shrink-0 border-4 border-black font-black flex items-center justify-center transition-all ${
                 currentSlide === idx ? "bg-lovery-pink shadow-[4px_4px_0_0_#111111] -translate-y-1" : "bg-white hover:bg-gray-200"
               }`}
             >
@@ -239,7 +332,7 @@ export default function PresentationPage() {
         <button
           onClick={nextSlide}
           disabled={currentSlide === slides.length - 1}
-          className="disabled:opacity-50 disabled:cursor-not-allowed bg-lovery-pink hover:bg-pink-400 border-4 border-black p-4 shadow-[4px_4px_0_0_#111111] hover:shadow-[2px_2px_0_0_#111111] hover:translate-y-[2px] transition-all font-bold flex items-center gap-2 uppercase"
+          className="disabled:opacity-50 disabled:cursor-not-allowed bg-lovery-pink hover:bg-pink-400 border-4 border-black p-3 md:p-4 shadow-[4px_4px_0_0_#111111] hover:shadow-[2px_2px_0_0_#111111] hover:translate-y-[2px] transition-all font-bold flex items-center gap-2 uppercase"
         >
           <span className="hidden sm:inline">Selanjutnya</span> <ArrowRight className="w-6 h-6" />
         </button>
