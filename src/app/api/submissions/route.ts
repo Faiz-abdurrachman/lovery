@@ -154,7 +154,7 @@ export async function POST(request: NextRequest) {
       {
         success: false,
         message: "Terjadi kesalahan server",
-        debug: process.env.NODE_ENV !== "production" ? error?.message : undefined,
+        debug: error?.message || error?.details || JSON.stringify(error),
       },
       { status: 500 }
     )
