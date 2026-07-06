@@ -16,12 +16,8 @@ const slides = [
         <p className="text-xl md:text-2xl font-bold bg-lovery-pink inline-block px-4 py-2 border-2 border-black shadow-[4px_4px_0_0_#111111]">
           "Mengotomatisasi Booking & Manajemen Sesi Foto"
         </p>
-        <div className="flex justify-center mt-8 gap-8 items-center">
-          <img src="/logo bulat.png" alt="Lovery" className="w-40 h-40 border-4 border-black shadow-[8px_8px_0_0_#111111] -skew-y-3 hover:skew-y-0 transition-transform duration-300 bg-white" />
-          <div className="text-left bg-white border-4 border-black p-4 shadow-[8px_8px_0_0_#111111]">
-            <h3 className="font-black text-xl mb-1">Oleh: Faiz & Team</h3>
-            <p className="font-bold text-gray-600">Presentasi Proyek Akhir</p>
-          </div>
+        <div className="flex justify-center mt-8">
+          <img src="/logo bulat.png" alt="Lovery" className="w-48 h-48 border-4 border-black shadow-[8px_8px_0_0_#111111] -skew-y-3 hover:skew-y-0 transition-transform duration-300 bg-white" />
         </div>
       </div>
     ),
